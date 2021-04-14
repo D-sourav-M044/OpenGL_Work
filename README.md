@@ -3,7 +3,7 @@
 
 OpenGL/GLUT Project in code::block
 
-step 1: Glut setup
+## step 1: Glut setup <br>
 	Download glut-3.7.6-bin from Google 
 	Unzip the file. There will be at least 3 files. (glut.h, glut32.dll, glut32.lib)
 	go location : C:\Program Files (x86)\CodeBlocks\MinGW\include

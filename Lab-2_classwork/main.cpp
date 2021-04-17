@@ -801,8 +801,8 @@ void room()
     glTranslatef(0,1*room_height,0);
     glScalef(room_length,flr_dense,room_width);
     glTranslatef(-0.5,-1,-0.5);
-    cube(0.7,0.7,0.7);
-    //cube(0.59, 0.439, 0.76);
+    //cube(0.7,0.7,0.7);
+    cube(0.741, 0.718, 0.420);
     glPopMatrix();
 
     //floor line

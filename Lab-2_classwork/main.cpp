@@ -523,6 +523,95 @@ void fan()
 
 }
 
+
+void ac()
+{
+    float ac_length = 15, ac_width = 10, ac_height = 5;
+        glPushMatrix();
+        glScalef(ac_length,ac_height,ac_width);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(1.000, 1.000, 0.878);
+        glPopMatrix();
+        for(float i=0.5;i<=1.5;i+=0.5)
+        {
+        glPushMatrix();
+        glTranslatef(0,3.0+i,ac_height-0.8);
+        glScalef(ac_length-8,ac_height/20,ac_width/5);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(0, 0, 0);
+        glPopMatrix();
+        }
+
+
+
+        glPushMatrix();
+        glTranslatef(0,0.5,ac_height-0.8);
+        glScalef(ac_length,ac_height/4,ac_width/5);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(0.663, 0.663, 0.663);
+        glPopMatrix();
+
+        glPushMatrix();
+        glTranslatef(0,1,ac_height-0.5);
+        glScalef(ac_length,ac_height/12,ac_width/5);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(0.000, 0.000, 0.000);
+        glPopMatrix();
+
+        glPushMatrix();
+        glTranslatef(ac_length/2-ac_length/16,2,ac_height-0.5);
+        glScalef(ac_length/8,ac_height/12,ac_width/5);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(0.502, 0.000, 0.000);
+        glPopMatrix();
+
+        //back part
+        for(int i=-1;i<=1;i+=1)
+        {
+        glPushMatrix();
+        glTranslatef((i)*(ac_length/2-ac_length/10),2,-(ac_height));
+        glScalef(ac_length/12,ac_height/12,ac_width/5);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(0, 0, 0);
+        glPopMatrix();
+        }
+
+        int ac_c=0;
+        for(int i=0;i<100;i++)
+        {
+        glPushMatrix();
+        glTranslatef(5,4,-(ac_height-0.5));
+        glRotatef(ac_c,0,0,1);
+        glScalef(ac_length/12,ac_height/20,ac_width/4);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(0.098, 0.098, 0.439);
+        glPopMatrix();
+        ac_c+=5;
+        }
+
+        glPushMatrix();
+        glTranslatef(0,1,-(ac_height-0.5));
+        glScalef(ac_length/2,ac_height/2,ac_width/5);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(0.753, 0.753, 0.753);
+        glPopMatrix();
+
+         ac_c=0;
+        for(float n=1.3;n<=3.5;n+=2)
+        for(int i=0;i<100;i++)
+        {
+        glPushMatrix();
+        glTranslatef(n,2,-(ac_height-0.5));
+        glRotatef(ac_c,0,0,1);
+        glScalef(ac_length/16,ac_height/20,ac_width/4);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(0.000, 0.502, 0.502);
+        glPopMatrix();
+        ac_c+=5;
+        }
+
+
+}
 static void display(void)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -545,6 +634,7 @@ static void display(void)
 //    glPopMatrix();
 //
 
+    //ac();
     fan();
 
 

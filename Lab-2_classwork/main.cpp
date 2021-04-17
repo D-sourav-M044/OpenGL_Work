@@ -19,7 +19,7 @@ GLfloat lookX = 0;
 GLfloat lookY = 0;
 GLfloat lookZ = 0;
 
-float rot = 0;
+float rot = 0, fan_rt = 0;
 
 
 static GLfloat v_cube[8][3] =
@@ -64,6 +64,14 @@ void cube(float colR=0.5, float colG=0.5, float colB=0.5, float alpha=1)
         }
     }
     glEnd();
+}
+
+void fan_rotation()
+{
+    fan_rt = fan_rt+3;
+    if(fan_rt>360)
+        fan_rt =0;
+    glutPostRedisplay();
 }
 
 void axes()
@@ -411,29 +419,31 @@ void shelf()
     glPopMatrix();
 
     //side bar
-    for(int i=-1;i<=1;i=i+2)
+    for(int i=-1; i<=1; i=i+2)
     {
         glPushMatrix();
-    glTranslatef((i)*(top_length/2-top_height/2),0,0);
-    glScalef(top_height,top_length,top_width);
-    glTranslatef(-0.5,-0.0,-0.5);
-    cube(0.53,0.39,0.28);
-    glPopMatrix();
+        glTranslatef((i)*(top_length/2-top_height/2),0,0);
+        glScalef(top_height,top_length,top_width);
+        glTranslatef(-0.5,-0.0,-0.5);
+        cube(0.53,0.39,0.28);
+        glPopMatrix();
     }
     //books
 
-    for (int i=0;i<=1;i++)
-    {int sp = 1,m=0;
+    for (int i=0; i<=1; i++)
+    {
+        int sp = 1,m=0;
 
-        for(int j=1;j<6;j++)
-        {sp+=1;
+        for(int j=1; j<6; j++)
+        {
+            sp+=1;
             glPushMatrix();
-    glTranslatef(-(top_length/2-sp-top_height),top_length/2+(1.5-5*i),0);
-    glRotatef(30,0,0,1);
-    glScalef(2*top_height,9*top_height,5*top_height);
-    glTranslatef(-0.5,-0.0,-0.5);
-    cube(0.480+m+ 0.09*2*j, 0.502+m+0.05*2*j, 0.447+m+0.05*2*j);
-    glPopMatrix();
+            glTranslatef(-(top_length/2-sp-top_height),top_length/2+(1.5-5*i),0);
+            glRotatef(30,0,0,1);
+            glScalef(2*top_height,9*top_height,5*top_height);
+            glTranslatef(-0.5,-0.0,-0.5);
+            cube(0.480+m+ 0.09*2*j, 0.502+m+0.05*2*j, 0.447+m+0.05*2*j);
+            glPopMatrix();
 
         }
         m+=0.8;
@@ -441,17 +451,17 @@ void shelf()
     }
 
     //shelf bar
-    for(int i=0;i<=1;i++)
+    for(int i=0; i<=1; i++)
     {
         glPushMatrix();
-    glTranslatef((top_length/2-top_length/2),(top_length/2+1)*i,0);
-    glScalef(top_length,top_height,top_width);
-    glTranslatef(-0.5,-0.0,-0.5);
-    cube(0.53,0.39,0.28);
-    glPopMatrix();
+        glTranslatef((top_length/2-top_length/2),(top_length/2+1)*i,0);
+        glScalef(top_length,top_height,top_width);
+        glTranslatef(-0.5,-0.0,-0.5);
+        cube(0.53,0.39,0.28);
+        glPopMatrix();
     }
 
-   //back bar
+    //back bar
     glPushMatrix();
     glTranslatef(0,0,-top_width/2);
     glScalef(top_length,top_length,top_height);
@@ -464,6 +474,52 @@ void shelf()
 
 void fan()
 {
+    float base = 5;
+
+    glPushMatrix();
+    glRotatef(fan_rt,0,1,0);
+
+    //fan-cap
+    int cap_rot = 0;
+    for(int i=0; i<100; i++)
+    {
+        glPushMatrix();
+        glTranslatef(0,base/4,0);
+        glRotatef(cap_rot,0,1,0);
+        glScalef(base/4,base/2,base/4);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(0.941, 0.902, 0.549);
+        glPopMatrix();
+        cap_rot+=5;
+    }
+
+    //round-base
+    int base_rot = 0;
+    for (int i=0; i<100; i++)
+    {
+        glPushMatrix();
+        //glTranslatef(0,top_width-(6*top_height),0);
+        glRotatef(base_rot,0,1,0);
+        glScalef(base,base/4,base);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(0.804, 0.361, 0.361);
+        glPopMatrix();
+        base_rot+=5;
+    }
+    //fan-leg
+    for(int i=0; i<=2; i++)
+    {
+        glPushMatrix();
+        glRotatef(120*i,0,1,0);
+        glTranslatef((2*base)/2+base/2,base/8,0);
+        glScalef(2*base,0.002*base,base/2);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(0.000, 0.000, 0.545);
+        glPopMatrix();
+    }
+
+    fan_rotation();
+    glPopMatrix();
 
 }
 
@@ -488,12 +544,10 @@ static void display(void)
 //    chair();
 //    glPopMatrix();
 //
-//    glPushMatrix();
-//    glTranslatef(0,-5.5,-8);
-//    glScalef(2,2,1);
-//    tea_table();
-//    glPopMatrix();
-    shelf();
+
+    fan();
+
+
 
 
     glutSwapBuffers();

@@ -8,16 +8,16 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-const int width = 700;
-const int height = 700;
+const int window_width = 1080;
+const int window_height = 720;
 
 GLfloat eyeX = 0;
-GLfloat eyeY = 5;
-GLfloat eyeZ = 20;
+GLfloat eyeY = 20;
+GLfloat eyeZ = 40;
 
 GLfloat lookX = 0;
-GLfloat lookY = 0;
-GLfloat lookZ = 0;
+GLfloat lookY = 15;
+GLfloat lookZ = -20;
 
 float rot = 0, fan_rt = 0;
 
@@ -68,7 +68,7 @@ void cube(float colR=0.5, float colG=0.5, float colB=0.5, float alpha=1)
 
 void fan_rotation()
 {
-    fan_rt = fan_rt+3;
+    fan_rt = fan_rt+1;
     if(fan_rt>360)
         fan_rt =0;
     glutPostRedisplay();
@@ -104,17 +104,9 @@ void axes()
     glPopMatrix();
 }
 
-void flr()
-{
-    glPushMatrix();
-//    glTranslatef(0,-0.5,0);
-    glScalef(20,1,20);
-    glTranslatef(-0.5,-1,-0.5);
-    cube();
-    glPopMatrix();
-}
 
-void tea_table()
+
+void desk()
 {
     float height=6;
     float width=10;
@@ -612,17 +604,75 @@ void ac()
 
 
 }
+
+void room()
+{
+    float room_length = 50, room_height = 50, room_width = 50, flr_dense = 0.3;
+
+    //floor & roof
+    for(int i=0;i<=1;i++)
+    {
+        glPushMatrix();
+    glTranslatef(0,i*room_height,0);
+    glScalef(room_length,flr_dense,room_width);
+    glTranslatef(-0.5,-1,-0.5);
+    cube(0.467, 0.533, 0.60);
+    glPopMatrix();
+    }
+
+
+    //side-wall
+    for(int i=-1;i<=1;i+=2)
+    {
+    glPushMatrix();
+    glTranslatef(i*(room_length/2-flr_dense/2),0,0);
+    glScalef(flr_dense,room_height,room_width);
+    glTranslatef(-0.5,0,-0.5);
+    cube(1.000, 0.871, 0.678);
+    glPopMatrix();
+    }
+
+    //back-front wall
+    glPushMatrix();
+    glTranslatef(0,0,-(room_width/2-flr_dense/2));
+    glScalef(room_length,room_height,flr_dense);
+    glTranslatef(-0.5,0,-0.5);
+    cube();
+    glPopMatrix();
+
+
+    //fan
+    for(int i=-1;i<=1;i+=2)
+    {
+        for(int j=-1;j<=1;j+=1)
+        {
+    glPushMatrix();
+    glTranslatef(i*(room_length/2-9),room_height-3,j*(room_width/2-8));
+    glScalef(0.5,0.5,0.5);
+    glTranslatef(-0.5,-1,-0.5);
+    fan();
+    glPopMatrix();
+        }
+
+    }
+
+
+
+}
+
 static void display(void)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glFrustum(-5, 5, -5, 5, 4, 50);
+    int lim = 7;
+    glFrustum(-lim, lim, -lim, lim, 4, 100);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     gluLookAt(eyeX,eyeY,eyeZ, lookX,lookY,lookZ, 0,1,0);
-    glViewport(0, 0, width, height);
+    glViewport(0, 0, window_width, window_height);
+
 
     glRotatef(rot, 0,1,0);
     axes();
@@ -635,7 +685,7 @@ static void display(void)
 //
 
     //ac();
-    fan();
+   room();
 
 
 
@@ -685,7 +735,7 @@ static void idle(void)
 int main(int argc, char *argv[])
 {
     glutInit(&argc, argv);
-    glutInitWindowSize(width,height);
+    glutInitWindowSize(window_width,window_height);
     glutInitWindowPosition(10,10);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 

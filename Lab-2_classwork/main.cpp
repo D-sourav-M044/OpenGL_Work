@@ -480,7 +480,7 @@ void fan()
         glRotatef(cap_rot,0,1,0);
         glScalef(base/4,base*2,base/4);
         glTranslatef(-0.5,0.0,-0.5);
-        cube(0.941, 0.902, 0.549);
+        cube(	0.373, 0.620, 0.627);
         glPopMatrix();
         cap_rot+=5;
     }
@@ -644,7 +644,7 @@ void room()
     glScalef(room_length,flr_dense,room_width);
     glTranslatef(-0.5,-1,-0.5);
     //cube(0.467, 0.533, 0.60);
-    cube(0.961, 1.000, 0.980);
+    cube(0.502, 0.502, 0.502);
     glPopMatrix();
     //roof
     glPushMatrix();
@@ -652,7 +652,7 @@ void room()
     glScalef(room_length,flr_dense,room_width);
     glTranslatef(-0.5,-1,-0.5);
     //cube(0.467, 0.533, 0.60);
-    cube(0.741, 0.718, 0.420);
+    cube(0.59, 0.439, 0.76);
     glPopMatrix();
 
     //floor line
@@ -695,7 +695,8 @@ void room()
     glTranslatef(0,0,-(room_width/2-flr_dense/2));
     glScalef(room_length,room_height,flr_dense);
     glTranslatef(-0.5,0,-0.5);
-    cube(0.741, 0.718, 0.420);
+    //cube(0.741, 0.718, 0.420);
+    cube(0.235, 0.702, 0.443);
     glPopMatrix();
 
     //board
@@ -710,8 +711,8 @@ void room()
     for(int i=1;i<=3;i+=2)
     {
     glPushMatrix();
-    glTranslatef(0,i*(room_height/2-room_height/4)+4,-(room_width/2-flr_dense/2-5));
-    glScalef(room_length/2,flr_dense,flr_dense);
+    glTranslatef(0,i*(room_height/2-room_height/4)+3,-(room_width/2-flr_dense/2-5));
+    glScalef(room_length/2,5*flr_dense,flr_dense);
     glTranslatef(-0.5,0,-0.5);
     cube(0.502, 0.502, 0.000);
     glPopMatrix();
@@ -720,7 +721,7 @@ void room()
     {
     glPushMatrix();
     glTranslatef(i*(room_length/4-flr_dense/2),(room_height/2-room_height/4)+4,-(room_width/2-flr_dense/2-5));
-    glScalef(flr_dense,room_height/2,flr_dense);
+    glScalef(5*flr_dense,room_height/2,flr_dense);
     glTranslatef(-0.5,0,-0.5);
     cube(0.502, 0.502, 0.000);
     glPopMatrix();
@@ -730,8 +731,9 @@ void room()
     for(int i=-1;i<=1;i+=2)
     {
         glPushMatrix();
-    glTranslatef(i*(room_length/2-3.5),room_height/1.3,8);
+    glTranslatef(i*(room_length/2-3.5),room_height/1.3,14);
      glRotatef(-90,0,1,0);
+     glScalef(0.5,1,1);
     light();
     glPopMatrix();
     }
@@ -740,7 +742,7 @@ void room()
     //teacher-platform
     glPushMatrix();
     glTranslatef(0,0,-(room_width/2-flr_dense/2-7));
-    glScalef(room_length-12,room_height/7,room_width/3);
+    glScalef(room_length-12,room_height/7,room_width/9);
     glTranslatef(-0.5,0,-0.5);
     cube(0.55, 0.47, 0.125);
     glPopMatrix();
@@ -753,7 +755,7 @@ void room()
         for(int j=-1;j<=1;j+=1)
         {
     glPushMatrix();
-    glTranslatef(i*(room_length/2-9),room_height-3,j*(room_width/2-8));
+    glTranslatef(i*(room_length/2-9),room_height-5,j*(room_width/2-8));
     glScalef(0.5,0.5,0.5);
     glTranslatef(-0.5,-1,-0.5);
     fan();
@@ -777,21 +779,35 @@ void room()
     shelf();
     glPopMatrix();
 
-    //ac
-    glPushMatrix();
-    //glTranslatef(0,5,-1.3);
+    //projector
+    //holder
+    for(int i=-3;i<=3;i+=6)
+    {
+        glPushMatrix();
+    glTranslatef(i,room_height/2+18.1,-1.3);
     //glRotatef(180,0,1,0);
-    glScalef(1,10,1);
+    glScalef(1,12,1);
     glTranslatef(-0.5,0,-0.5);
     cube();
     glPopMatrix();
+    }
 
+    //pro_box
     glPushMatrix();
-    glTranslatef(0,5,-1.3);
+    glTranslatef(0,room_height/2+18,-1.3);
     glRotatef(180,0,1,0);
     //glScalef(1,2,1);
     ac();
     glPopMatrix();
+
+    //ac
+    glPushMatrix();
+    glTranslatef(room_length/2,room_height/2+18,-4.3);
+    glRotatef(270,0,1,0);
+    glScalef(1,1,0.5);
+    ac();
+    glPopMatrix();
+
 
 }
 

@@ -1056,7 +1056,7 @@ static void key(unsigned char key, int x, int y)
 
     case 'w':
 
-        if(up<=15)
+        if(up<=11)
         {
             up++;
             down--;
@@ -1067,7 +1067,7 @@ static void key(unsigned char key, int x, int y)
         break;
     case 's':
 
-        if(down<=32)
+        if(down<=30)
         {
             down++;
             up--;
@@ -1169,9 +1169,8 @@ int main(int argc, char *argv[])
     glShadeModel( GL_SMOOTH );
     glEnable(GL_NORMALIZE);
     glEnable(GL_BLEND);
-//
+
     menu();
-//
     glutMainLoop();
 
     return EXIT_SUCCESS;

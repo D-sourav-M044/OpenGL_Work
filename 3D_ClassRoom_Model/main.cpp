@@ -739,11 +739,11 @@ void light()
 
 void window()
 {
-    float window_length = 20, window_height = 15, window_width = 0.5;
+    float window_length = 10, window_height = 15, window_width = 0.5;
     float bar_dense = 0.3;
     //window blue glass
     glPushMatrix();
-    glScalef(window_length,window_height,window_width);
+    glScalef(window_length-2,window_height,window_width);
     glTranslatef(-0.5,0.0,-0.5);
     cube(0.275, 0.510, 0.706);
     glPopMatrix();
@@ -752,21 +752,62 @@ void window()
     for(int i=0; i<=1; i++)
     {
         glPushMatrix();
-        glTranslatef(0,i*(window_height-bar_dense/2),bar_dense/2);
-        glScalef(window_length,bar_dense,bar_dense);
+        glTranslatef(0,i*(window_height-(3*bar_dense)/2-0.3),bar_dense/2);
+        glScalef(window_length,3*bar_dense,bar_dense);
         glTranslatef(-0.5,0.0,-0.5);
-        cube(1,1,1);
+        cube(0.65,0.4,0.3);
         glPopMatrix();
     }
+    //right-middle-left bar
     for(int i=-1; i<=1; i+=1)
     {
         glPushMatrix();
-        glTranslatef(i*(window_length/2-bar_dense/2),0,bar_dense/2);
-        glScalef(bar_dense,window_height,bar_dense);
+        glTranslatef(i*(window_length/2-(4*bar_dense)/2),0,bar_dense/2);
+        glScalef(4*bar_dense,window_height,bar_dense);
         glTranslatef(-0.5,0.0,-0.5);
-        cube(1,1,1);
+        cube(0.65,0.4,0.3);
         glPopMatrix();
     }
+    //row line
+    for(int i=-1; i<=1; i+=1)
+    {
+        for(int j=2.5;j<=5;j*=2)
+        {
+            glPushMatrix();
+        glTranslatef(i*(window_length/2-bar_dense/2-j),0,bar_dense/2);
+        glScalef(bar_dense,window_height,bar_dense);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(0.4,0.4,0.3);
+        glPopMatrix();
+        }
+    }
+    //col line
+    for(int i=-1;i<=1;i+=2)
+    {
+        for(int j=1;j<=2;j++)
+        {
+            glPushMatrix();
+        glTranslatef(i*(window_length/4),j*(window_height/3),bar_dense/2-0.005);
+        glScalef(window_length/2,bar_dense,bar_dense);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(0.4,0.4,0.3);
+        glPopMatrix();
+        }
+    }
+
+    //golden handle
+    int c=0;
+    for(float i=-0.3;i<=0.3;i+=0.6)
+    {
+        glPushMatrix();
+        glTranslatef(i,(window_height/2),bar_dense);
+        glScalef(bar_dense,10*bar_dense,bar_dense);
+        glTranslatef(-0.5,0.0,-0.5);
+        cube(1, 1, 1);
+        glPopMatrix();
+    }
+
+
 
 }
 
@@ -915,7 +956,7 @@ void room()
         for(int j=-1; j<=1; j+=1)
         {
             glPushMatrix();
-            glTranslatef(i*(room_length/2-15),room_height-5,j*(room_width/2-8));
+            glTranslatef(i*(room_length/2-15),room_height-7,j*(room_width/2-8));
             glScalef(1,1,1);
             glTranslatef(-0.5,-1,-0.5);
             fan();

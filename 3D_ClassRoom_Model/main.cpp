@@ -8,7 +8,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-const int window_width = 1000;
+const int window_width = 1200;
 const int window_height = 750;
 
 GLfloat eyeX = 0;
@@ -19,8 +19,7 @@ GLfloat lookX = 0;
 GLfloat lookY = 40; //40  //0
 GLfloat lookZ = -100;
 
-int cntx=0;
-int cnty=0;
+int up=0,down=0,r=0,l=0;
 
 float rot = 0, fan_rt = 0;
 
@@ -916,7 +915,7 @@ void room()
         for(int j=-1; j<=1; j+=1)
         {
             glPushMatrix();
-            glTranslatef(i*(room_length/2-9),room_height-5,j*(room_width/2-8));
+            glTranslatef(i*(room_length/2-15),room_height-5,j*(room_width/2-8));
             glScalef(1,1,1);
             glTranslatef(-0.5,-1,-0.5);
             fan();
@@ -1037,6 +1036,7 @@ static void display(void)
     //window();
     //t_desk();
     //st_desk();
+    //testflr();
 
 
 
@@ -1056,10 +1056,10 @@ static void key(unsigned char key, int x, int y)
 
     case 'w':
 
-        if(cntx<=15)
+        if(up<=15)
         {
-            cntx++;
-            cnty--;
+            up++;
+            down--;
             eyeY++;
             lookY++;
         }
@@ -1067,10 +1067,10 @@ static void key(unsigned char key, int x, int y)
         break;
     case 's':
 
-        if(cnty<=32)
+        if(down<=32)
         {
-            cnty++;
-            cntx--;
+            down++;
+            up--;
             eyeY--;
             lookY--;
 
@@ -1083,12 +1083,23 @@ static void key(unsigned char key, int x, int y)
         rot++;
         break;
     case 'l':
-        eyeX++;
-        lookX++;
+        if(r<=36)
+        {
+            r++;
+            l--;
+            eyeX++;
+           lookX++;
+        }
         break;
     case 'j':
-        eyeX--;
-        lookX--;
+        if(l<=36)
+        {
+            r--;
+            l++;
+             eyeX--;
+           lookX--;
+        }
+
         break;
     case '+':
         eyeZ--;
@@ -1146,7 +1157,7 @@ int main(int argc, char *argv[])
 {
     glutInit(&argc, argv);
     glutInitWindowSize(window_width,window_height);
-    glutInitWindowPosition(500,10);
+    glutInitWindowPosition(300,10);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 
     glutCreateWindow("3D Class Room Model");

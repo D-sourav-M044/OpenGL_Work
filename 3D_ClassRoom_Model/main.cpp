@@ -771,33 +771,33 @@ void window()
     //row line
     for(int i=-1; i<=1; i+=1)
     {
-        for(int j=2.5;j<=5;j*=2)
+        for(int j=2.5; j<=5; j*=2)
         {
             glPushMatrix();
-        glTranslatef(i*(window_length/2-bar_dense/2-j),0,bar_dense/2);
-        glScalef(bar_dense,window_height,bar_dense);
-        glTranslatef(-0.5,0.0,-0.5);
-        cube(0.4,0.4,0.3);
-        glPopMatrix();
+            glTranslatef(i*(window_length/2-bar_dense/2-j),0,bar_dense/2);
+            glScalef(bar_dense,window_height,bar_dense);
+            glTranslatef(-0.5,0.0,-0.5);
+            cube(0.4,0.4,0.3);
+            glPopMatrix();
         }
     }
     //col line
-    for(int i=-1;i<=1;i+=2)
+    for(int i=-1; i<=1; i+=2)
     {
-        for(int j=1;j<=2;j++)
+        for(int j=1; j<=2; j++)
         {
             glPushMatrix();
-        glTranslatef(i*(window_length/4),j*(window_height/3),bar_dense/2-0.005);
-        glScalef(window_length/2,bar_dense,bar_dense);
-        glTranslatef(-0.5,0.0,-0.5);
-        cube(0.4,0.4,0.3);
-        glPopMatrix();
+            glTranslatef(i*(window_length/4),j*(window_height/3),bar_dense/2-0.005);
+            glScalef(window_length/2,bar_dense,bar_dense);
+            glTranslatef(-0.5,0.0,-0.5);
+            cube(0.4,0.4,0.3);
+            glPopMatrix();
         }
     }
 
     //golden handle
     int c=0;
-    for(float i=-0.3;i<=0.3;i+=0.6)
+    for(float i=-0.3; i<=0.3; i+=0.6)
     {
         glPushMatrix();
         glTranslatef(i,(window_height/2),bar_dense);
@@ -825,6 +825,23 @@ void st_desk()
     glScalef(1,2,0.5);
     chair();
     glPopMatrix();
+}
+
+void brick_wall(float len,float he,float wi)
+{
+    len = 90, he = 60, wi = 100;
+    float b_len = 1, b_he= 1, b_w = 0.5;
+    for(float i=-he/2; i<=he/2; i+=1.2)
+    {
+        for(float j=-len/2; j<=len/2; j+=1.2)
+        {
+            glPushMatrix();
+            glTranslatef(j,i,0);
+            glScalef(b_len,b_he,b_w);
+            cube(0.5,0.3,0.4);
+            glPopMatrix();
+        }
+    }
 }
 
 void room()
@@ -1078,6 +1095,7 @@ static void display(void)
     //t_desk();
     //st_desk();
     //testflr();
+    //brick_wall(90,60,100);
 
 
 
@@ -1129,7 +1147,7 @@ static void key(unsigned char key, int x, int y)
             r++;
             l--;
             eyeX++;
-           lookX++;
+            lookX++;
         }
         break;
     case 'j':
@@ -1137,8 +1155,8 @@ static void key(unsigned char key, int x, int y)
         {
             r--;
             l++;
-             eyeX--;
-           lookX--;
+            eyeX--;
+            lookX--;
         }
 
         break;

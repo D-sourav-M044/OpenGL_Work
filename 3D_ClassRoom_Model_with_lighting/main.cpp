@@ -32,7 +32,20 @@ GLfloat lookZ = -100;
 int up=0,down=0,r=0,l=0,f=0,b=0;
 
 float rot = 0, fan_rt = 0;
-bool light_1 = false, light_2 = false, light_3 = false ;
+bool light_1 = false, light_2 = false, light_3 = false , fan_on = false;
+
+static void resize(int width, int height)
+{
+    const float ar = (float) window_width / (float) window_height;
+
+    glViewport(0, 0, window_width, window_height);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glFrustum(-ar, ar, -1.0, 1.0, 2.0, 100.0);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity() ;
+}
 
 static GLfloat v_cube[8][3] =
 {
@@ -82,7 +95,7 @@ void material_property(float R, float G, float B, bool li )
     GLfloat mat_diffuse[] = { R, G, B, 1.0 };
     GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat mat_emission[] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat mat_shininess[] = {10};
+    GLfloat mat_shininess[] = {255};
 
     glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient);
     glMaterialfv( GL_FRONT, GL_DIFFUSE, mat_diffuse);
@@ -115,11 +128,11 @@ void cube(float R=0.5, float G=0.5, float B=0.5, bool li = false)
     glBegin(GL_QUADS);
     for (GLint i = 0; i <6; i++)
     {
-        glColor3f(R,G,B);
-
-        R += 0.05;
-        G += 0.05;
-        B += 0.05;
+//        glColor3f(R,G,B);
+//
+//        R += 0.05;
+//        G += 0.05;
+//        B += 0.05;
     getNormal3p(v_cube[c_ind[i][0]][0], v_cube[c_ind[i][0]][1], v_cube[c_ind[i][0]][2],
                     v_cube[c_ind[i][1]][0], v_cube[c_ind[i][1]][1], v_cube[c_ind[i][1]][2],
                     v_cube[c_ind[i][2]][0], v_cube[c_ind[i][2]][1], v_cube[c_ind[i][2]][2]);
@@ -156,9 +169,17 @@ void drawText(const char *text, int length, int x, int y)
 }
 void fan_rotation()
 {
-    fan_rt = fan_rt+1;
+    if(fan_on)
+    {
+        fan_rt = fan_rt+1;
     if(fan_rt>360)
         fan_rt =0;
+
+    }
+    else
+    {
+        ;
+    }
     glutPostRedisplay();
 }
 
@@ -787,7 +808,7 @@ void ac()
 
 }
 
-void light(int light_status)
+void tube_light(int light_status)
 {
     float light_length = 20, light_width = 1, light_height = 2;
     float bar_length = 2, bar_height = light_height+1, bar_width = 2;
@@ -902,13 +923,16 @@ void st_desk()
     glPopMatrix();
 }
 
-void brick_wall(float len,float he,float wi)
+void brick_wall(float len,float he,float wi, float gap = 0.2)
 {
-    len = 90, he = 60, wi = 100;
-    float b_len = 1, b_he= 1, b_w = 0.5;
-    for(float i=-he/2; i<=he/2; i+=1.2)
+    //len = 90, he = 60, wi = 100;
+    float b_len = 4, b_he= 5, b_w = 0.5;
+    int br = 2;
+    for(float i=-he/2; i<=he/2; i+=(b_he+gap))
     {
-        for(float j=-len/2; j<=len/2; j+=1.2)
+        if(br==2) br= 0;
+        else br=2;
+        for(float j=-((len/2+2)-br); j<=len/2; j+=(b_len+gap))
         {
             glPushMatrix();
             glTranslatef(j,i,0);
@@ -922,7 +946,7 @@ void brick_wall(float len,float he,float wi)
 void point_light_effect(int light_no,float x, float y, float z)
 {
     GLfloat no_light[] = { 0.0, 0.0, 0.0, 1.0 };
-    GLfloat light_ambient[]  = {0.0, 0.0, 0.0, 0.0};
+    GLfloat light_ambient[]  = {1, 1, 1, 0.0};
     GLfloat light_diffuse[]  = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
     //GLfloat light_position[] = { ttx,tty-10,0, 1.0 };
@@ -934,7 +958,7 @@ void point_light_effect(int light_no,float x, float y, float z)
 
         if(light_1)
         {
-            glLightfv( GL_LIGHT1, GL_AMBIENT, light_ambient);
+            glLightfv( GL_LIGHT1, GL_AMBIENT, no_light);
             glLightfv( GL_LIGHT1, GL_DIFFUSE, light_diffuse);
             glLightfv( GL_LIGHT1, GL_SPECULAR, light_specular);
         }
@@ -954,7 +978,7 @@ void point_light_effect(int light_no,float x, float y, float z)
 
         if(light_2)
         {
-            glLightfv( GL_LIGHT2, GL_AMBIENT, light_ambient);
+            glLightfv( GL_LIGHT2, GL_AMBIENT, no_light);
             glLightfv( GL_LIGHT2, GL_DIFFUSE, light_diffuse);
             glLightfv( GL_LIGHT2, GL_SPECULAR, light_specular);
         }
@@ -970,46 +994,100 @@ void point_light_effect(int light_no,float x, float y, float z)
 
 }
 
+void spot_light_effect(float x, float y, float z, float cut_off)
+{
+   GLfloat no_light[] = { 0.0, 0.0, 0.0, 1.0 };
+    GLfloat light_ambient[]  = {0.0, 0.0, 0.0, 0.0};
+    GLfloat light_diffuse[]  = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat light_position[] = { x,y,z, 1.0 };
+    glEnable( GL_LIGHT3);
+
+        if(light_3)
+        {
+            glLightfv( GL_LIGHT3, GL_AMBIENT, light_ambient);
+            glLightfv( GL_LIGHT3, GL_DIFFUSE, light_diffuse);
+            glLightfv( GL_LIGHT3, GL_SPECULAR, light_specular);
+        }
+        else
+        {
+            glLightfv( GL_LIGHT3, GL_AMBIENT, no_light);
+            glLightfv( GL_LIGHT3, GL_DIFFUSE, no_light);
+            glLightfv( GL_LIGHT3, GL_SPECULAR, no_light);
+
+        }
+        glLightfv( GL_LIGHT3, GL_POSITION, light_position);
+
+    GLfloat light_direction[] = {0,-1,0,1};
+    glLightfv(GL_LIGHT3, GL_SPOT_DIRECTION, light_direction);
+    glLightf(GL_LIGHT3, GL_SPOT_CUTOFF, cut_off);
+}
+
+void spot_light()
+{
+    glPushMatrix();
+    glTranslatef(ttx,tty,0);
+    glScalef(8,5,8);
+    glTranslatef(-0.5,-0.5,-0.5);
+    cube(0.5,0,0.5,light_3);
+    glPopMatrix();
+}
+
 void room()
 {
-    float room_length = 90, room_height = 60, room_width = 100, flr_dense = 0.3;
+    float room_length = 118, room_height = 80, room_width = 100, flr_dense = 0.3;
 
     //floor
+//    for(float i=-room_width/2;i<=room_width/2;i+=5*flr_dense+2)
+//    {
     glPushMatrix();
-    glTranslatef(0,0,0);
+    //glTranslatef(0,0,i);
     glScalef(room_length,flr_dense,room_width);
     glTranslatef(-0.5,-1,-0.5);
     //cube(0.467, 0.533, 0.60);
-    cube(0.502, 0.502, 0.502);
+    cube(0.4,0.4,0.5);
     glPopMatrix();
+//    }
+
+
+
     //roof
     glPushMatrix();
     glTranslatef(0,1*room_height,0);
     glScalef(room_length,flr_dense,room_width);
     glTranslatef(-0.5,-1,-0.5);
     //cube(0.7,0.7,0.7);
-    cube(0.741, 0.718, 0.420);
+    //cube(0.741, 0.718, 0.420);
+    cube(0.3,0.5,0);
     glPopMatrix();
 
     //floor line
     for(int i=-(room_length/2); i<=(room_length)/2; i+=5)
     {
-        glPushMatrix();
-        glTranslatef(i,0.1,0);
+        for(int j=0;j<=1;j++)
+        {
+            glPushMatrix();
+        glTranslatef(i,j*(room_height-0.2)+0.1,0);
         glScalef(flr_dense/4,flr_dense,room_width);
         glTranslatef(-0.5,-1,-0.5);
         cube(0.000, 0.000, 0.0);
         glPopMatrix();
+        }
+
     }
 
     for(int i=-(room_width/2); i<=(room_width)/2; i+=5)
     {
+        for(int j=0;j<=1;j++)
+        {
         glPushMatrix();
-        glTranslatef(0,0.1,i);
+        glTranslatef(0,j*(room_height-0.2)+0.1,i);
         glScalef(room_length,flr_dense,flr_dense/4);
         glTranslatef(-0.5,-1,-0.5);
         cube(0.000, 0.000, 0.0);
         glPopMatrix();
+        }
+
     }
 
 
@@ -1025,12 +1103,35 @@ void room()
         glPopMatrix();
     }
 
+
+    //brick wall
+        //right side
+        glPushMatrix();
+        glTranslatef((room_length/2-0.5),room_height/2,0);
+        glRotatef(90,0,1,0);
+        brick_wall(100,80,95);
+        glPopMatrix();
+        // left side
+        glPushMatrix();
+        glTranslatef(-(room_length/2),room_height/2,0);
+        glRotatef(90,0,1,0);
+        brick_wall(100,80,95);
+        glPopMatrix();
+        //front
+        glPushMatrix();
+        glTranslatef(0,room_height/2,-(room_width/2-2));
+        //glRotatef(,0,0,1);
+        brick_wall(120,80,95,0.5);
+        glPopMatrix();
+
+
+
     //front wall
     glPushMatrix();
     glTranslatef(0,0,-(room_width/2-flr_dense/2));
     glScalef(room_length,room_height,flr_dense);
     glTranslatef(-0.5,0,-0.5);
-    cube(0,0,0);
+    cube(0.741, 0.718, 0.420);
     //cube(0.373, 0.620, 0.627);
     glPopMatrix();
 
@@ -1057,9 +1158,10 @@ void room()
     {
         glPushMatrix();
         glTranslatef(0,i*(room_height/2-room_height/4)+3,-(room_width/2-flr_dense/2-6));
-        glScalef(room_length/1.5,5*flr_dense,flr_dense);
+        glScalef(room_length/1.5,10*flr_dense,flr_dense);
         glTranslatef(-0.5,0,-0.5);
-        cube(0.502, 0.502, 0.000);
+        //cube(0.502, 0.502, 0.000);
+        cube(0, 0, 0);
         glPopMatrix();
     }
     for(int i=-1; i<=1; i+=2)
@@ -1068,7 +1170,8 @@ void room()
         glTranslatef(i*(room_length/3-flr_dense/2),(room_height/2-room_height/4)+4,-(room_width/2-flr_dense/2-6));
         glScalef(5*flr_dense,room_height/2,flr_dense);
         glTranslatef(-0.5,0,-0.5);
-        cube(0.502, 0.502, 0.000);
+        //cube(0.502, 0.502, 0.000);
+        cube(0,0,0);
         glPopMatrix();
     }
 
@@ -1076,34 +1179,32 @@ void room()
 //    for(int i=-1; i<=1; i+=2)
 //    {
         glPushMatrix();
-        glTranslatef(-(room_length/2-3.5),room_height/1.3,20);
+        glTranslatef(-(room_length/2-3.5),room_height/1.3,10);
         glRotatef(-90,0,1,0);
         glScalef(0.5,1,1);
-        light(light_1);
+        tube_light(light_1);
         glPopMatrix();
 
     glPushMatrix();
-   // glRotatef(90,0,1,0);
-    point_light_effect(1,-(room_length/2-3.5),room_height/1.3,20);
+   // glRotatef(,0,1,0);
+    point_light_effect(1,-(room_length/2-3.5),room_height/1.3,10);
     glTranslatef(-0.5,-0.5,-0.5);
     glPopMatrix();
 //    }
 
 //        //sight light -2
         glPushMatrix();
-        glTranslatef((room_length/2-3.5),room_height/1.3,20);
+        glTranslatef((room_length/2-3.5),room_height/1.3,10);
         glRotatef(270,0,1,0);
         glScalef(0.5,1,1);
-        light(light_2);
+        tube_light(light_2);
         glPopMatrix();
 
         glPushMatrix();
         //glRotatef(270,0,1,0);
-        point_light_effect(2,(room_length/2-3.5),room_height/1.3,20);
+        point_light_effect(2,(room_length/2-3.5),room_height/1.3,10);
         glTranslatef(-0.5,-0.5,-0.5);
         glPopMatrix();
-
-
 
 
 
@@ -1178,7 +1279,7 @@ void room()
 
     //window
     glPushMatrix();
-    glTranslatef(-(room_length/2),room_height/2-8,14);
+    glTranslatef(-(room_length/2-1),room_height/2-8,14);
     glRotatef(90,0,1,0);
     glScalef(1,1.5,2);
     window();
@@ -1187,9 +1288,23 @@ void room()
     //teacher desk
     glPushMatrix();
     glTranslatef(-(room_length/2-10),0,-16);
-    glScalef(1,0.8,1);
+    glScalef(1,0.8,0.6);
     t_desk();
     glPopMatrix();
+
+    //spot light
+        glPushMatrix();
+        glTranslatef(-(room_length/2-10),room_height,-18);
+        glRotatef(270,0,1,0);
+        glScalef(0.5,1,1);
+        spot_light();
+        glPopMatrix();
+
+         //spot light effect
+        glPushMatrix();
+        spot_light_effect(-(room_length/2-20),room_height-10,-18, 20);
+        glTranslatef(-0.5,-0.5,-0.5);
+        glPopMatrix();
 
     //chair-table
     for(int i=5; i<=40; i+=15)
@@ -1197,7 +1312,7 @@ void room()
         for(int j=-(room_length/2-10); j<=room_length/2; j+=22)
         {
             glPushMatrix();
-            glTranslatef(j,10,i);
+            glTranslatef(j,15,i);
             glScalef(0.5,0.5,0.5);
             st_desk();
             glPopMatrix();
@@ -1207,18 +1322,6 @@ void room()
 
 }
 
-
-
-
-void li_obj()
-{
-    glPushMatrix();
-    glTranslatef(ttx,tty,0);
-    glScalef(5,1,1);
-    glTranslatef(-0.5,-0.5,-0.5);
-    cube(1,0,0); //RED Line
-    glPopMatrix();
-}
 
 static void display(void)
 {
@@ -1230,8 +1333,14 @@ static void display(void)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+
+
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity() ;
+
     gluLookAt(eyeX,eyeY,eyeZ, lookX,lookY,lookZ, 0,1,0);
-    glViewport(0, 0, window_width, window_height);
+    //glViewport(0, 0, window_width, window_height);
 
 
     glRotatef(rot, 0,1,0);
@@ -1245,12 +1354,6 @@ static void display(void)
     //fan();
     //light();
     //chair();
-//    glPushMatrix();
-//    glRotatef(45,0,1,0);
-//    lighting_effect();
-//    glTranslatef(-0.5,-0.5,-0.5);
-//    glPopMatrix();
-
     //table();
     //door();
     //shelf();
@@ -1260,12 +1363,7 @@ static void display(void)
     //testflr();
     //brick_wall(90,60,100);
 
-//    glPushMatrix();
-//    glTranslatef(ttx,tty,0);
-//    glScalef(5,1,1);
-//    glTranslatef(-0.5,-0.5,-0.5);
-//    cube(1,0,0,true); //RED Line
-//    glPopMatrix();
+    //spot_light();
 
     glFlush();
     glutSwapBuffers();
@@ -1287,10 +1385,10 @@ static void key(unsigned char key, int x, int y)
         light_3 = !light_3;
         break;
 
-    case 'q':
-        exit(0);
+    //fan
+    case '4':
+        fan_on = !fan_on;
         break;
-    // end of light
 
     case 'w':
 
@@ -1423,9 +1521,10 @@ int main(int argc, char *argv[])
     glutInitWindowPosition(300,10);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 
+
     glutCreateWindow("3D Class Room Model");
 
-
+    //glutReshapeFunc(resize);
     glutDisplayFunc(display);
     glutKeyboardFunc(key);
 

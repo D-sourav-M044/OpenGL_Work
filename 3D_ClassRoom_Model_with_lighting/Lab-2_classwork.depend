@@ -247,3 +247,13 @@
 	<math.h>
 	<bits/stdc++.h>
 
+1619188896 source:c:\users\admin\desktop\3d_classroom_model_with_lighting\main.cpp
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+	<math.h>
+	<bits/stdc++.h>
+

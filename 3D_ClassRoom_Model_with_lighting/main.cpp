@@ -20,7 +20,7 @@ GLfloat look[] = {0,40,-100};
 int up=0,down=0,r=0,l=0,f=0,b=0;
 
 float rot = 0, fan_rt = 0;
-bool light_1 = false, light_2 = false, light_3 = false , fan_on = false;
+bool light_1 = false, light_2 = false, light_3 = false, fan_on = false;
 
 static void resize(int width, int height)
 {
@@ -102,7 +102,7 @@ void material_property(float R, float G, float B, bool li )
     else
     {
         glMaterialfv( GL_FRONT, GL_EMISSION, no_mat);
-         //cout<<"else "<<li<<endl;
+        //cout<<"else "<<li<<endl;
     }
 
 
@@ -121,7 +121,7 @@ void cube(float R=0.5, float G=0.5, float B=0.5, bool li = false)
 //        R += 0.05;
 //        G += 0.05;
 //        B += 0.05;
-    getNormal3p(v_cube[c_ind[i][0]][0], v_cube[c_ind[i][0]][1], v_cube[c_ind[i][0]][2],
+        getNormal3p(v_cube[c_ind[i][0]][0], v_cube[c_ind[i][0]][1], v_cube[c_ind[i][0]][2],
                     v_cube[c_ind[i][1]][0], v_cube[c_ind[i][1]][1], v_cube[c_ind[i][1]][2],
                     v_cube[c_ind[i][2]][0], v_cube[c_ind[i][2]][1], v_cube[c_ind[i][2]][2]);
 
@@ -160,8 +160,8 @@ void fan_rotation()
     if(fan_on)
     {
         fan_rt = fan_rt+1;
-    if(fan_rt>360)
-        fan_rt =0;
+        if(fan_rt>360)
+            fan_rt =0;
 
     }
     else
@@ -386,38 +386,38 @@ void chair()
 
     // handle
 
-    for(int i=-1;i<=1;i+=2)
+    for(int i=-1; i<=1; i+=2)
     {
         //verticale
         glPushMatrix();
-    glTranslatef(i*(seat_length/2-leg_width/2),leg_height/2,0);
-    glScalef(leg_width,leg_width,seat_width-leg_width/2);
-    glTranslatef(-0.5,-1,-0.5);
-    cube(0.45,0.49,0.28);
-    glPopMatrix();
+        glTranslatef(i*(seat_length/2-leg_width/2),leg_height/2,0);
+        glScalef(leg_width,leg_width,seat_width-leg_width/2);
+        glTranslatef(-0.5,-1,-0.5);
+        cube(0.45,0.49,0.28);
+        glPopMatrix();
 
-    //horizontal
+        //horizontal
 
-    glPushMatrix();
-    glTranslatef(i*(seat_length/2-leg_width/2),leg_height/2,(seat_width/2-leg_width/2));
-    glScalef(leg_width,leg_height/2,leg_width);
-    glTranslatef(-0.5,-1,-0.5);
-    cube(0.45,0.49,0.28);
-    glPopMatrix();
+        glPushMatrix();
+        glTranslatef(i*(seat_length/2-leg_width/2),leg_height/2,(seat_width/2-leg_width/2));
+        glScalef(leg_width,leg_height/2,leg_width);
+        glTranslatef(-0.5,-1,-0.5);
+        cube(0.45,0.49,0.28);
+        glPopMatrix();
     }
 
 
 
 
     //Rail-upper
-    for(int i=10;i<=20;i+=2)
+    for(int i=10; i<=20; i+=2)
     {
         glPushMatrix();
-    glTranslatef(0,i,-(seat_width/2-leg_width/2));
-    glScalef(seat_length,seat_height/2,leg_width);
-    glTranslatef(-0.5,-1,-0.5);
-    cube(0.184, 0.310, 0.310);
-    glPopMatrix();
+        glTranslatef(0,i,-(seat_width/2-leg_width/2));
+        glScalef(seat_length,seat_height/2,leg_width);
+        glTranslatef(-0.5,-1,-0.5);
+        cube(0.184, 0.310, 0.310);
+        glPopMatrix();
     }
 
 
@@ -911,10 +911,11 @@ void st_desk()
     glPopMatrix();
 }
 
-void brick_wall(float len,float he,float wi, float gap = 0.2)
+void brick_wall(float len,float he,float wi, float gap = 0.2, float b_len = 4, float b_he = 5, float b_w = 0.5)
 {
-    float b_len = 4, b_he= 5, b_w = 0.5;
-    int br = 2; bool brick = 1;
+    //float b_len = 4, b_he= 5, b_w = 0.5;
+    int br = 2;
+    bool brick = 1;
     for(float i=-he/2; i<=he/2; i+=(b_he+gap))
     {
         if(br==2) br= 0;
@@ -993,27 +994,27 @@ void point_light_effect(int light_no,float x, float y, float z)
 
 void spot_light_effect(float x, float y, float z, float cut_off)
 {
-   GLfloat no_light[] = { 0.0, 0.0, 0.0, 1.0 };
+    GLfloat no_light[] = { 0.0, 0.0, 0.0, 1.0 };
     GLfloat light_ambient[]  = {0.2, 0.2, 0.2, 0.0};
     GLfloat light_diffuse[]  = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat light_position[] = { x,y,z, 1.0 };
     glEnable( GL_LIGHT3);
 
-        if(light_3)
-        {
-            glLightfv( GL_LIGHT3, GL_AMBIENT, light_ambient);
-            glLightfv( GL_LIGHT3, GL_DIFFUSE, light_diffuse);
-            glLightfv( GL_LIGHT3, GL_SPECULAR, light_specular);
-        }
-        else
-        {
-            glLightfv( GL_LIGHT3, GL_AMBIENT, no_light);
-            glLightfv( GL_LIGHT3, GL_DIFFUSE, no_light);
-            glLightfv( GL_LIGHT3, GL_SPECULAR, no_light);
+    if(light_3)
+    {
+        glLightfv( GL_LIGHT3, GL_AMBIENT, light_ambient);
+        glLightfv( GL_LIGHT3, GL_DIFFUSE, light_diffuse);
+        glLightfv( GL_LIGHT3, GL_SPECULAR, light_specular);
+    }
+    else
+    {
+        glLightfv( GL_LIGHT3, GL_AMBIENT, no_light);
+        glLightfv( GL_LIGHT3, GL_DIFFUSE, no_light);
+        glLightfv( GL_LIGHT3, GL_SPECULAR, no_light);
 
-        }
-        glLightfv( GL_LIGHT3, GL_POSITION, light_position);
+    }
+    glLightfv( GL_LIGHT3, GL_POSITION, light_position);
 
     GLfloat light_direction[] = {0,-1,0,1};
     glLightfv(GL_LIGHT3, GL_SPOT_DIRECTION, light_direction);
@@ -1033,7 +1034,7 @@ void globe()
 
 {
     glPushMatrix();
-    glutSolidSphere(8,40,32);
+    glutSolidSphere(8,20,16);
     glPopMatrix();
 //curve
     int glr=0;
@@ -1055,6 +1056,7 @@ void globe()
         }
     }
     glPopMatrix();
+
 // stand-stick
     glPushMatrix();
     //glTranslatef(0,-5,0);
@@ -1063,40 +1065,41 @@ void globe()
     cube(0.5,0.4,0.3);
 
     glPopMatrix();
+
 //round stand
-for(float n=0;n<=2;n+=2)
-{
-     glr = 5;
-    glPushMatrix();
-    glTranslatef(0,-(16+n),0);
-    for(int i=0;i<100;i++)
+    for(float n=0; n<=2; n+=2)
     {
+        glr = 5;
         glPushMatrix();
-        glRotatef(glr,0,1,0);
-        glScalef(5+n,2,5+n);
-        glTranslatef(-0.5,-0.5,-0.5);
-        cube(0.5+(n/10),0.4+(n/10),0.3+(n/10));
-        glPopMatrix();
-
-         glr++;
-        if(glr>=360)
+        glTranslatef(0,-(16+n),0);
+        for(int i=0; i<100; i++)
         {
-            glr=5;
-        }
-    }
-    glPopMatrix();
-}
-glPushMatrix();
-glTranslatef(0,-14,0);
-glRotated(-90,1,0,0);
-glutSolidCone(2,4,5,4);
-glPopMatrix();
+            glPushMatrix();
+            glRotatef(glr,0,1,0);
+            glScalef(5+n,2,5+n);
+            glTranslatef(-0.5,-0.5,-0.5);
+            cube(0+(n/10),0.5+(n/10),0.5+(n/10));
+            glPopMatrix();
 
-glPushMatrix();
-glTranslatef(0,15,0);
-glScalef(00.2,0.5,1);
-glutSolidTorus(2,4,2,4);
-glPopMatrix();
+            glr++;
+            if(glr>=360)
+            {
+                glr=5;
+            }
+        }
+        glPopMatrix();
+    }
+    glPushMatrix();
+    glTranslatef(0,-14,0);
+    glRotated(-90,1,0,0);
+    glutSolidCone(2,4,5,4);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(0,15,0);
+    glScalef(00.2,0.5,1);
+    glutSolidTorus(2,4,2,4);
+    glPopMatrix();
 }
 
 void room()
@@ -1115,6 +1118,11 @@ void room()
     glPopMatrix();
 //    }
 
+    glPushMatrix();
+    glTranslatef(0,room_height-0.5,0);
+    glRotatef(-90,1,0,0);
+    brick_wall(120,100,120,0.2,6,2,0.5);
+    glPopMatrix();
 
 
     //roof
@@ -1128,28 +1136,28 @@ void room()
     //floor line
     for(int i=-(room_length/2); i<=(room_length)/2; i+=5)
     {
-        for(int j=0;j<=1;j++)
+        for(int j=0; j<=1; j++)
         {
             glPushMatrix();
-        glTranslatef(i,j*(room_height-0.2)+0.1,0);
-        glScalef(flr_dense/4,flr_dense,room_width);
-        glTranslatef(-0.5,-1,-0.5);
-        cube(0.000, 0.000, 0.0);
-        glPopMatrix();
+            glTranslatef(i,j*(room_height-0.2)+0.1,0);
+            glScalef(flr_dense/4,flr_dense,room_width);
+            glTranslatef(-0.5,-1,-0.5);
+            cube(0.000, 0.000, 0.0);
+            glPopMatrix();
         }
 
     }
 
     for(int i=-(room_width/2); i<=(room_width)/2; i+=5)
     {
-        for(int j=0;j<=1;j++)
+        for(int j=0; j<=1; j++)
         {
-        glPushMatrix();
-        glTranslatef(0,j*(room_height-0.2)+0.1,i);
-        glScalef(room_length,flr_dense,flr_dense/4);
-        glTranslatef(-0.5,-1,-0.5);
-        cube(0.000, 0.000, 0.0);
-        glPopMatrix();
+            glPushMatrix();
+            glTranslatef(0,j*(room_height-0.2)+0.1,i);
+            glScalef(room_length,flr_dense,flr_dense/4);
+            glTranslatef(-0.5,-1,-0.5);
+            cube(0.000, 0.000, 0.0);
+            glPopMatrix();
         }
 
     }
@@ -1169,24 +1177,24 @@ void room()
 
 
     //brick wall
-        //right side
-        glPushMatrix();
-        glTranslatef((room_length/2-0.5),room_height/2,0);
-        glRotatef(90,0,1,0);
-        brick_wall(100,80,95);
-        glPopMatrix();
-        // left side
-        glPushMatrix();
-        glTranslatef(-(room_length/2),room_height/2,0);
-        glRotatef(90,0,1,0);
-        brick_wall(100,80,95);
-        glPopMatrix();
-        //front
-        glPushMatrix();
-        glTranslatef(0,room_height/2,-(room_width/2-2));
-        //glRotatef(,0,0,1);
-        brick_wall(120,80,95,0.5);
-        glPopMatrix();
+    //right side
+    glPushMatrix();
+    glTranslatef((room_length/2-0.5),room_height/2,0);
+    glRotatef(90,0,1,0);
+    brick_wall(100,80,95);
+    glPopMatrix();
+    // left side
+    glPushMatrix();
+    glTranslatef(-(room_length/2),room_height/2,0);
+    glRotatef(90,0,1,0);
+    brick_wall(100,80,95);
+    glPopMatrix();
+    //front
+    glPushMatrix();
+    glTranslatef(0,room_height/2,-(room_width/2-2));
+    //glRotatef(,0,0,1);
+    brick_wall(120,80,95,0.5);
+    glPopMatrix();
 
 
 
@@ -1241,12 +1249,12 @@ void room()
 
     //side-light--1
 
-        glPushMatrix();
-        glTranslatef(-(room_length/2-3.5),room_height/1.3,10);
-        glRotatef(-90,0,1,0);
-        glScalef(0.5,1,1);
-        tube_light(light_1);
-        glPopMatrix();
+    glPushMatrix();
+    glTranslatef(-(room_length/2-3.5),room_height/1.3,10);
+    glRotatef(-90,0,1,0);
+    glScalef(0.5,1,1);
+    tube_light(light_1);
+    glPopMatrix();
 
     glPushMatrix();
     point_light_effect(1,-(room_length/2-3.5),room_height/1.3,10);
@@ -1255,18 +1263,18 @@ void room()
 
 
 //        //sight light -2
-        glPushMatrix();
-        glTranslatef((room_length/2-3.5),room_height/1.3,10);
-        glRotatef(270,0,1,0);
-        glScalef(0.5,1,1);
-        tube_light(light_2);
-        glPopMatrix();
+    glPushMatrix();
+    glTranslatef((room_length/2-3.5),room_height/1.3,10);
+    glRotatef(270,0,1,0);
+    glScalef(0.5,1,1);
+    tube_light(light_2);
+    glPopMatrix();
 
-        glPushMatrix();
-        //glRotatef(270,0,1,0);
-        point_light_effect(2,(room_length/2-3.5),room_height/1.3,10);
-        glTranslatef(-0.5,-0.5,-0.5);
-        glPopMatrix();
+    glPushMatrix();
+    //glRotatef(270,0,1,0);
+    point_light_effect(2,(room_length/2-3.5),room_height/1.3,10);
+    glTranslatef(-0.5,-0.5,-0.5);
+    glPopMatrix();
 
 
 
@@ -1355,18 +1363,18 @@ void room()
     glPopMatrix();
 
     //spot light
-        glPushMatrix();
-        glTranslatef(-(room_length/2-10),room_height,-18);
-        glRotatef(270,0,1,0);
-        glScalef(0.5,1,1);
-        spot_light();
-        glPopMatrix();
+    glPushMatrix();
+    glTranslatef(-(room_length/2-10),room_height,-18);
+    glRotatef(270,0,1,0);
+    glScalef(0.5,1,1);
+    spot_light();
+    glPopMatrix();
 
-         //spot light effect
-        glPushMatrix();
-        spot_light_effect(-(room_length/2-20),room_height-10,-18, 20);
-        glTranslatef(-0.5,-0.5,-0.5);
-        glPopMatrix();
+    //spot light effect
+    glPushMatrix();
+    spot_light_effect(-(room_length/2-20),room_height-10,-18, 20);
+    glTranslatef(-0.5,-0.5,-0.5);
+    glPopMatrix();
 
     //chair-table
     for(int i=5; i<=40; i+=15)
@@ -1381,12 +1389,12 @@ void room()
         }
     }
 
-//    glPushMatrix();
-//    glTranslatef(-5,room_height/2-5,35);
-//    glRotatef(45,0,1,0);
-//    glScalef(0.5,0.5,0.5);
-//    globe();
-//    glPopMatrix();
+    glPushMatrix();
+    glTranslatef(15,room_height/2-9,20);
+    glRotatef(-10,0,1,0);
+    glScalef(0.5,0.5,0.5);
+    globe();
+    glPopMatrix();
 
 }
 
@@ -1444,7 +1452,7 @@ static void key(unsigned char key, int x, int y)
 {
     switch (key)
     {
-        //for light
+    //for light
     case '1':
         light_1 = !light_1;
         break;
@@ -1561,7 +1569,7 @@ void mouse(int button, int state, int mousex, int mousey)
 ////        r=(rand()%9)/8;
 ////        g=(rand()%9)/8;
 ////        b=(rand()%9)/8;
-        }
+    }
 //
 ////   else if(button==GLUT_RIGHT_BUTTON && state==GLUT_DOWN)//undo(clear)the drawing
 ////           {
@@ -1571,8 +1579,8 @@ void mouse(int button, int state, int mousex, int mousey)
 ////     }
 
 
-glutPostRedisplay();
-     }
+    glutPostRedisplay();
+}
 
 
 void menu()

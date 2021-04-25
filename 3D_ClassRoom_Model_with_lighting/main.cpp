@@ -14,7 +14,7 @@ int mx,my;
 
 GLfloat eye[] = {0,40,50};
 GLfloat look[] = {0,40,-100};
-//GLfloat eye[] = {0,5,30};
+//GLfloat eye[] = {0,5,20};
 //GLfloat look[] = {0,5,-100};
 
 int up=0,down=0,r=0,l=0,f=0,b=0;
@@ -117,11 +117,11 @@ void cube(float R=0.5, float G=0.5, float B=0.5, bool li = false)
     glBegin(GL_QUADS);
     for (GLint i = 0; i <6; i++)
     {
-//        glColor3f(R,G,B);
-//
-//        R += 0.05;
-//        G += 0.05;
-//        B += 0.05;
+    //        glColor3f(R,G,B);
+    //
+    //        R += 0.05;
+    //        G += 0.05;
+    //        B += 0.05;
         getNormal3p(v_cube[c_ind[i][0]][0], v_cube[c_ind[i][0]][1], v_cube[c_ind[i][0]][2],
                     v_cube[c_ind[i][1]][0], v_cube[c_ind[i][1]][1], v_cube[c_ind[i][1]][2],
                     v_cube[c_ind[i][2]][0], v_cube[c_ind[i][2]][1], v_cube[c_ind[i][2]][2]);
@@ -942,30 +942,33 @@ void brick_wall(float len,float he,float wi, float gap = 0.2, float b_len = 4, f
     }
 }
 
+int random(int l,int u)
+{
+    float n;
+    n = (rand() % (u-l+1));
+    return n;
+}
+
 void brick_floor(float flr_length=118, float flr_dense = 0.5, float flr_width = 100)
 {
-    float s = 3.5,gap = 2.5 ;
-    //float in = 1;
+    float s = 3.5,gap = 1 ;
     float br_len = 2 , br_dense = 0.2, br_wid = 2;
-    for(float i=-flr_width/2;i<=flr_width/2;i+= s)
+    float len= 2, wid = 2;
+    for(float i=-flr_width/2;i<=flr_width/2;i+= br_wid+wid+2)
     {
-        if(s == 3.5)
-            s = 4;
-        else
-            s = 3.5;
-        for(float j=-flr_length/2;j<=flr_length/2;j+= gap)
+        float i_gap = 3;
+         i_gap = (i_gap / 10);
+
+        for(float j=-flr_length/2;j<=flr_length/2;j+= br_len+len+gap)
         {
-            if(gap == 2.5)
-             gap = 3.5;
-        else
-            gap = 2.5;
         glPushMatrix();
-        glTranslatef(j,0,i);
-        glScalef(br_len,br_dense,br_wid);
+        glTranslatef(j,0,i+i_gap);
+        glScalef(br_len+len,br_dense,br_wid+wid);
         glTranslatef(-0.5,-0.5,-0.5);
         cube(0.5,0.5,0.5);
         glPopMatrix();
 
+        //len= 2, wid = 2;
 
         }
     }
@@ -974,9 +977,6 @@ void brick_floor(float flr_length=118, float flr_dense = 0.5, float flr_width = 
 void point_light_effect(int light_no,float x, float y, float z)
 {
     GLfloat no_light[] = { 0.0, 0.0, 0.0, 1.0 };
-//    GLfloat light_ambient[]  = {0.1, 0.1, 0.1, 1.0};
-//    GLfloat light_diffuse[]  = { 1.0, 1.0, 1.0, 1.0 };
-//    GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat light_ambient[]  = {ar, ag, ab, 0.0};
     GLfloat light_diffuse[]  = { dr, dg, db, 1.0 };
     GLfloat light_specular[] = { sr,sg,sb, 1.0 };
@@ -1008,7 +1008,7 @@ void point_light_effect(int light_no,float x, float y, float z)
 
         if(light_2)
         {
-            glLightfv( GL_LIGHT2, GL_AMBIENT, no_light);
+            glLightfv( GL_LIGHT2, GL_AMBIENT, light_ambient);
             glLightfv( GL_LIGHT2, GL_DIFFUSE, light_diffuse);
             glLightfv( GL_LIGHT2, GL_SPECULAR, light_specular);
         }
@@ -1024,7 +1024,7 @@ void point_light_effect(int light_no,float x, float y, float z)
 
 }
 
-void spot_light_effect(float x, float y, float z, float cut_off)
+void spot_light_effect(float x, float y, float z, float cut_off = 25.0)
 {
     GLfloat no_light[] = { 0.0, 0.0, 0.0, 1.0 };
     GLfloat light_ambient[]  = {0.2, 0.2, 0.2, 0.0};
@@ -1148,21 +1148,96 @@ void globe()
     glPopMatrix();
 }
 
+
+void fire_remover()
+{
+    float len = 3, he = 20, wi = 3;
+    float r = 0;
+    for(int i=0; i<500; i++)
+    {
+        glPushMatrix();
+        glRotatef(r,0,1,0);
+        glScalef(len,he,wi);
+        glTranslatef(-0.5,-0.5,-0.5);
+        cube(0.5,0,0);
+        glPopMatrix();
+
+        r+=1;
+        if(r>=360)
+            r=0;
+    }
+    //cap
+    glPushMatrix();
+    glTranslatef(0,11,0);
+    glScalef(2,5,1);
+    glTranslatef(-0.5,-0.5,-0.5);
+    cube(0,0,0);
+    glPopMatrix();
+
+// pipe
+    r=0;
+    glPushMatrix();
+
+    glRotatef(10,0,0,1);
+    for(int i=0; i<100; i++)
+    {
+        glPushMatrix();
+        glRotatef(-r,0,0,1);
+        glTranslatef(-10,0,0);
+        glScalef(0.2,2,0.2);
+        glTranslatef(-0.5,-0.5,-0.5);
+        cube(0,0,0);
+        glPopMatrix();
+
+        r+=1;
+        if(r>=360)
+            r=0;
+    }
+    glPopMatrix();
+    glPushMatrix();
+    glTranslatef(2,14,0);
+    glRotatef(30,0,0,1);
+    glScalef(5,1,1);
+    glTranslatef(-0.5,-0.5,-0.5);
+    cube(0.5,0,0);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(2,12,0);
+    glRotatef(-30,0,0,1);
+    glScalef(5,1,1);
+    glTranslatef(-0.5,-0.5,-0.5);
+    cube(0.5,0,0);
+    glPopMatrix();
+
+//hok
+    glPushMatrix();
+    glTranslatef(-10,0-2,0);
+    glScalef(1,5,0.5);
+    glTranslatef(-0.5,-0.5,-0.5);
+    cube(0.5,0.5,0);
+    glPopMatrix();
+
+}
+
 void room()
 {
     float room_length = 118, room_height = 80, room_width = 100, flr_dense = 0.3;
 
     //floor
-//    for(float i=-room_width/2;i<=room_width/2;i+=5*flr_dense+2)
-//    {
+
     glPushMatrix();
-    //glTranslatef(0,0,i);
     glScalef(room_length,flr_dense,room_width);
     glTranslatef(-0.5,-1,-0.5);
-    //cube(0.467, 0.533, 0.60);
-    cube(0.4,0.4,0.5);
+    cube(0.5,0.4,0.5);
     glPopMatrix();
-//    }
+
+    //brick floor
+    glPushMatrix();
+    glTranslatef(0,0.5,0);
+    brick_floor();
+    glPopMatrix();
+
 
     glPushMatrix();
     glTranslatef(0,room_height-0.5,0);
@@ -1317,7 +1392,6 @@ void room()
     glPopMatrix();
 
     glPushMatrix();
-    //glRotatef(270,0,1,0);
     point_light_effect(2,(room_length/2-3.5),room_height/1.3,10);
     glTranslatef(-0.5,-0.5,-0.5);
     glPopMatrix();
@@ -1369,17 +1443,17 @@ void room()
     for(int i=-3; i<=3; i+=6)
     {
         glPushMatrix();
-        glTranslatef(i,room_height/2+18.1,-1.3);
+        glTranslatef(i,room_height/2+28,-1.3);
         //glRotatef(180,0,1,0);
         glScalef(1,12,1);
         glTranslatef(-0.5,0,-0.5);
-        cube();
+        cube(0,0,0);
         glPopMatrix();
     }
 
     //pro_box
     glPushMatrix();
-    glTranslatef(0,room_height/2+18,-1.3);
+    glTranslatef(0,room_height/2+22,-1.3);
     glRotatef(180,0,1,0);
     //glScalef(1,2,1);
     ac();
@@ -1418,7 +1492,7 @@ void room()
 
     //spot light effect
     glPushMatrix();
-    spot_light_effect(-(room_length/2-20),room_height-10,-18, 20);
+    spot_light_effect(-(room_length/2-20),room_height-10,-18, 10);
     glTranslatef(-0.5,-0.5,-0.5);
     glPopMatrix();
 
@@ -1440,6 +1514,13 @@ void room()
     glRotatef(-10,0,1,0);
     glScalef(0.5,0.5,0.5);
     globe();
+    glPopMatrix();
+
+    //fire remover
+    glPushMatrix();
+    glTranslatef(room_length/2-2,room_height/2,10);
+    glRotatef(90,0,1,0);
+    fire_remover();
     glPopMatrix();
 
 }
@@ -1469,7 +1550,7 @@ static void display(void)
     glRotatef(rot, 0,1,0);
     //std::string text = "CSE d";
     //drawText(text.data(),text.size(),50,0);
-    //axes();
+    axes();
 
     //ac();
     //li_obj();
@@ -1489,6 +1570,7 @@ static void display(void)
     //spot_light();
     //globe();
     //brick_floor();
+    //fire_remover();
 
     glFlush();
     glutSwapBuffers();
@@ -1542,6 +1624,11 @@ static void key(unsigned char key, int x, int y)
         break;
     case 'f':
         look[0]--;
+        break;
+    case 'q':
+        ar = 0.1, ag = 0.1, ab = 0.1;
+        dr = 1, dg =1, db =1;
+        sr = 1, sg =1, sb =1;
         break;
     case 'a':
         ar+=0.1;
@@ -1688,10 +1775,19 @@ void menu()
     cout<<"some more features"<<endl;
     cout<<"\tpress\t   +         to zoom in"<<endl;
     cout<<"\tpress\t   -         to zoom out"<<endl;
-    cout<<"\tpress\t   w         to go up"<<endl;
-    cout<<"\tpress\t   s         to go down"<<endl;
-    cout<<"\tpress\t   a         to turn left"<<endl;
-    cout<<"\tpress\t   d         to turn right"<<endl;
+    cout<<"\tpress\t   t         to go up"<<endl;
+    cout<<"\tpress\t   g         to go down"<<endl;
+    cout<<"\tpress\t   f         to turn left"<<endl;
+    cout<<"\tpress\t   h         to turn right"<<endl;
+
+     cout<<"\t-------------------------------------------------------------------------------------------"<<endl;
+     cout<<"for light"<<endl;
+     cout<<"press   1 --------for left light"<<endl;
+     cout<<"press   2 --------for left light"<<endl;
+     cout<<"press   3 --------for front light"<<endl;
+     cout<< "use a ------ambient"<<endl;
+     cout<< "use d ------diffuse"<<endl;
+     cout<< "use s ------specular"<<endl;
 }
 
 

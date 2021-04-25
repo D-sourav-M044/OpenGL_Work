@@ -21,8 +21,9 @@ int up=0,down=0,r=0,l=0,f=0,b=0;
 
 float rot = 0, fan_rt = 0;
 bool light_1 = false, light_2 = false, light_3 = false, fan_on = false;
+float ar = 0.1, ag = 0.1, ab = 0.1, dr = 1, dg = 1, db = 1, sr = 1, sg = 1, sb = 1;
 
-static void resize(int width, int height)
+static void resize(int window_width, int window_height)
 {
     const float ar = (float) window_width / (float) window_height;
 
@@ -941,13 +942,44 @@ void brick_wall(float len,float he,float wi, float gap = 0.2, float b_len = 4, f
     }
 }
 
+void brick_floor(float flr_length=118, float flr_dense = 0.5, float flr_width = 100)
+{
+    float s = 3.5,gap = 2.5 ;
+    //float in = 1;
+    float br_len = 2 , br_dense = 0.2, br_wid = 2;
+    for(float i=-flr_width/2;i<=flr_width/2;i+= s)
+    {
+        if(s == 3.5)
+            s = 4;
+        else
+            s = 3.5;
+        for(float j=-flr_length/2;j<=flr_length/2;j+= gap)
+        {
+            if(gap == 2.5)
+             gap = 3.5;
+        else
+            gap = 2.5;
+        glPushMatrix();
+        glTranslatef(j,0,i);
+        glScalef(br_len,br_dense,br_wid);
+        glTranslatef(-0.5,-0.5,-0.5);
+        cube(0.5,0.5,0.5);
+        glPopMatrix();
+
+
+        }
+    }
+}
+
 void point_light_effect(int light_no,float x, float y, float z)
 {
     GLfloat no_light[] = { 0.0, 0.0, 0.0, 1.0 };
-    GLfloat light_ambient[]  = {1, 1, 1, 0.0};
-    GLfloat light_diffuse[]  = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
-    //GLfloat light_position[] = { ttx,tty-10,0, 1.0 };
+//    GLfloat light_ambient[]  = {0.1, 0.1, 0.1, 1.0};
+//    GLfloat light_diffuse[]  = { 1.0, 1.0, 1.0, 1.0 };
+//    GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat light_ambient[]  = {ar, ag, ab, 0.0};
+    GLfloat light_diffuse[]  = { dr, dg, db, 1.0 };
+    GLfloat light_specular[] = { sr,sg,sb, 1.0 };
     GLfloat light_position[] = { x,y,z, 1.0 };
 
     if(light_no == 1)
@@ -956,7 +988,7 @@ void point_light_effect(int light_no,float x, float y, float z)
 
         if(light_1)
         {
-            glLightfv( GL_LIGHT1, GL_AMBIENT, no_light);
+            glLightfv( GL_LIGHT1, GL_AMBIENT, light_ambient);
             glLightfv( GL_LIGHT1, GL_DIFFUSE, light_diffuse);
             glLightfv( GL_LIGHT1, GL_SPECULAR, light_specular);
         }
@@ -1033,6 +1065,20 @@ void spot_light()
 void globe()
 
 {
+    GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
+    GLfloat mat_ambient[] = { 0.5, 0.0, 0.0, 1.0 };
+    GLfloat mat_diffuse[] = { 1.0, 0.0, 0.0, 1.0 };
+    //GLfloat mat_diffuse[] = { 1.0, 1.0, 0.0, 1.0 };
+    GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+    //GLfloat mat_specular[] = { 1, 1, 0, 1.0 };
+    GLfloat mat_shininess[] = {30};
+
+    glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv( GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
+
+
     glPushMatrix();
     glutSolidSphere(8,20,16);
     glPopMatrix();
@@ -1442,6 +1488,7 @@ static void display(void)
 
     //spot_light();
     //globe();
+    //brick_floor();
 
     glFlush();
     glutSwapBuffers();
@@ -1468,7 +1515,7 @@ static void key(unsigned char key, int x, int y)
         fan_on = !fan_on;
         break;
 
-    case 'w':
+    case 't':
 
         if(up<=11)
         {
@@ -1479,7 +1526,7 @@ static void key(unsigned char key, int x, int y)
         }
 
         break;
-    case 's':
+    case 'g':
 
         if(down<=30)
         {
@@ -1490,11 +1537,41 @@ static void key(unsigned char key, int x, int y)
 
         }
         break;
-    case 'a':
+    case 'h':
         look[0]++;
         break;
-    case 'd':
+    case 'f':
         look[0]--;
+        break;
+    case 'a':
+        ar+=0.1;
+        ag+=0.1;
+        ab+=0.1;
+        break;
+    case 'A':
+        ar-=0.1;
+        ag-=0.1;
+        ab-=0.1;
+        break;
+    case 'd':
+        dr+=0.1;
+        dg+=0.1;
+        db+=0.1;
+        break;
+    case 'D':
+        dr-=0.1;
+        dg-=0.1;
+        db-=0.1;
+        break;
+    case 's':
+        sr+=0.1;
+        sg+=0.1;
+        sb+=0.1;
+        break;
+    case 'S':
+        sr-=0.1;
+        sg-=0.1;
+        sb-=0.1;
         break;
     case 'e':
         rot--;
@@ -1640,8 +1717,6 @@ int main(int argc, char *argv[])
     glEnable(GL_NORMALIZE);
     glEnable(GL_BLEND);
     glEnable(GL_LIGHTING);
-
-
     menu();
     glutMainLoop();
 

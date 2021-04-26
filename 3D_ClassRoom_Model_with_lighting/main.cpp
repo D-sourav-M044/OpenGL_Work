@@ -23,18 +23,18 @@ float rot = 0, fan_rt = 0;
 bool light_1 = false, light_2 = false, light_3 = false, fan_on = false;
 float ar = 0.1, ag = 0.1, ab = 0.1, dr = 1, dg = 1, db = 1, sr = 1, sg = 1, sb = 1;
 
-static void resize(int window_width, int window_height)
-{
-    const float ar = (float) window_width / (float) window_height;
-
-    glViewport(0, 0, window_width, window_height);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glFrustum(-ar, ar, -1.0, 1.0, 2.0, 100.0);
-
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity() ;
-}
+//static void resize(int window_width, int window_height)
+//{
+//    const float ar = (float) window_width / (float) window_height;
+//
+//    glViewport(0, 0, window_width, window_height);
+//    glMatrixMode(GL_PROJECTION);
+//    glLoadIdentity();
+//    glFrustum(-ar, ar, -1.0, 1.0, 2.0, 100.0);
+//
+//    glMatrixMode(GL_MODELVIEW);
+//    glLoadIdentity() ;
+//}
 
 static GLfloat v_cube[8][3] =
 {
@@ -81,6 +81,7 @@ void material_property(float R, float G, float B, bool li )
 {
     GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
     GLfloat mat_ambient[] = { R, G, B, 1.0 };
+    //GLfloat mat_ambient[] = { 0, 0, 0, 1.0 };
     GLfloat mat_diffuse[] = { R, G, B, 1.0 };
     GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat mat_emission[] = { 1.0, 1.0, 1.0, 1.0 };
@@ -117,11 +118,11 @@ void cube(float R=0.5, float G=0.5, float B=0.5, bool li = false)
     glBegin(GL_QUADS);
     for (GLint i = 0; i <6; i++)
     {
-    //        glColor3f(R,G,B);
-    //
-    //        R += 0.05;
-    //        G += 0.05;
-    //        B += 0.05;
+        //        glColor3f(R,G,B);
+        //
+        //        R += 0.05;
+        //        G += 0.05;
+        //        B += 0.05;
         getNormal3p(v_cube[c_ind[i][0]][0], v_cube[c_ind[i][0]][1], v_cube[c_ind[i][0]][2],
                     v_cube[c_ind[i][1]][0], v_cube[c_ind[i][1]][1], v_cube[c_ind[i][1]][2],
                     v_cube[c_ind[i][2]][0], v_cube[c_ind[i][2]][1], v_cube[c_ind[i][2]][2]);
@@ -952,23 +953,23 @@ int random(int l,int u)
 void brick_floor(float flr_length=118, float flr_dense = 0.5, float flr_width = 100)
 {
     float s = 3.5,gap = 1 ;
-    float br_len = 2 , br_dense = 0.2, br_wid = 2;
+    float br_len = 2, br_dense = 0.2, br_wid = 2;
     float len= 2, wid = 2;
-    for(float i=-flr_width/2;i<=flr_width/2;i+= br_wid+wid+2)
+    for(float i=-flr_width/2; i<=flr_width/2; i+= br_wid+wid+2)
     {
         float i_gap = 3;
-         i_gap = (i_gap / 10);
+        i_gap = (i_gap / 10);
 
-        for(float j=-flr_length/2;j<=flr_length/2;j+= br_len+len+gap)
+        for(float j=-flr_length/2; j<=flr_length/2; j+= br_len+len+gap)
         {
-        glPushMatrix();
-        glTranslatef(j,0,i+i_gap);
-        glScalef(br_len+len,br_dense,br_wid+wid);
-        glTranslatef(-0.5,-0.5,-0.5);
-        cube(0.5,0.5,0.5);
-        glPopMatrix();
+            glPushMatrix();
+            glTranslatef(j,0,i+i_gap);
+            glScalef(br_len+len,br_dense,br_wid+wid);
+            glTranslatef(-0.5,-0.5,-0.5);
+            cube(0.5,0.5,0.5);
+            glPopMatrix();
 
-        //len= 2, wid = 2;
+            //len= 2, wid = 2;
 
         }
     }
@@ -1028,7 +1029,7 @@ void spot_light_effect(float x, float y, float z, float cut_off = 25.0)
 {
     GLfloat no_light[] = { 0.0, 0.0, 0.0, 1.0 };
     GLfloat light_ambient[]  = {0.2, 0.2, 0.2, 0.0};
-    GLfloat light_diffuse[]  = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat light_diffuse[]  = { 1.0,1.0,1.0, 1.0 };
     GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat light_position[] = { x,y,z, 1.0 };
     glEnable( GL_LIGHT3);
@@ -1067,7 +1068,7 @@ void globe()
 {
     GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
     GLfloat mat_ambient[] = { 0.5, 0.0, 0.0, 1.0 };
-    GLfloat mat_diffuse[] = { 1.0, 0.0, 0.0, 1.0 };
+    GLfloat mat_diffuse[] = { 0.5, 0.0, 0.0, 1.0 };
     //GLfloat mat_diffuse[] = { 1.0, 1.0, 0.0, 1.0 };
     GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
     //GLfloat mat_specular[] = { 1, 1, 0, 1.0 };
@@ -1780,14 +1781,14 @@ void menu()
     cout<<"\tpress\t   f         to turn left"<<endl;
     cout<<"\tpress\t   h         to turn right"<<endl;
 
-     cout<<"\t-------------------------------------------------------------------------------------------"<<endl;
-     cout<<"for light"<<endl;
-     cout<<"press   1 --------for left light"<<endl;
-     cout<<"press   2 --------for left light"<<endl;
-     cout<<"press   3 --------for front light"<<endl;
-     cout<< "use a ------ambient"<<endl;
-     cout<< "use d ------diffuse"<<endl;
-     cout<< "use s ------specular"<<endl;
+    cout<<"\t-------------------------------------------------------------------------------------------"<<endl;
+    cout<<"for light"<<endl;
+    cout<<"press   1 --------for left light"<<endl;
+    cout<<"press   2 --------for left light"<<endl;
+    cout<<"press   3 --------for front light"<<endl;
+    cout<< "use a/A ------ambient"<<endl;
+    cout<< "use d/D ------diffuse"<<endl;
+    cout<< "use s/S ------specular"<<endl;
 }
 
 

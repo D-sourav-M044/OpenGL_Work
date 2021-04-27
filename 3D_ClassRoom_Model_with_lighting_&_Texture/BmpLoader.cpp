@@ -12,9 +12,6 @@ BmpLoader::BmpLoader(const char* filename)
     if(bfh.bfType != 0x4D42)
         std::cout<<"Not a valid bitmap"<<std::endl;
     fread(&bih, sizeof(BITMAPINFOHEADER),1,file);
-//    unsigned char * data;
-//    data = (unsigned char *)malloc( 640 * 480 * 3 );
-//    fread( data, 640 * 480 * 3, 1, file );
     if(bih.biSizeImage==0)
         bih.biSizeImage=bih.biHeight*bih.biWidth*3;
     textureData = new unsigned char[bih.biSizeImage];
@@ -32,14 +29,9 @@ BmpLoader::BmpLoader(const char* filename)
     iWidth = bih.biWidth;
     iHeight = bih.biHeight;
     fclose(file);
-
-
-
-
 }
 
 BmpLoader::~BmpLoader()
 {
     delete [] textureData;
 }
-

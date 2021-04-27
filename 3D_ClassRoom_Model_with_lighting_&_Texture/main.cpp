@@ -174,11 +174,11 @@ void cube(float R=0.5, float G=0.5, float B=0.5, bool li = false)
         glVertex3fv(&v_cube[c_ind[i][0]][0]);
         glTexCoord2f(1,1);
         glVertex3fv(&v_cube[c_ind[i][1]][0]);
-        glTexCoord2f(1,0);
+        glTexCoord2f(0,1);
         glVertex3fv(&v_cube[c_ind[i][2]][0]);
         glTexCoord2f(0,0);
         glVertex3fv(&v_cube[c_ind[i][3]][0]);
-        glTexCoord2f(0,1);
+        glTexCoord2f(1,0);
     }
     glEnd();
 }
@@ -326,15 +326,15 @@ void table()
     float top_width = 10;
     float top_height = 0.3;
     //table-top
-    glEnable(GL_TEXTURE_2D);
+    //glEnable(GL_TEXTURE_2D);
     glPushMatrix();
-    LoadTexture("C:\\Users\\Admin\\Desktop\\3D_ClassRoom_Model_with_lighting\\images\\devil.bmp");
+    //LoadTexture("C:\\Users\\Admin\\Desktop\\3D_ClassRoom_Model_with_lighting\\images\\devil.bmp");
     glTranslatef(0,top_length/2,0);
     glScalef(top_length,top_height,top_width);
     glTranslatef(-0.5,0.0,-0.5);
     cube(0.737, 0.561, 0.561);
     glPopMatrix();
-    glDisable(GL_TEXTURE_2D);
+    //glDisable(GL_TEXTURE_2D);
 
     //side bar
     for(int i=-1; i<=1; i+=2)
@@ -657,12 +657,15 @@ void t_desk()
     //fron-back side bar
     for(int i=-1; i<=1; i+=2)
     {
+        glEnable(GL_TEXTURE_2D);
         glPushMatrix();
+        LoadTexture("C:\\Users\\Admin\\Desktop\\3D_ClassRoom_Model_with_lighting_&_Texture\\images\\logo.bmp");
         glTranslatef(0,0,i*(desk_width/2-side_dense/2));
         glScalef(desk_length,desk_height+(i*2),side_dense);
         glTranslatef(-0.5,0,-0.5);
         cube(0.545, 0.271, 0.075);
         glPopMatrix();
+        glDisable(GL_TEXTURE_2D);
     }
 
     //left-right side bar
@@ -1084,18 +1087,6 @@ void point_light_effect(int light_no = 3,float x = 0, float y = 100, float z = 0
         }
         glLightfv( GL_LIGHT2, GL_POSITION, light_position);
     }
-    else
-    {
-        glEnable( GL_LIGHT7);
-
-        glLightfv( GL_LIGHT7, GL_AMBIENT, light_ambient);
-        glLightfv( GL_LIGHT7, GL_DIFFUSE, light_diffuse);
-        glLightfv( GL_LIGHT7, GL_SPECULAR, light_specular);
-
-        glLightfv( GL_LIGHT7, GL_POSITION, light_position);
-
-    }
-
 
 
 }
@@ -1108,12 +1099,14 @@ void extra_light()
     GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat light_position[] = { 0.0, 10.0, 50.0, 1.0 };
 
-    glEnable( GL_LIGHT0);
+            glEnable( GL_LIGHT7);
 
-    glLightfv( GL_LIGHT0, GL_AMBIENT, light_ambient);
-    glLightfv( GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-    glLightfv( GL_LIGHT0, GL_SPECULAR, light_specular);
-    glLightfv( GL_LIGHT0, GL_POSITION, light_position);
+        glLightfv( GL_LIGHT7, GL_AMBIENT, light_ambient);
+        glLightfv( GL_LIGHT7, GL_DIFFUSE, light_diffuse);
+        glLightfv( GL_LIGHT7, GL_SPECULAR, light_specular);
+
+        glLightfv( GL_LIGHT7, GL_POSITION, light_position);
+
 
     /*GLfloat spot_direction[] = { 0.0, -1.0, 0.0 };
     glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, spot_direction);
@@ -1436,15 +1429,13 @@ void room()
 
 
     //board
-    glEnable(GL_TEXTURE_2D);
     glPushMatrix();
-    LoadTexture("C:\\Users\\Admin\\Desktop\\3D_ClassRoom_Model_with_lighting\\images\\board.bmp");
     glTranslatef(0,room_height/2-room_height/4+4,-(room_width/2-flr_dense/2-3));
     glScalef(room_length/1.5,room_height/2,flr_dense);
     glTranslatef(-0.5,0,-0.5);
-    cube(0,1,0);
+    cube(1,1,1);
     glPopMatrix();
-    glDisable(GL_TEXTURE_2D);
+
 
     //board border
     for(int i=1; i<=3; i+=2)
@@ -1577,7 +1568,7 @@ void room()
 
     //teacher desk
     glPushMatrix();
-    glTranslatef(-(room_length/2-10),0,-16);
+    glTranslatef(-(room_length/2-10),0,-30);
     glScalef(1,1,0.6);
     t_desk();
     glPopMatrix();
@@ -1902,9 +1893,6 @@ int main(int argc, char *argv[])
 
 
     glutCreateWindow("3D Class Room Model");
-    //LoadTexture("C:\\Users\\Admin\\Desktop\\3D_ClassRoom_Model_with_lighting\\images\\devil.bmp", 1);
-    //LoadTexture("C:\\Users\\Admin\\Desktop\\3D_ClassRoom_Model_with_lighting\\images\\board.bmp", 2);
-
     //glutReshapeFunc(resize);
     glutDisplayFunc(display);
     glutKeyboardFunc(key);

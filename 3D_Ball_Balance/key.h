@@ -22,26 +22,12 @@ static void key(unsigned char key, int x, int y)
     //fan
 
     case 't':
-
-//        if(up<=11)
-//        {
-//            up++;
-//            down--;
-            eye[1]++;
-            look[1]++;
- //       }
-
+        eye[1]++;
+        look[1]++;
         break;
     case 'g':
-
-//        if(down<=30)
-//        {
-//            down++;
-//            up--;
-            eye[1]--;
-            look[1]--;
-
-      //  }
+        eye[1]--;
+        look[1]--;
         break;
     case 'h':
         look[0]++;
@@ -55,34 +41,15 @@ static void key(unsigned char key, int x, int y)
         sr = 1, sg =1, sb =1;
         break;
     case 'a':
-        ar+=0.1;
-        ag+=0.1;
-        ab+=0.1;
-        break;
-    case 'A':
-        ar-=0.1;
-        ag-=0.1;
-        ab-=0.1;
+        flr_move = false;
+        ball_x_pos -= 2*(60/2*sin((inc*3.1416)/180));
+        //ball_y_pos -= (60/2*sin((inc*3.1416)/180));
+        //glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
         break;
     case 'd':
-        dr+=0.1;
-        dg+=0.1;
-        db+=0.1;
-        break;
-    case 'D':
-        dr-=0.1;
-        dg-=0.1;
-        db-=0.1;
-        break;
-    case 's':
-        sr+=0.1;
-        sg+=0.1;
-        sb+=0.1;
-        break;
-    case 'S':
-        sr-=0.1;
-        sg-=0.1;
-        sb-=0.1;
+        flr_move = false;
+        ball_x_pos -= (60/2*sin((inc*3.1416)/180));
+        //ball_y_pos += (60/2*sin((inc*3.1416)/180));
         break;
     case 'e':
         m_rot--;
@@ -133,6 +100,7 @@ static void key(unsigned char key, int x, int y)
         }
 
         break;
+
     }
 
     glutPostRedisplay();

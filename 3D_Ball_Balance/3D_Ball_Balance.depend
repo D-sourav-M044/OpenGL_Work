@@ -221,16 +221,17 @@
 	<_mingw.h>
 	<stddef.h>
 
-1619593422 source:c:\users\admin\desktop\3d_ball_balance\main.cpp
+1619804349 source:c:\users\admin\desktop\3d_ball_balance\main.cpp
 	"header.h"
 
-1619591979 c:\users\admin\desktop\3d_ball_balance\header.h
+1619803658 c:\users\admin\desktop\3d_ball_balance\header.h
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
+	<MMSystem.h>
 	<math.h>
 	<bits/stdc++.h>
 	"ball.h"
@@ -240,7 +241,9 @@
 	"lighting_effect.h"
 	"floor.h"
 	"key.h"
+	"draw_text.h"
 	"BmpLoader.h"
+	"display.h"
 
 1301111164 c:\program files (x86)\codeblocks\mingw\include\gl\gl.h
 
@@ -262,11 +265,15 @@
 
 1619548970 c:\users\admin\desktop\3d_ball_balance\lighting_effect.h
 
-1619597515 c:\users\admin\desktop\3d_ball_balance\floor.h
+1619788182 c:\users\admin\desktop\3d_ball_balance\floor.h
 
-1619590395 c:\users\admin\desktop\3d_ball_balance\key.h
+1619789689 c:\users\admin\desktop\3d_ball_balance\key.h
 
-1619597469 c:\users\admin\desktop\3d_ball_balance\ball.h
+1619787742 c:\users\admin\desktop\3d_ball_balance\ball.h
 
 1619592677 c:\users\admin\desktop\3d_ball_balance\ball_position.h
+
+1619799057 c:\users\admin\desktop\3d_ball_balance\draw_text.h
+
+1619801402 c:\users\admin\desktop\3d_ball_balance\display.h
 

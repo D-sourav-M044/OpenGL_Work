@@ -1,7 +1,7 @@
 
 bool position_check(float x = 0, float y = 0, float z = 0, float rot = 0)
 {
-    if( ( ball_x_pos>= -x && ball_x_pos<= +x) && (ball_y_pos == radius + y ) && (ball_z_pos>= -z && ball_z_pos<= +z) )
+    if( ( ball_pos_x>= -x && ball_pos_x<= +x) && (ball_pos_y == radius + y ) && (ball_pos_z>= -z && ball_pos_z<= +z) )
         return true;
     else
         return false;

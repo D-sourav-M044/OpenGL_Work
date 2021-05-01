@@ -16,23 +16,27 @@ int main(int argc, char *argv[])
 
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 
-    //extra_light();
+    //
     glutCreateWindow("3D Ball Balance");
-    //glutDisplayFunc(display);
-    glutDisplayFunc(welcomedisplay);
+
+    load_images();
+
+    glutDisplayFunc(display);
+    //glutDisplayFunc(welcomedisplay);
     glutKeyboardFunc(key);
 
-    glutTimerFunc(10000,myTimer,0);
+    glutTimerFunc(4000,myTimer,0);
 
-
+    extra_light();
     glEnable(GL_DEPTH_TEST);
     glShadeModel( GL_SMOOTH );
     glEnable(GL_NORMALIZE);
     glEnable(GL_BLEND);
-    //glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHTING);
 
 
-    bool ok =sndPlaySound("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\background_sound.wav", SND_ASYNC);
+
+    //bool ok = sndPlaySound("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\background_sound.wav", SND_ASYNC);
     glutMainLoop();
 
 

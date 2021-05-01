@@ -13,12 +13,19 @@ static GLfloat v_cube[8][3] =
 
 static GLubyte c_ind[6][4] =
 {
-    {0,2,6,4},
-    {5,7,3,1},
-    {0,4,5,1},
-    {3,7,6,2},
-    {0,1,3,2},
-    {6,7,5,4}
+//    {0,2,6,4},
+//    {5,7,3,1},
+//    {0,4,5,1},
+//    {3,7,6,2},
+//    {0,1,3,2},
+//    {6,7,5,4}
+
+    {3,1,5,7}, //front
+    {2,0,1,3}, //left
+    {7,5,4,6}, //r
+    {2,3,7,6}, //top
+    {1,0,5,4}, //bot
+    {6,4,0,2} //back
 };
 static void getNormal3p(GLfloat x1, GLfloat y1, GLfloat z1, GLfloat x2, GLfloat y2, GLfloat z2, GLfloat x3, GLfloat y3, GLfloat z3)
 {
@@ -57,7 +64,7 @@ void material_property(float R, float G, float B, bool li )
     //glMaterialfv( GL_FRONT, GL_EMISSION, mat_emission);
 
 }
-void cube(float R=0.5, float G=0.5, float B=0.5, bool li = false)
+void cube(float R=0.5, float G=0.5, float B=0.5, bool li = false, int no_image = 1)
 {
     material_property(R,G,B,li);
     glBegin(GL_QUADS);
@@ -77,14 +84,15 @@ void cube(float R=0.5, float G=0.5, float B=0.5, bool li = false)
 //            glVertex3fv(&v_cube[c_ind[i][j]][0]) ;
 //            glTexCoord2f(1,1);
 //        }
+        glTexCoord2f(no_image,no_image);
         glVertex3fv(&v_cube[c_ind[i][0]][0]);
-        glTexCoord2f(1,1);
+        glTexCoord2f(0,no_image);
         glVertex3fv(&v_cube[c_ind[i][1]][0]);
-        glTexCoord2f(0,1);
-        glVertex3fv(&v_cube[c_ind[i][2]][0]);
         glTexCoord2f(0,0);
+        glVertex3fv(&v_cube[c_ind[i][2]][0]);
+        glTexCoord2f(no_image,0);
         glVertex3fv(&v_cube[c_ind[i][3]][0]);
-        glTexCoord2f(1,0);
+
     }
     glEnd();
 }

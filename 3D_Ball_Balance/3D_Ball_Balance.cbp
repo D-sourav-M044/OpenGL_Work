@@ -49,11 +49,11 @@
 		<Unit filename="ball_position.h" />
 		<Unit filename="cube.h" />
 		<Unit filename="display.h" />
-		<Unit filename="draw_text.h" />
 		<Unit filename="floor.h" />
 		<Unit filename="header.h" />
 		<Unit filename="key.h" />
 		<Unit filename="lighting_effect.h" />
+		<Unit filename="load_texture.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

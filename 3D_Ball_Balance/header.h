@@ -18,6 +18,7 @@ using namespace std;
 #include "lighting_effect.h"
 #include "floor.h"
 #include "key.h"
-#include "draw_text.h"
 #include "BmpLoader.h"
+#include "load_texture.h"
+
 #include "display.h"

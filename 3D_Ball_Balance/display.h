@@ -16,7 +16,7 @@ static void display(void)
 
     //glRotatef(m_rot,0,1,0);
     //extra_light();
-    axes();
+    //axes();
     //ball
     glPushMatrix();
     glRotatef(ball_rot,0,0,1);

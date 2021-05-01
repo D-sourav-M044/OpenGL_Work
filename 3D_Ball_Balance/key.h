@@ -4,6 +4,8 @@ int m_rot = 0;
 GLfloat eye[] = {0,40,50};
 GLfloat look[] = {0,40,-100};
 
+
+
 static void key(unsigned char key, int x, int y)
 {
     switch (key)
@@ -41,14 +43,22 @@ static void key(unsigned char key, int x, int y)
         sr = 1, sg =1, sb =1;
         break;
     case 'a':
-        flr_move = false;
-        ball_x_pos -= 2*(60/2*sin((inc*3.1416)/180));
-        //ball_y_pos -= (60/2*sin((inc*3.1416)/180));
-        //glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
+        flr_move = !flr_move;
+        if(inc>=0)
+            ball_pos_x -= 6*(surface_len/2*sin((inc*3.1416)/180));
+        else
+            ball_pos_x += 6*(surface_len/2*sin((inc*3.1416)/180));
+        ball_rot += inc;
+        ball_rot_z = 1;
         break;
     case 'd':
-        flr_move = false;
-        ball_x_pos -= (60/2*sin((inc*3.1416)/180));
+        flr_move = !flr_move;
+        if(inc>=0)
+            ball_pos_x += 6*(surface_len/2*sin((inc*3.1416)/180));
+        else
+            ball_pos_x -= 6*(surface_len/2*sin((inc*3.1416)/180));
+        ball_rot += inc;
+        ball_rot_z = 1;
         //ball_y_pos += (60/2*sin((inc*3.1416)/180));
         break;
     case 'e':

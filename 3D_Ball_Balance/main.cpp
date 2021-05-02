@@ -25,7 +25,8 @@ int main(int argc, char *argv[])
     //glutDisplayFunc(welcomedisplay);
     glutKeyboardFunc(key);
 
-    glutTimerFunc(4000,myTimer,0);
+    //glutTimerFunc(4000,myTimer,0);
+
 
     extra_light();
     glEnable(GL_DEPTH_TEST);
@@ -41,5 +42,5 @@ int main(int argc, char *argv[])
 
 
 
-    return EXIT_SUCCESS;
+    //return EXIT_SUCCESS;
 }

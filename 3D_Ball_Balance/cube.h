@@ -46,14 +46,13 @@ static void getNormal3p(GLfloat x1, GLfloat y1, GLfloat z1, GLfloat x2, GLfloat 
     glNormal3f(Nx,Ny,Nz);
 }
 
-void material_property(float R, float G, float B, bool li )
+void material_property(float R, float G, float B, bool li = false )
 {
     GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
     GLfloat mat_ambient[] = { R, G, B, 1.0 };
-    //GLfloat mat_ambient[] = { 0, 0, 0, 1.0 };
     GLfloat mat_diffuse[] = { R, G, B, 1.0 };
     GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
-    //GLfloat mat_emission[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat mat_emission[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat mat_shininess[] = {255};
 
     glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient);
@@ -61,7 +60,16 @@ void material_property(float R, float G, float B, bool li )
     glMaterialfv( GL_FRONT, GL_SPECULAR, mat_specular);
     glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
 
-    //glMaterialfv( GL_FRONT, GL_EMISSION, mat_emission);
+    if(li)
+    {
+        glMaterialfv( GL_FRONT, GL_EMISSION, mat_emission);
+    }
+    else
+    {
+        glMaterialfv( GL_FRONT, GL_EMISSION, no_mat);
+        //cout<<"else "<<li<<endl;
+    }
+
 
 }
 void cube(float R=0.5, float G=0.5, float B=0.5, bool li = false, int no_image = 1)

@@ -25,5 +25,10 @@ void LoadTexture(const char*filename, int rep = 1)
 
 void load_images()
 {
-     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\floor-2.bmp",1);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\flr.bmp",1);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\ball-3.bmp",2);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\normal_flr.bmp",3);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\up_down_flr.bmp",4);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\up_down.bmp",5);
+
 }

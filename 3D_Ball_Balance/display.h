@@ -5,28 +5,42 @@ static void display(void)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     int lim = 8;
-    glFrustum(-lim, lim, -lim, lim, 4, 100);
+    glFrustum(-lim, lim, -lim, lim, 4, 1000);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity() ;
     gluLookAt(eye[0],eye[1],eye[2], look[0],look[1],look[2], 0,1,0);
 
 
-    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //glLoadIdentity();
 
-    //glRotatef(m_rot,0,1,0);
+    glRotatef(m_rot,0,1,0);
     //extra_light();
-    //axes();
+    axes();
+
     //ball
     glPushMatrix();
-    glRotatef(ball_rot,0,0,1);
+    glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
     ball();
     glPopMatrix();
 
-    //space
+
+
+    //moving flr
+    glPushMatrix();
+    normal_flr();
+    glPopMatrix();
+//starting flr
     glPushMatrix();
     floor();
     glPopMatrix();
+
+    //up_down_flr
+    glPushMatrix();
+    up_down_flr();
+    glPopMatrix();
+
+
+
+
 
     glFlush();
     glutSwapBuffers();

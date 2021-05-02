@@ -1,19 +1,39 @@
 float i= 0;
 float inc = 0.25;
-bool flag = true;
+bool flag = false;
 bool flr_move = false;
+bool ok = true;
+
+void on_move(int val)
+{
+    ok = val;
+    flr_move = val;
+}
+
 void flor_rot()
 {
-    flr_move = true;
-    i+= inc;
-    if(i>30)
+    if(ok && flr_move)
     {
-        inc = -0.25;
-        cout<<"minus"<<endl;
+        i+= inc;
+        if(i>30)
+        {
+            inc = -0.25;
+        }
+
+        else if(i<-30)
+            inc = 0.25;
+        if (i==0)
+        {
+            ok= false;
+            flr_move = false;
+            glutTimerFunc(1000,on_move,1);
+        }
+    }
+    else
+    {
+        i=0;
     }
 
-    else if(i<-30)
-        inc = 0.25;
 
     glutPostRedisplay();
 }
@@ -24,24 +44,28 @@ void flor_rot()
 void floor()
 {
     bool here = false;
-    float len = 60, height = 0.5, width = 20;
-    here = position_check(len/2, height/2, width/2);
-    if(here && flr_move)
+    float len = 70, height = 6, width = 20;
+
+    here = position_check(len/2, height/2, width/2,0,1);
+    flag = here;
+    ok_ball = here;
+    flr_move = here;
+    if(here && flr_move && ok)
     {
+        port[1] = 1;
+
         surface_len = len, surface_height = height, surface_width = width;
-        ball_pos_x -= 2*(len/2*sin((inc*3.1416)/180));
+        ball_pos_x -= 1.5*(len/2*sin((inc*3.1416)/180));
         if(ball_rot<=i)
             ball_rot += inc;
         ball_rot_z = 1;
-        cout<<"it is here"<<endl;
     }
     else if(here == 0)
     {
-        cout<<"no dude"<<endl;
-        ball_fall = 1;
-        ball_fall_rot = inc;
 
 
+        port[1] = 0;
+        fall_detection(inc);
 
         if(i>0)
         {

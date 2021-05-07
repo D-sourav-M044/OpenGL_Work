@@ -12,6 +12,10 @@ float ball_fall = 0;
 float ball_fall_rot = 0;
 float ball_fall_rot_x = 0, ball_fall_rot_y = 0, ball_fall_rot_z = 0;
 
+float ball_int_rot= 1;
+float ball_int_rot_x = 0, ball_int_rot_y = 0, ball_int_rot_z = 0;
+
+
 float ball_fall_x = 0, ball_fall_y = 0, ball_fall_z = 0;
 
 void ball_material_property()
@@ -20,7 +24,7 @@ void ball_material_property()
     GLfloat mat_ambient[] = { 1, 1, 1, 1.0 };
     GLfloat mat_diffuse[] = { 0.5, 0.5, 0.5, 1.0 };
     GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
-     GLfloat mat_emission[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat mat_emission[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat mat_shininess[] = {30};
 
     glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient);
@@ -35,6 +39,35 @@ int inc_ball_fall()
     if(ball_fall_y>-100)
         ball_fall_y-=1*ball_fall;
     glutPostRedisplay();
+}
+void sphere()
+{
+    ball_material_property();
+    glPushMatrix();
+    glutSolidSphere(radius,16,40);
+    glPopMatrix();
+}
+
+void torus(float R = 0.5, float G = 0.5, float B = 0.5)
+{
+    GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
+    GLfloat mat_ambient[] = { R, G, B, 1.0 };
+    GLfloat mat_diffuse[] = { R, G, B, 1.0 };
+    //GLfloat mat_diffuse[] = { 1.0, 1.0, 0.0, 1.0 };
+    GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+    //GLfloat mat_specular[] = { 1, 1, 0, 1.0 };
+    GLfloat mat_shininess[] = {30};
+
+    glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv( GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
+
+
+    glPushMatrix();
+    //glutSolidSphere(8,20,16);
+    glutSolidTorus(1,radius,16,16);
+    glPopMatrix();
 }
 
 void ball()
@@ -53,7 +86,29 @@ void ball()
 
     glPushMatrix();
     glTranslatef(ball_pos_x, ball_pos_y, ball_pos_z);
-    glutSolidSphere(radius,16,40);
+    glRotatef(ball_int_rot,ball_int_rot_x,ball_int_rot_y,ball_int_rot_z);
+
+    torus(1,0,1);
+    //horizontal torus
+    glPushMatrix();
+    glRotatef(90,1,0,0);
+    torus(1,0,1);
+    glPopMatrix();
+
+    //vertical torus
+    glPushMatrix();
+    glRotatef(90,0,1,0);
+    glRotatef(40,0,1,0);
+    torus(1,0,1);
+    glPopMatrix();
+    glPushMatrix();
+    glRotatef(90,0,1,0);
+    glRotatef(-40,0,1,0);
+     torus(1,0,1);
+    glPopMatrix();
+
+
+    sphere();
     glPopMatrix();
 
 

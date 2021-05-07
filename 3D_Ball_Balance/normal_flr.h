@@ -16,7 +16,7 @@ void normal_flr()
     {
         port[0] = 0;
         fall_detection();
-        ok_ball = false;
+        //ok_ball = false;
     }
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,3);

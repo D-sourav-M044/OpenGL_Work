@@ -66,15 +66,16 @@ void floor()
 
         port[1] = 0;
         fall_detection(inc);
+        //ball_rot = 0;
 
-        if(i>0)
-        {
-            ball_fall_rot_z -= 1;
-        }
-        else
-        {
-            ball_fall_rot_z = 1;
-        }
+//        if(i>0)
+//        {
+//            ball_fall_rot_z -= 1;
+//        }
+//        else
+//        {
+//            ball_fall_rot_z = 1;
+//        }
     }
 
     glEnable(GL_TEXTURE_2D);

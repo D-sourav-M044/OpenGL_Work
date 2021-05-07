@@ -14,7 +14,7 @@ static void display(void)
 
     glRotatef(m_rot,0,1,0);
     //extra_light();
-    axes();
+    //axes();
 
     //ball
     glPushMatrix();
@@ -23,24 +23,32 @@ static void display(void)
     glPopMatrix();
 
 
-
-    //moving flr
-    glPushMatrix();
-    normal_flr();
-    glPopMatrix();
-//starting flr
-    glPushMatrix();
-    floor();
-    glPopMatrix();
-
-    //up_down_flr
+////up_down_flr
     glPushMatrix();
     up_down_flr();
     glPopMatrix();
 
+//moving
+    glPushMatrix();
+    floor();
+    glPopMatrix();
 
 
 
+//starting flr
+    glPushMatrix();
+    normal_flr();
+    glPopMatrix();
+
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, 1);
+
+water_flr();
+back_side();
+side_wall();
+
+
+    //glDisable(GL_TEXTURE_2D);
 
     glFlush();
     glutSwapBuffers();

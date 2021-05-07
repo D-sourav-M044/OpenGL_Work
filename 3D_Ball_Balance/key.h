@@ -6,6 +6,8 @@ GLfloat look[] = {0,40,-100};
 
 
 
+
+
 static void key(unsigned char key, int x, int y)
 {
     switch (key)
@@ -43,15 +45,23 @@ static void key(unsigned char key, int x, int y)
         sr = 1, sg =1, sb =1;
         break;
     case 'w':
+        ball_int_rot -= 10;
+        ball_int_rot_x = 1;
         ball_pos_z -=1;
+
         break;
     case 's':
+
+        ball_int_rot += 10;
+        ball_int_rot_x = 1;
         ball_pos_z +=1;
         break;
     case 'a':
-
+        ball_int_rot += 10;
+        ball_int_rot_z = 1;
         if(ok && flag)
         {
+            cout<<"a"<<endl;
             flr_move = !flr_move;
             int t = 6;
             if(inc>=0)
@@ -66,8 +76,11 @@ static void key(unsigned char key, int x, int y)
 
         break;
     case 'd':
+        ball_int_rot -= 10;
+        ball_int_rot_z = 1;
         if(ok && flag)
         {
+            cout<<"d"<<endl;
             flr_move = !flr_move;
             int t = 6;
             if(inc>=0)
@@ -88,26 +101,28 @@ static void key(unsigned char key, int x, int y)
         m_rot++;
         break;
     case 'l':
-            eye[0]++;
-            look[0]++;
+        eye[0]++;
+        look[0]++;
         break;
     case 'j':
-            eye[0]--;
-            look[0]--;
+        eye[0]--;
+        look[0]--;
         break;
     case '+':
         eye[2]--;
+        look[2]--;
         break;
     case 'i':
-            eye[2]--;
-
-
+        eye[2]--;
+        look[2]--;
         break;
     case '-':
         eye[2]++;
+        look[2]++;
         break;
     case 'k':
-            eye[2]++;
+        eye[2]++;
+        look[2]++;
         break;
 
 

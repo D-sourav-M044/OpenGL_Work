@@ -30,5 +30,11 @@ void load_images()
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\normal_flr.bmp",3);
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\up_down_flr.bmp",4);
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\up_down.bmp",5);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\ball.bmp",6);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\devil.bmp",7);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\water.bmp",8);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\hill.bmp",9);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\dragon.bmp",10);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\dark_pyramid.bmp",11);
 
 }

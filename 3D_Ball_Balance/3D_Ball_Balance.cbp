@@ -45,6 +45,7 @@
 		<Unit filename="BmpLoader.cpp" />
 		<Unit filename="BmpLoader.h" />
 		<Unit filename="axes.h" />
+		<Unit filename="back_side.h" />
 		<Unit filename="ball.h" />
 		<Unit filename="ball_position.h" />
 		<Unit filename="cube.h" />
@@ -56,7 +57,10 @@
 		<Unit filename="load_texture.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="normal_flr.h" />
+		<Unit filename="side_wall.h" />
+		<Unit filename="solidball.h" />
 		<Unit filename="up_down_flr.h" />
+		<Unit filename="water_flr.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

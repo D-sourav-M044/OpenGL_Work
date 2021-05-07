@@ -18,7 +18,7 @@ void up_down()
         if(u_d == 0)
         {
             on = false;
-            glutTimerFunc(1000,make_on,1);
+            glutTimerFunc(3000,make_on,1);
         }
     }
 
@@ -28,24 +28,27 @@ void up_down()
 void up_down_flr()
 {
     //port -2
- float len = 100, height = 6, width = 40;
- bool here = position_check(len/2, height/2, width/2, -30);
+    float len = 100, height = 6, width = 40;
+    bool here = position_check(len/2, u_d+height/2, width/2, -30);
     glPushMatrix();
     glTranslatef(0,u_d,0);
     glTranslatef(0,0,-30);
 
 
-
-
-
-    if(here)
+    if(here && on)
     {
+        //cout<<"here"<<endl;
         port[2] = 1;
+        ball_pos_y += u_d_i;
+        //cout<<"ball "<<ball_pos_y<<endl;
+        //cout<<"plt "<<u_d+height/2<<endl;
+
     }
-    else
+    else if(!here)
     {
         port[2] = 0;
-        fall_detection();
+        //cout<<"nah"<<endl;
+        //fall_detection();
     }
 
     glEnable(GL_TEXTURE_2D);

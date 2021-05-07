@@ -29,7 +29,7 @@ void load_area(int area_no, float x=0, float y=radius+3, float z=0, bool origin 
 bool fall_detection(float angle=0)
 {
     int sum = 0;
-    for(int i=0;i<10;i++)
+    for(int i=0; i<10; i++)
     {
         sum+=port[i];
     }
@@ -38,5 +38,11 @@ bool fall_detection(float angle=0)
         ball_fall = 1;
         ball_fall_rot = 5*angle;
         ball_fall_rot_z = 1;
+    }
+    else if(sum)
+    {
+        ball_fall = 0;
+        ball_fall_rot = 0;
+        ball_fall_rot_z = 0;
     }
 }

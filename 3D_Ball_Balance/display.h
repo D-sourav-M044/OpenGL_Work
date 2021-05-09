@@ -16,36 +16,42 @@ static void display(void)
     //extra_light();
     //axes();
 
-    //ball
-    glPushMatrix();
-    glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
-    ball();
-    glPopMatrix();
-
-
+//   // ball
+//    glPushMatrix();
+//    glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
+//    ball();
+//    glPopMatrix();
+//
+//
 ////up_down_flr
-    glPushMatrix();
-    up_down_flr();
-    glPopMatrix();
-
-//moving
-    glPushMatrix();
-    floor();
-    glPopMatrix();
-
-
-
+//    glPushMatrix();
+//    up_down_flr();
+//    glPopMatrix();
+//
+////moving
+//    glPushMatrix();
+//    floor();
+//    glPopMatrix();
+//
+//
+//
 //starting flr
-    glPushMatrix();
-    normal_flr();
-    glPopMatrix();
+//    glPushMatrix();
+//    normal_flr();
+//    glPopMatrix();
+//
+//
+//
+//    //road();
+//
+//
+//
+//water_flr();
+//back_side();
+//left_side_wall();
+//rain_fall();
 
-    glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, 1);
-
-water_flr();
-back_side();
-side_wall();
+thunder_effect();
 
 
     //glDisable(GL_TEXTURE_2D);
@@ -99,8 +105,8 @@ void welcomedisplay()
 
     glutSwapBuffers();
 }
-void myTimer (int val)
 
+void myTimer (int val)
 {
     glutDisplayFunc(display);
     extra_light();

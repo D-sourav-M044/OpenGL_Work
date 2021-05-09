@@ -221,10 +221,10 @@
 	<_mingw.h>
 	<stddef.h>
 
-1620406527 source:c:\users\admin\desktop\3d_ball_balance\main.cpp
+1620485154 source:c:\users\admin\desktop\3d_ball_balance\main.cpp
 	"header.h"
 
-1620415982 c:\users\admin\desktop\3d_ball_balance\header.h
+1620586632 c:\users\admin\desktop\3d_ball_balance\header.h
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
@@ -249,6 +249,9 @@
 	"water_flr.h"
 	"back_side.h"
 	"side_wall.h"
+	"rain_fall.h"
+	"road.h"
+	"thunder_effect.h"
 	"display.h"
 
 1301111164 c:\program files (x86)\codeblocks\mingw\include\gl\gl.h
@@ -269,19 +272,19 @@
 
 1619546478 c:\users\admin\desktop\3d_ball_balance\axes.h
 
-1619881545 c:\users\admin\desktop\3d_ball_balance\lighting_effect.h
+1620485124 c:\users\admin\desktop\3d_ball_balance\lighting_effect.h
 
-1620408066 c:\users\admin\desktop\3d_ball_balance\floor.h
+1620481520 c:\users\admin\desktop\3d_ball_balance\floor.h
 
-1620414566 c:\users\admin\desktop\3d_ball_balance\key.h
+1620574637 c:\users\admin\desktop\3d_ball_balance\key.h
 
-1620409121 c:\users\admin\desktop\3d_ball_balance\ball.h
+1620585616 c:\users\admin\desktop\3d_ball_balance\ball.h
 
 1620321711 c:\users\admin\desktop\3d_ball_balance\ball_position.h
 
 1619799057 c:\users\admin\desktop\3d_ball_balance\draw_text.h
 
-1620416007 c:\users\admin\desktop\3d_ball_balance\display.h
+1620589328 c:\users\admin\desktop\3d_ball_balance\display.h
 
 1620416760 c:\users\admin\desktop\3d_ball_balance\load_texture.h
 
@@ -291,11 +294,17 @@
 
 1619974241 c:\users\admin\desktop\3d_ball_balance\testball.h
 
-1620406895 c:\users\admin\desktop\3d_ball_balance\solidball.h
+1620483964 c:\users\admin\desktop\3d_ball_balance\solidball.h
 
-1620417724 c:\users\admin\desktop\3d_ball_balance\water_flr.h
+1620586271 c:\users\admin\desktop\3d_ball_balance\water_flr.h
 
-1620417369 c:\users\admin\desktop\3d_ball_balance\back_side.h
+1620494976 c:\users\admin\desktop\3d_ball_balance\back_side.h
 
-1620417774 c:\users\admin\desktop\3d_ball_balance\side_wall.h
+1620458842 c:\users\admin\desktop\3d_ball_balance\side_wall.h
+
+1620587529 c:\users\admin\desktop\3d_ball_balance\rain_fall.h
+
+1620581394 c:\users\admin\desktop\3d_ball_balance\road.h
+
+1620589473 c:\users\admin\desktop\3d_ball_balance\thunder_effect.h
 

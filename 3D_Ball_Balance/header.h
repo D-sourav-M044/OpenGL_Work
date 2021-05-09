@@ -11,11 +11,9 @@ using namespace std;
 
 int ok_ball = false;
 float area[100][6];
-int port[20]={0};
+int port[20]= {0};
 
 #include "ball.h"
-
-
 #include "ball_position.h"
 #include "lighting_effect.h"
 #include "cube.h"
@@ -28,8 +26,12 @@ int port[20]={0};
 #include "BmpLoader.h"
 #include "load_texture.h"
 #include "water_flr.h"
+
 #include "back_side.h"
 #include "side_wall.h"
+#include "rain_fall.h"
+#include "road.h"
+#include "thunder_effect.h"
 #include "display.h"
 
 

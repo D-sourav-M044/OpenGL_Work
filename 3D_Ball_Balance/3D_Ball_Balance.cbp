@@ -57,8 +57,11 @@
 		<Unit filename="load_texture.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="normal_flr.h" />
+		<Unit filename="rain_fall.h" />
+		<Unit filename="road.h" />
 		<Unit filename="side_wall.h" />
 		<Unit filename="solidball.h" />
+		<Unit filename="thunder_effect.h" />
 		<Unit filename="up_down_flr.h" />
 		<Unit filename="water_flr.h" />
 		<Extensions>

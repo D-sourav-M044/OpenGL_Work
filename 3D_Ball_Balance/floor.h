@@ -54,6 +54,9 @@ void floor()
     {
         port[1] = 1;
 
+        ball_int_rot -= 5;
+        ball_int_rot_z = 1;
+
         surface_len = len, surface_height = height, surface_width = width;
         ball_pos_x -= 1.5*(len/2*sin((inc*3.1416)/180));
         if(ball_rot<=i)
@@ -66,16 +69,7 @@ void floor()
 
         port[1] = 0;
         fall_detection(inc);
-        //ball_rot = 0;
-
-//        if(i>0)
-//        {
-//            ball_fall_rot_z -= 1;
-//        }
-//        else
-//        {
-//            ball_fall_rot_z = 1;
-//        }
+        ball_rot = 0;
     }
 
     glEnable(GL_TEXTURE_2D);

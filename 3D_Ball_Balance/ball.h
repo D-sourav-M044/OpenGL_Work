@@ -2,7 +2,11 @@
 float surface_len = 0, surface_height = 0, surface_width = 0;
 
 float radius = 8;
-float ball_pos_x = 0, ball_pos_y = radius+(6/2), ball_pos_z = 20;
+float ball_pos_x = 0, ball_pos_y = radius+(6/2), ball_pos_z = -15;
+
+bool ball_pos_store_chance = true;
+float ball_st_pos_x = 0, ball_st_pos_y = radius+(6/2), ball_st_pos_z = -15;
+
 
 float ball_rot = 0;
 float ball_rot_x = 0, ball_rot_y = 0, ball_rot_z = 0;
@@ -17,6 +21,16 @@ float ball_int_rot_x = 0, ball_int_rot_y = 0, ball_int_rot_z = 0;
 
 
 float ball_fall_x = 0, ball_fall_y = 0, ball_fall_z = 0;
+
+void store_ball_pos()
+{
+    if(ball_pos_store_chance)
+    {
+        ball_pos_store_chance = !ball_pos_store_chance;
+        cout<<"stored"<<endl;
+        ball_st_pos_x = ball_pos_x, ball_st_pos_y = ball_pos_y, ball_st_pos_z = ball_pos_z;
+    }
+}
 
 void ball_material_property()
 {
@@ -48,7 +62,7 @@ void sphere()
     glPopMatrix();
 }
 
-void torus(float R = 0.5, float G = 0.5, float B = 0.5)
+void torus(float R = 0.5, float G = 0.5, float B = 0.5, float den = 1, float area = radius)
 {
     GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
     GLfloat mat_ambient[] = { R, G, B, 1.0 };
@@ -66,14 +80,14 @@ void torus(float R = 0.5, float G = 0.5, float B = 0.5)
 
     glPushMatrix();
     //glutSolidSphere(8,20,16);
-    glutSolidTorus(1,radius,16,16);
+    glutSolidTorus(den,area,16,16);
     glPopMatrix();
 }
 
 void ball()
 {
 
-
+    store_ball_pos();
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 1);
     //ball_material_property();

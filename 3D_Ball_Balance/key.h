@@ -124,7 +124,24 @@ static void key(unsigned char key, int x, int y)
         eye[2]++;
         look[2]++;
         break;
-
+    case 'n':
+        ball_fall = 0;
+        ball_fall_rot = 0;
+        ball_fall_y = 0;
+        ball_rot = 0;
+        ball_fall_rot_z = 0;
+        port[4] = 1;
+        cout<<"restore"<<endl;
+        ball_pos_x = ball_st_pos_x;
+        ball_pos_y = ball_st_pos_y;
+        ball_pos_z = ball_st_pos_z;
+        break;
+    case 'm':
+    ball_pos_y +=1;
+    break;
+    case 'M':
+    ball_pos_y -=1;
+    break;
 
     }
 

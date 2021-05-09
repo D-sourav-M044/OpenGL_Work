@@ -5,7 +5,11 @@ const int window_width = 1200;
 const int window_height = 700;
 static int g_counter = 0;
 
-
+void sound()
+{
+    sndPlaySound("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\background_sound.wav", SND_ASYNC);
+    glutPostRedisplay();
+}
 
 
 int main(int argc, char *argv[])
@@ -37,7 +41,7 @@ int main(int argc, char *argv[])
 
 
 
-    //bool ok = sndPlaySound("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\background_sound.wav", SND_ASYNC);
+    //sound();
     glutMainLoop();
 
 

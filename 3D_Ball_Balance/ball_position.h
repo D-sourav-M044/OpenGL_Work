@@ -1,9 +1,9 @@
 
-bool position_check(float x = 0, float y = 0, float z = 0, float center =0, bool origin = 0, float rot = 0)
+bool position_check(float x = 0, float y = 0, float z = 0, float center =0,  bool origin_change = 0, float center_x = 0, float rot = 0)
 {
-    if(origin)
+    if(origin_change)
     {
-        if( ( ball_pos_x>= -x && ball_pos_x<= +x) && (ball_pos_y == radius + y ) && (ball_pos_z<= z && ball_pos_z>= -z) )
+        if( ( ball_pos_x>= -x + (center_x) && ball_pos_x<= x + (center_x)) && (ball_pos_y == radius + y ) && (ball_pos_z<= center + abs(z) && ball_pos_z>= center-abs(z)) )
             return true;
         else
             return false;
@@ -45,4 +45,5 @@ bool fall_detection(float angle=0)
         ball_fall_rot = 0;
         ball_fall_rot_z = 0;
     }
+    //cout<<"sum = "<<sum<<endl;
 }

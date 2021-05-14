@@ -32,9 +32,16 @@ void load_images()
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\up_down.bmp",5);
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\ball.bmp",6);
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\devil.bmp",7);
-     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\water.bmp",8);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\ocean_water.bmp",8);
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\hill.bmp",9);
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\dragon.bmp",10);
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\dark_pyramid.bmp",11);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\thunder_light.bmp",12);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\up_thund.bmp",13);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\brick_road.bmp",14);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\fire_flame.bmp",15);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\front.bmp",16);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\sky.bmp",17);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\kuet_logo.bmp",18);
 
 }

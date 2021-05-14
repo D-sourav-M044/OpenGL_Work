@@ -2,10 +2,15 @@
 float surface_len = 0, surface_height = 0, surface_width = 0;
 
 float radius = 8;
-float ball_pos_x = 0, ball_pos_y = radius+(6/2), ball_pos_z = -15;
+
+float  ball_speed = 0;
+bool ball_speed_in = false;
+bool ball_jump_cond = false;
+
+float ball_pos_x = 350, ball_pos_y = radius+(6/2), ball_pos_z = -10;
 
 bool ball_pos_store_chance = true;
-float ball_st_pos_x = 0, ball_st_pos_y = radius+(6/2), ball_st_pos_z = -15;
+float ball_st_pos_x = 0, ball_st_pos_y = radius+(6/2), ball_st_pos_z = 0;
 
 
 float ball_rot = 0;
@@ -15,6 +20,7 @@ float ball_rot_x = 0, ball_rot_y = 0, ball_rot_z = 0;
 float ball_fall = 0;
 float ball_fall_rot = 0;
 float ball_fall_rot_x = 0, ball_fall_rot_y = 0, ball_fall_rot_z = 0;
+float ball_fall_tr_x = 0, ball_fall_tr_y = 0,  ball_fall_tr_z = 0;
 
 float ball_int_rot= 1;
 float ball_int_rot_x = 0, ball_int_rot_y = 0, ball_int_rot_z = 0;
@@ -22,15 +28,7 @@ float ball_int_rot_x = 0, ball_int_rot_y = 0, ball_int_rot_z = 0;
 
 float ball_fall_x = 0, ball_fall_y = 0, ball_fall_z = 0;
 
-void store_ball_pos()
-{
-    if(ball_pos_store_chance)
-    {
-        ball_pos_store_chance = !ball_pos_store_chance;
-        cout<<"stored"<<endl;
-        ball_st_pos_x = ball_pos_x, ball_st_pos_y = ball_pos_y, ball_st_pos_z = ball_pos_z;
-    }
-}
+
 
 void ball_material_property()
 {
@@ -48,9 +46,39 @@ void ball_material_property()
     glMaterialfv( GL_FRONT, GL_EMISSION, mat_emission);
 }
 
+void store_ball_pos()
+{
+    if(ball_pos_store_chance)
+    {
+        ball_pos_store_chance = !ball_pos_store_chance;
+        //cout<<"stored"<<endl;
+        ball_st_pos_x = ball_pos_x, ball_st_pos_y = ball_pos_y, ball_st_pos_z = ball_pos_z;
+    }
+}
+
+void ball_jump()
+{
+    if(ball_jump_cond && ball_speed_in)
+    {
+//        ball_fall_rot -= 45;
+//        ball_fall_rot_x += 1;
+       // ball_fall_tr_y  += 1;
+        ball_pos_z -= ball_speed;
+        ball_pos_y -= ball_speed;
+    }
+    else
+    {
+        ball_fall_rot =0;
+        ball_fall_rot_x = 0;
+        ball_fall_tr_y  = 0;
+        ball_pos_z -= 0;
+    }
+    glutPostRedisplay();
+}
+
 int inc_ball_fall()
 {
-    if(ball_fall_y>-100)
+    if(ball_fall_y>-300)
         ball_fall_y-=1*ball_fall;
     glutPostRedisplay();
 }
@@ -94,6 +122,7 @@ void ball()
 
     glPushMatrix();
     glRotatef(ball_fall_rot,ball_fall_rot_x,ball_fall_rot_y,ball_fall_rot_z);
+    glTranslatef(ball_fall_tr_x,ball_fall_tr_y,ball_fall_tr_z);
 
     glPushMatrix();
     glTranslatef(ball_fall_x, ball_fall_y, ball_fall_z);
@@ -118,7 +147,7 @@ void ball()
     glPushMatrix();
     glRotatef(90,0,1,0);
     glRotatef(-40,0,1,0);
-     torus(1,0,1);
+    torus(1,0,1);
     glPopMatrix();
 
 
@@ -128,6 +157,7 @@ void ball()
 
     glPopMatrix();
     inc_ball_fall();
+    //ball_jump();
     glPopMatrix();
 
     glDisable(GL_TEXTURE_2D);

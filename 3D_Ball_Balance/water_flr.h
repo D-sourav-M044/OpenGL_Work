@@ -1,12 +1,12 @@
 
-float w_flow = 0, w_flow_var = 0.0008;
+float w_flow = 0, w_flow_var = 0.8;
 void water_flow()
 {
     w_flow += w_flow_var;
-    if(w_flow<=-100)
-        w_flow_var = 0.0008;
-    else if(w_flow>=100)
-        w_flow_var = -0.0008;
+    if(w_flow<=-200)
+        w_flow_var = 0.8;
+    else if(w_flow>=200)
+        w_flow_var = -0.8;
     glutPostRedisplay();
 }
 
@@ -24,27 +24,36 @@ void water_flr(float water_flr_len = 2500, float water_flr_height = 30, float wa
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 8);
 
-    for(float i=-water_flr_width/2; i<=water_flr_width/2; i+=plot_width)
-    {
-        for(float j = -water_flr_len/2; j<= water_flr_len/2; j+= plot_len)
-        {
-            glPushMatrix();
-            glTranslatef(w_flow,0,-water_flr_width/2);
-            glTranslatef(j,-200,i);
-            glScalef(plot_len,water_flr_height,plot_width);
-            glTranslatef(-0.5,-0.5,-0.5);
-            cube(1,1,1,0,1);
-            water_flow();
-            glPopMatrix();
-        }
-    }
+//    for(float i=-water_flr_width/2; i<=water_flr_width/2; i+=plot_width)
+//    {
+//        for(float j = -water_flr_len/2; j<= water_flr_len/2; j+= plot_len)
+//        {
+//            glPushMatrix();
+//            glTranslatef(w_flow,0,-water_flr_width/2);
+//            glTranslatef(j,-200,i);
+//            glScalef(plot_len,water_flr_height,plot_width);
+//            glTranslatef(-0.5,-0.5,-0.5);
+//            cube(0,0,0.5,0,1);
+//            water_flow();
+//            glPopMatrix();
+//        }
+//    }
+
+    glPushMatrix();
+    glTranslatef(w_flow,0,0);
+    glTranslatef(0,-200,0);
+    glScalef(water_flr_len,water_flr_height,water_flr_width);
+    glTranslatef(-0.5,-0.5,-0.5);
+    cube(0,0,1,0,1);
+    water_flow();
+    glPopMatrix();
 
 
     glDisable(GL_TEXTURE_2D);
 
     glPushMatrix();
     glTranslatef(-400,-100,-400);
-     water_terbine();
+    water_terbine();
     glPopMatrix();
 
 }

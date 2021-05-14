@@ -49,19 +49,26 @@
 		<Unit filename="ball.h" />
 		<Unit filename="ball_position.h" />
 		<Unit filename="cube.h" />
+		<Unit filename="curve.h" />
 		<Unit filename="display.h" />
 		<Unit filename="floor.h" />
+		<Unit filename="front_side.h" />
 		<Unit filename="header.h" />
 		<Unit filename="key.h" />
 		<Unit filename="lighting_effect.h" />
 		<Unit filename="load_texture.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="moving_flr.h" />
 		<Unit filename="normal_flr.h" />
 		<Unit filename="rain_fall.h" />
 		<Unit filename="road.h" />
+		<Unit filename="score_board.h" />
+		<Unit filename="search_light_house.h" />
+		<Unit filename="short_way.h" />
 		<Unit filename="side_wall.h" />
 		<Unit filename="solidball.h" />
 		<Unit filename="thunder_effect.h" />
+		<Unit filename="torch.h" />
 		<Unit filename="up_down_flr.h" />
 		<Unit filename="water_flr.h" />
 		<Extensions>

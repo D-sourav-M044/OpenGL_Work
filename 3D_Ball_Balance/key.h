@@ -1,12 +1,17 @@
 int up=0,down=0,r=0,l=0,f=0,b=0;
 int m_rot = 0;
 
-GLfloat eye[] = {0,50,75};
-GLfloat look[] = {0,40,-100};
+//GLfloat eye[] = {0,50,175};
+//GLfloat look[] = {0,50,-100};
 
+//GLfloat eye[] = {250,50,80};
+//GLfloat look[] = {250,50,-100};
 
+//GLfloat eye[] = {ball_pos_x,50,ball_pos_z+50};
+//GLfloat look[] = {ball_pos_x,50,-200};
 
-
+GLfloat eye[] = {0,10,30};
+GLfloat look[] = {0,10,-100};
 
 static void key(unsigned char key, int x, int y)
 {
@@ -21,6 +26,9 @@ static void key(unsigned char key, int x, int y)
         break;
     case '3':
         light_3 = !light_3;
+        break;
+    case '4':
+        light_4 = !light_4;
         break;
 
     //fan
@@ -39,48 +47,56 @@ static void key(unsigned char key, int x, int y)
     case 'f':
         look[0]--;
         break;
-    case 'q':
-        ar = 0.1, ag = 0.1, ab = 0.1;
-        dr = 1, dg =1, db =1;
-        sr = 1, sg =1, sb =1;
-        break;
     case 'w':
+        eye[2] = ball_pos_z+50;
+
         ball_int_rot -= 10;
         ball_int_rot_x = 1;
         ball_pos_z -=1;
 
+        if(ball_speed_in)
+        {
+            cout<<" ball_speed "<< ball_speed<<endl;
+            ball_speed +=2;
+        }
+
         break;
     case 's':
+        eye[2] = ball_pos_z+50;
 
         ball_int_rot += 10;
         ball_int_rot_x = 1;
         ball_pos_z +=1;
         break;
     case 'a':
-        ball_int_rot += 10;
-        ball_int_rot_z = 1;
+        eye[0] = ball_pos_x;
+        look[0] = ball_pos_x;
         if(ok && flag)
         {
-            cout<<"a"<<endl;
             flr_move = !flr_move;
             int t = 6;
             if(inc>=0)
                 ball_pos_x -= t*(surface_len/2*sin((inc*3.1416)/180));
             else
                 ball_pos_x += t*(surface_len/2*sin((inc*3.1416)/180));
+
             ball_rot += inc;
             ball_rot_z = 1;
         }
         else
-            ball_pos_x-=1;
+        {
+            ball_int_rot += 10;
+            ball_int_rot_z = 1;
+            ball_pos_x -=1;
+        }
 
         break;
     case 'd':
-        ball_int_rot -= 10;
-        ball_int_rot_z = 1;
+        eye[0] = ball_pos_x;
+        look[0] = ball_pos_x;
+//
         if(ok && flag)
         {
-            cout<<"d"<<endl;
             flr_move = !flr_move;
             int t = 6;
             if(inc>=0)
@@ -92,7 +108,12 @@ static void key(unsigned char key, int x, int y)
             ball_rot_z = 1;
         }
         else
+        {
+            ball_int_rot -= 10;
+            ball_int_rot_z = 1;
             ball_pos_x+=1;
+        }
+
         break;
     case 'e':
         m_rot--;
@@ -130,20 +151,20 @@ static void key(unsigned char key, int x, int y)
         ball_fall_y = 0;
         ball_rot = 0;
         ball_fall_rot_z = 0;
-        port[4] = 1;
-        cout<<"restore"<<endl;
+        //cout<<"restore"<<endl;
         ball_pos_x = ball_st_pos_x;
         ball_pos_y = ball_st_pos_y;
         ball_pos_z = ball_st_pos_z;
         break;
-    case 'm':
-    ball_pos_y +=1;
-    break;
-    case 'M':
-    ball_pos_y -=1;
-    break;
+    case 'p':
+        lig_4_pos +=5;
+        break;
+    case ' ':
+    ball_jump_cond = true;
+        break;
 
     }
+
 
     glutPostRedisplay();
 }

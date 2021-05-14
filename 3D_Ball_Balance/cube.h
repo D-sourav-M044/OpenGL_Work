@@ -24,7 +24,7 @@ static GLubyte c_ind[6][4] =
     {2,0,1,3}, //left
     {7,5,4,6}, //r
     {2,3,7,6}, //top
-    {1,0,5,4}, //bot
+    {1,0,4,5}, //bottom
     {6,4,0,2} //back
 };
 static void getNormal3p(GLfloat x1, GLfloat y1, GLfloat z1, GLfloat x2, GLfloat y2, GLfloat z2, GLfloat x3, GLfloat y3, GLfloat z3)

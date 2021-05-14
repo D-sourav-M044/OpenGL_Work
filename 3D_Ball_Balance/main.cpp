@@ -7,7 +7,8 @@ static int g_counter = 0;
 
 void sound()
 {
-    sndPlaySound("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\background_sound.wav", SND_ASYNC);
+    sndPlaySound("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\sounds\\background_sound.wav", SND_ASYNC);
+
     glutPostRedisplay();
 }
 

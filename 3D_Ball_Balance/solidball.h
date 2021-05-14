@@ -51,7 +51,7 @@ void obj_mat(float R, float G, float B)
     GLfloat mat_ambient[] = { R, G, B, 1.0 };
     GLfloat mat_diffuse[] = { R, G, B, 1.0 };
     GLfloat mat_specular[] = { 1,1,1, 1.0 };
-     GLfloat mat_emission[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat mat_emission[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat mat_shininess[] = {30};
 
     glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient);
@@ -69,8 +69,8 @@ void drawball(float r)
 
     ball_ind_point_load(r);
 
-    glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D,7);
+//    glEnable(GL_TEXTURE_2D);
+//    glBindTexture(GL_TEXTURE_2D,7);
 
     obj_mat(1,0,0);
     glBegin(GL_QUADS);
@@ -91,11 +91,38 @@ void drawball(float r)
     }
     glEnd();
 
-    glDisable(GL_TEXTURE_2D);
+    //glDisable(GL_TEXTURE_2D);
 
 
 }
 
+void torch_top(float r=7)
+{
+    ball_ind_point_load(r);
+
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D,6);
+
+    glBegin(GL_QUADS);
+    for(int i=0; i<780; i++)
+    {
+        if(i%2)
+            obj_mat(1,1,1);
+        else
+            obj_mat(1,0,0);
+        glTexCoord2f(0,0);
+        glVertex3fv(&v_ball[i][0]);
+        glTexCoord2f(0,1);
+        glVertex3fv(&v_ball[i+1][0]);
+        glTexCoord2f(1,1);
+        glVertex3fv(&v_ball[i+21][0]);
+        glTexCoord2f(1,0);
+        glVertex3fv(&v_ball[i+20][0]);
+    }
+    glEnd();
+
+    glDisable(GL_TEXTURE_2D);
+}
 //void torus()
 //{
 //    GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
@@ -126,3 +153,28 @@ void c_ball()
     glPopMatrix();
 }
 
+
+void ball_try()
+{
+    float ball_radi = 8;
+
+//    for(float ball_radi =0.1; ball_radi<=8; ball_radi += 0.1)
+//    {
+        float ball_rot = 0;
+        glPushMatrix();
+        glTranslatef(0,ball_radi+0.1,0);
+        for(int i=0; i<100; i++)
+        {
+            glPushMatrix();
+
+            glRotatef(ball_rot,0,0,1); glTranslatef(ball_radi,0,0);
+            glScalef(ball_radi,1,ball_radi);
+            glTranslatef(-0.5,-0.5,-0.5);
+            cube();
+            glPopMatrix();
+            ball_rot +=5;
+        }
+        glPopMatrix();
+//    }
+
+}

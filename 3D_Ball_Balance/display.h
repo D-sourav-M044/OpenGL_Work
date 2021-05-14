@@ -13,45 +13,51 @@ static void display(void)
 
 
     glRotatef(m_rot,0,1,0);
-    //extra_light();
-    //axes();
 
-//   // ball
+//score_board();
+
+    axes();
+//
+    // ball
 //    glPushMatrix();
 //    glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
 //    ball();
 //    glPopMatrix();
 //
 //
-////up_down_flr
-//    glPushMatrix();
-//    up_down_flr();
-//    glPopMatrix();
-//
+//////up_down_flr
+////    //up_down_flr();
+////
 ////moving
-//    glPushMatrix();
 //    floor();
-//    glPopMatrix();
-//
-//
-//
-//starting flr
-//    glPushMatrix();
+////
+//////starting
 //    normal_flr();
+//////
+////////
+//short_way();
+//road();
+////////
+////////drawball(7);
+//////
+////
+//    water_flr();
+//    back_side();
+//front_side();
+//    left_side_wall();
+////rain_fall();
+////thunder_effect();
+//
+//    glPushMatrix();
+//    glTranslatef(0,-50,-100);
+//    glScalef(2,2,2);
+//    torch();
 //    glPopMatrix();
-//
-//
-//
-//    //road();
-//
-//
-//
-//water_flr();
-//back_side();
-//left_side_wall();
-//rain_fall();
 
-thunder_effect();
+//        moving_flr();
+
+    search_light_house();
+    ball_try();
 
 
     //glDisable(GL_TEXTURE_2D);

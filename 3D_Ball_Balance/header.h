@@ -13,14 +13,15 @@ int ok_ball = false;
 float area[100][6];
 int port[20]= {0,0,0,0,0,0,0,0,0,0};
 float lig_4_pos = 0;
-
+#include "cube.h"
+#include "solidball.h"
 #include "ball.h"
 #include "ball_position.h"
 #include "lighting_effect.h"
-#include "cube.h"
+
 #include "axes.h"
 
-#include "solidball.h"
+
 #include "torch.h"
 
 
@@ -43,6 +44,7 @@ float lig_4_pos = 0;
 #include "short_way.h"
 #include "score_board.h"
 #include "search_light_house.h"
+#include "starting_view.h"
 #include "display.h"
 
 

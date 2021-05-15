@@ -8,7 +8,10 @@ static void display(void)
     glFrustum(-lim, lim, -lim, lim, 4, 1000);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity() ;
+    //if(!starting_view_animation_x && !starting_view_animation_z)
     gluLookAt(eye[0],eye[1],eye[2], look[0],look[1],look[2], 0,1,0);
+//    else
+//     gluLookAt(eye_ani[0],eye_ani[1],eye_ani[2], look_ani[0],look_ani[1],look_ani[2], 0,1,0);
 
 
 
@@ -19,49 +22,47 @@ static void display(void)
     axes();
 //
     // ball
-//    glPushMatrix();
-//    glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
-//    ball();
-//    glPopMatrix();
+    glPushMatrix();
+    glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
+    ball();
+    glPopMatrix();
+
+
+////up_down_flr
+//    //up_down_flr();
 //
-//
-//////up_down_flr
-////    //up_down_flr();
-////
-////moving
-//    floor();
+//moving
+   floor();
 ////
 //////starting
-//    normal_flr();
+    normal_flr();
 //////
 ////////
-//short_way();
-//road();
-////////
-////////drawball(7);
-//////
-////
-//    water_flr();
-//    back_side();
-//front_side();
-//    left_side_wall();
-////rain_fall();
-////thunder_effect();
+    short_way();
+    road();
+
+    water_flr();
+    back_side();
+    front_side();
+    left_side_wall();
+//rain_fall();
+thunder_effect();
 //
-//    glPushMatrix();
-//    glTranslatef(0,-50,-100);
-//    glScalef(2,2,2);
-//    torch();
-//    glPopMatrix();
+    glPushMatrix();
+    glTranslatef(0,-50,-100);
+    glScalef(2,2,2);
+    torch();
+    glPopMatrix();
 
-//        moving_flr();
-
+    moving_flr();
+//
     search_light_house();
-    ball_try();
-
+//
+//    starting_view();
 
     //glDisable(GL_TEXTURE_2D);
 
+//drawball(8);
     glFlush();
     glutSwapBuffers();
 }
@@ -114,6 +115,7 @@ void welcomedisplay()
 
 void myTimer (int val)
 {
+
     glutDisplayFunc(display);
     extra_light();
     glEnable(GL_LIGHTING);

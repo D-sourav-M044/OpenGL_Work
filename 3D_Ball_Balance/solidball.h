@@ -1,4 +1,4 @@
-
+float sphere_up = 8;
 static GLfloat v_ball[1600][3];
 static bool v_ball_load = false;
 
@@ -12,14 +12,14 @@ void ball_ind_point_load(float r)
         int num_segments = 80;
         float cx, cy;
         GLfloat y = 0;
-        float slice = r/40;
-        float y_inc = r/10;
-        float circle_radius = 0 ;
 
+//        float y_inc = slice;
+//        float circle_radius = 0 ;
+        int cir = 0;
         for(int seg = 0; seg <1600 ; seg+=20)
         {
             int ii = 1;
-
+            float circle_radius = sqrt(r*r-(r-cir)*(r-cir));
             for(int ind =seg; ind<seg+20 ; ind++)
             {
                 float theta = 2.0f * 3.1415926f * float(ii) / float(num_segments);//get the current angle
@@ -33,13 +33,26 @@ void ball_ind_point_load(float r)
 
                 ii+=4;
             }
-            y += slice;
+
+
             if(circle_radius >= r)
                 sl_flag = true;
             if(sl_flag)
-                circle_radius -= slice;
+            {
+                //circle_radius -= slice;
+                cir--;
+                y =(r+(r-cir));
+                cout<<y<<endl;
+            }
+
             else
-                circle_radius += slice;
+            {
+                //circle_radius += slice;
+                cir++;
+                y = cir;
+            }
+
+
 
         }
     }
@@ -65,12 +78,15 @@ void drawball(float r)
 {
 //    float R = 0.1,G=0.8,B =0.2;
 
-
+//
+    glPushMatrix();
+    //glRotatef(90,0,1,0);
+    glTranslatef(0,-r,0);
 
     ball_ind_point_load(r);
 
-//    glEnable(GL_TEXTURE_2D);
-//    glBindTexture(GL_TEXTURE_2D,7);
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D,3);
 
     obj_mat(1,0,0);
     glBegin(GL_QUADS);
@@ -91,7 +107,8 @@ void drawball(float r)
     }
     glEnd();
 
-    //glDisable(GL_TEXTURE_2D);
+    glDisable(GL_TEXTURE_2D);
+
 
 
 }
@@ -145,13 +162,13 @@ void torch_top(float r=7)
 //    glPopMatrix();
 //}
 
-void c_ball()
-{
-    glPushMatrix();
-    glutSolidSphere(5,16,16);
-    torus();
-    glPopMatrix();
-}
+//void c_ball()
+//{
+//    glPushMatrix();
+//    glutSolidSphere(5,16,16);
+//    torus();
+//    glPopMatrix();
+//}
 
 
 void ball_try()

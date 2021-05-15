@@ -7,7 +7,7 @@ float  ball_speed = 0;
 bool ball_speed_in = false;
 bool ball_jump_cond = false;
 
-float ball_pos_x = 350, ball_pos_y = radius+(6/2), ball_pos_z = -10;
+float ball_pos_x = 0, ball_pos_y = radius+(6/2), ball_pos_z = 130;
 
 bool ball_pos_store_chance = true;
 float ball_st_pos_x = 0, ball_st_pos_y = radius+(6/2), ball_st_pos_z = 0;
@@ -131,27 +131,28 @@ void ball()
     glTranslatef(ball_pos_x, ball_pos_y, ball_pos_z);
     glRotatef(ball_int_rot,ball_int_rot_x,ball_int_rot_y,ball_int_rot_z);
 
-    torus(1,0,1);
-    //horizontal torus
-    glPushMatrix();
-    glRotatef(90,1,0,0);
-    torus(1,0,1);
-    glPopMatrix();
+//    torus(1,0,1);
+//    //horizontal torus
+//    glPushMatrix();
+//    glRotatef(90,1,0,0);
+//    torus(1,0,1);
+//    glPopMatrix();
+//
+//    //vertical torus
+//    glPushMatrix();
+//    glRotatef(90,0,1,0);
+//    glRotatef(40,0,1,0);
+//    torus(1,0,1);
+//    glPopMatrix();
+//    glPushMatrix();
+//    glRotatef(90,0,1,0);
+//    glRotatef(-40,0,1,0);
+//    torus(1,0,1);
+//    glPopMatrix();
+//
 
-    //vertical torus
-    glPushMatrix();
-    glRotatef(90,0,1,0);
-    glRotatef(40,0,1,0);
-    torus(1,0,1);
-    glPopMatrix();
-    glPushMatrix();
-    glRotatef(90,0,1,0);
-    glRotatef(-40,0,1,0);
-    torus(1,0,1);
-    glPopMatrix();
-
-
-    sphere();
+    //sphere();
+    drawball(radius);
     glPopMatrix();
 
 

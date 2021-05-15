@@ -67,6 +67,7 @@
 		<Unit filename="short_way.h" />
 		<Unit filename="side_wall.h" />
 		<Unit filename="solidball.h" />
+		<Unit filename="starting_view.h" />
 		<Unit filename="thunder_effect.h" />
 		<Unit filename="torch.h" />
 		<Unit filename="up_down_flr.h" />

@@ -28,9 +28,10 @@ int main(int argc, char *argv[])
 
     glutDisplayFunc(display);
     //glutDisplayFunc(welcomedisplay);
+    //glutDisplayFunc(starting_view);
     glutKeyboardFunc(key);
 
-    //glutTimerFunc(4000,myTimer,0);
+   // glutTimerFunc(4000,myTimer,0);
 
 
     extra_light();

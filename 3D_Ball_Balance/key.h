@@ -1,7 +1,7 @@
 int up=0,down=0,r=0,l=0,f=0,b=0;
 int m_rot = 0;
 
-//GLfloat eye[] = {0,20,50};
+//GLfloat eye[] = {0,20,30};
 //GLfloat look[] = {0,20,-100};
 
 //GLfloat eye[] = {250,50,80};
@@ -14,7 +14,7 @@ GLfloat look[] = {ball_pos_x,50,-200};
 //GLfloat look[] = {0,10,-100};
 
 
-GLfloat eye_ani[] = {700,80,-250};
+GLfloat eye_ani[] = {600,80,-250};
 GLfloat look_ani[] = {0,80,-100};
 
 static void key(unsigned char key, int x, int y)

@@ -10,7 +10,7 @@ bool ball_jump_cond = false;
 float ball_pos_x = 0, ball_pos_y = radius+(6/2), ball_pos_z = 130;
 
 bool ball_pos_store_chance = true;
-float ball_st_pos_x = 0, ball_st_pos_y = radius+(6/2), ball_st_pos_z = 0;
+float ball_st_pos_x = 0, ball_st_pos_y = radius+(6/2), ball_st_pos_z = 130;
 
 
 float ball_rot = 0;
@@ -46,8 +46,9 @@ void ball_material_property()
     glMaterialfv( GL_FRONT, GL_EMISSION, mat_emission);
 }
 
-void store_ball_pos()
+void store_ball_pos(bool st_pos = false)
 {
+    ball_pos_store_chance = st_pos;
     if(ball_pos_store_chance)
     {
         ball_pos_store_chance = !ball_pos_store_chance;
@@ -116,8 +117,8 @@ void ball()
 {
 
     store_ball_pos();
-    glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, 1);
+//    glEnable(GL_TEXTURE_2D);
+//    glBindTexture(GL_TEXTURE_2D, 1);
     //ball_material_property();
 
     glPushMatrix();
@@ -132,13 +133,13 @@ void ball()
     glRotatef(ball_int_rot,ball_int_rot_x,ball_int_rot_y,ball_int_rot_z);
 
 //    torus(1,0,1);
-//    //horizontal torus
+//    horizontal torus
 //    glPushMatrix();
 //    glRotatef(90,1,0,0);
 //    torus(1,0,1);
 //    glPopMatrix();
 //
-//    //vertical torus
+//    vertical torus
 //    glPushMatrix();
 //    glRotatef(90,0,1,0);
 //    glRotatef(40,0,1,0);
@@ -149,7 +150,7 @@ void ball()
 //    glRotatef(-40,0,1,0);
 //    torus(1,0,1);
 //    glPopMatrix();
-//
+
 
     //sphere();
     drawball(radius);
@@ -161,7 +162,7 @@ void ball()
     //ball_jump();
     glPopMatrix();
 
-    glDisable(GL_TEXTURE_2D);
+    //glDisable(GL_TEXTURE_2D);
 }
 
 

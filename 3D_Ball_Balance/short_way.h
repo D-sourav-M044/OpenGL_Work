@@ -11,6 +11,7 @@ void short_way()
     {
         port[3]=1;
          ball_speed_in = true;
+         store_ball_pos(1);
 
     }
     else
@@ -42,6 +43,7 @@ void short_way()
     {
         port[4] = 1;
         ball_speed_in = true;
+        store_ball_pos(1);
     }
     else
     {

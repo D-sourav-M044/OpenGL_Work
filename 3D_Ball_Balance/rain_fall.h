@@ -14,9 +14,9 @@ void rain_fall()
     float rain_len = 0.1, rain_height = 5, rain_width = 0.1;
     for(int f = 500; f>=0; f -= 50)
     {
-        for(int i= -area_width/2; i<=area_width/2; i+=20)
+        for(int i= -(area_width/2-100); i<=area_width/2-100; i+=20)
         {
-            for(int j= -area_len/2; j<= area_len/2; j+=20)
+            for(int j= -(area_len/2-200); j<= area_len/2-200; j+=20)
             {
                 glPushMatrix();
                 glRotatef(5,0,0,1);

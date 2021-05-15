@@ -71,7 +71,7 @@ void fan()
         glPushMatrix();
         //glTranslatef(0,top_width-(6*top_height),0);
         glRotatef(base_rot,0,1,0);
-        glScalef(base,base/4,base);
+        glScalef(base/4,base/4,base/4);
         glTranslatef(-0.5,0.0,-0.5);
         cube(0.804, 0.361, 0.361);
         glPopMatrix();
@@ -82,10 +82,10 @@ void fan()
     {
         glPushMatrix();
         glRotatef(120*i,0,1,0);
-        glTranslatef((2*base)/2+base/2,base/8,0);
+        glTranslatef((2*base)/2,base/8,0);
         glScalef(2*base,0.2*base,base/2);
         glTranslatef(-0.5,0.0,-0.5);
-        cube(0.5, 0.4, 0.3);
+        cube(0.1, 0.4, 0.3);
         glPopMatrix();
     }
 

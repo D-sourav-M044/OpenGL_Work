@@ -36,19 +36,22 @@ void torch()
     float t_hangle_rot = 0;
 
     glPushMatrix();
-    //glTranslatef(-200,-200,-300);
+    ////glTranslatef(-200,-200,-300);
 
     for(int i=0; i<100; i++)
     {
         glEnable(GL_TEXTURE_2D);
-        glBindTexture(GL_TEXTURE_2D,1);
+        glBindTexture(GL_TEXTURE_2D,12);
 
         glPushMatrix();
         glRotatef(t_hangle_rot,0,1,0);
         glTranslatef(0,-50,0);
         glScalef(10,200,10);
         glTranslatef(-0.5,-0.5,-0.5);
-        cube(1,0,1,1,1);
+        if(i%2)
+        cube(0.5,0,0,0,1);
+        else
+            cube(0,0.5,0,0,1);
         glPopMatrix();
 
         glDisable(GL_TEXTURE_2D);

@@ -24,7 +24,8 @@ void road()
     if(here)
     {
         port[5]=1;
-        cout<<"in road"<<endl;
+        //cout<<"in road"<<endl;
+        store_ball_pos(1);
     }
     else
     {
@@ -154,7 +155,7 @@ void road()
         bool ball_collition_z = ( ball_collition_z_1 || ball_collition_z_2 );
         if( ball_collition_x  && ball_collition_z )
         {
-            cout<<"milche"<<endl;
+            //cout<<"milche"<<endl;
             ball_pos_x += bar_x*bar_pos_x;
 
         }

@@ -114,7 +114,7 @@ void obj_mat(float R, float G, float B)
     GLfloat mat_ambient[] = { R, G, B, 1.0 };
     GLfloat mat_diffuse[] = { R, G, B, 1.0 };
     GLfloat mat_specular[] = { 0.5,0.5,0.5, 1.0 };
-    //GLfloat mat_emission[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat mat_emission[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat mat_shininess[] = {30};
 
     glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient);
@@ -229,35 +229,6 @@ void torch_top(float r=7)
 
     glDisable(GL_TEXTURE_2D);
 }
-//void torus()
-//{
-//    GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
-//    GLfloat mat_ambient[] = { 0.5, 0.0, 0.0, 1.0 };
-//    GLfloat mat_diffuse[] = { 0.5, 0.0, 0.0, 1.0 };
-//    GLfloat mat_diffuse[] = { 1.0, 1.0, 0.0, 1.0 };
-//    GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
-//    GLfloat mat_specular[] = { 1, 1, 0, 1.0 };
-//    GLfloat mat_shininess[] = {30};
-//
-//    glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient);
-//    glMaterialfv( GL_FRONT, GL_DIFFUSE, mat_diffuse);
-//    glMaterialfv( GL_FRONT, GL_SPECULAR, mat_specular);
-//    glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
-//
-//
-//    glPushMatrix();
-//    glutSolidSphere(8,20,16);
-//    glutSolidTorus(0.5,5,16,16);
-//    glPopMatrix();
-//}
-
-//void c_ball()
-//{
-//    glPushMatrix();
-//    glutSolidSphere(5,16,16);
-//    torus();
-//    glPopMatrix();
-//}
 
 
 void ball_try()

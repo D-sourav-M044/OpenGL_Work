@@ -1,14 +1,14 @@
 
 
-float f_y =0, f_yi = 1;
+float f_y =0, f_yi = 1.5;
 void f_up()
 {
 
     f_y += f_yi;
     if(f_y>=500)
-        f_yi = -1;
+        f_yi = -1.5;
     if(f_y<=0)
-        f_yi = 1;
+        f_yi = 1.5;
 
     glutPostRedisplay();
 }
@@ -39,7 +39,7 @@ void finishing_flr()
         look[1] += f_yi;
         store_ball_pos(1);
         f_up();
-        glutTimerFunc(1000,end_scene_timer,1);
+        glutTimerFunc(2000,end_scene_timer,1);
     }
     else
     {

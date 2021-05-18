@@ -1,14 +1,14 @@
 int up=0,down=0,r=0,l=0,f=0,b=0;
 int m_rot = 0;
 
-GLfloat eye[] = {0,50,180};
-GLfloat look[] = {0,50,-1000};
+//GLfloat eye[] = {0,50,180};
+//GLfloat look[] = {0,50,-1000};
 
 //GLfloat eye[] = {350,50,-150};
 //GLfloat look[] = {350,50,-1000};
 
-//GLfloat eye[] = {ball_pos_x,50,ball_pos_z+50};
-//GLfloat look[] = {ball_pos_x,50,-200};
+GLfloat eye[] = {ball_pos_x,50,ball_pos_z+50};
+GLfloat look[] = {ball_pos_x,50,-200};
 
 //GLfloat eye[] = {0,200,30};
 //GLfloat look[] = {0,10,-100};

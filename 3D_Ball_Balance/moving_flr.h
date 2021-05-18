@@ -1,7 +1,7 @@
 
 float fan_rt = 0;
 
-float move_var = 0, move_ind = 1;
+float move_var = 0, move_ind = 1.5;
 bool move_on = true;
 void flr_move_on(int val)
 {
@@ -13,9 +13,9 @@ void _move()
     {
         move_var += move_ind;
         if(move_var>=220.50)
-            move_ind = -1;
+            move_ind = -1.5;
         else if(move_var<=0)
-            move_ind = 1;
+            move_ind = 1.5;
 
         if(move_var == 0 || move_var >=220.50)
         {

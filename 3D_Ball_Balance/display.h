@@ -9,6 +9,8 @@ static void display(void)
     if(end_scen_enable)
     {
         time(&end_time);
+        //glDisable(GL_LIGHTING);
+        //cout<<"finishi_"<<endl;
         glutDisplayFunc(end_scene);
     }
     if(!end_scen_enable)
@@ -23,11 +25,12 @@ static void display(void)
     {
         gluLookAt(eye[0],eye[1],eye[2], look[0],look[1],look[2], 0,1,0);
         //cout<<"eye_check"<<endl;
-        //rain_fall();
+        rain_fall();
+        thunder_effect();
     }
 
-//    else
-//     gluLookAt(eye_ani[0],eye_ani[1],eye_ani[2], look_ani[0],look_ani[1],look_ani[2], 0,1,0);
+    else if(!end_scen_enable)
+     gluLookAt(eye_ani[0],eye_ani[1],eye_ani[2], look_ani[0],look_ani[1],look_ani[2], 0,1,0);
 
 
 
@@ -64,7 +67,7 @@ static void display(void)
     front_side();
     left_side_wall();
 //rain_fall();
-//thunder_effect();
+
 //
     glPushMatrix();
     glTranslatef(0,-50,-100);
@@ -77,10 +80,10 @@ static void display(void)
     search_light_house();
     ice_hill();
 //
-    //starting_view();
+    starting_view();
 
     finishing_flr();
-//end_scene();
+
 
     //drawball(8);
 
@@ -106,21 +109,21 @@ void welcomedisplay()
 
     //Text-2
     glColor3f(1,1,1);
-    glRasterPos3f(0,0.2,0);
+    glRasterPos3f(-0.05,0.2,0);
     char msg2[] = "Presented By:";
     for(int i=0; i<strlen(msg2); i++)
         glutBitmapCharacter(GLUT_BITMAP_9_BY_15,msg2[i]);
 
     //text-3
     glColor3f(1,1,1);
-    glRasterPos3f(0,0.1,0);
+    glRasterPos3f(-0.05,0.1,0);
     char msg3[] = "Sourav M Dipto";
     for(int i=0; i<strlen(msg3); i++)
         glutBitmapCharacter(GLUT_BITMAP_9_BY_15,msg3[i]);
 
     //text-4
     glColor3f(1,1,1);
-    glRasterPos3f(0,0,0);
+    glRasterPos3f(-0.05,0,0);
     char msg4[] = "CSE, KUET";
     for(int i=0; i<strlen(msg4); i++)
         glutBitmapCharacter(GLUT_BITMAP_9_BY_15,msg4[i]);

@@ -1,8 +1,8 @@
 
-//bool starting_view_animation_z = true;
-//bool starting_view_animation_x = true;
-bool starting_view_animation_z = false;
-bool starting_view_animation_x = false;
+bool starting_view_animation_z = true;
+bool starting_view_animation_x = true;
+//bool starting_view_animation_z = false;
+//bool starting_view_animation_x = false;
 
 
 void view_animation()

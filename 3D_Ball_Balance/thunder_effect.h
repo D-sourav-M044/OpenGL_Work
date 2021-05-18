@@ -137,7 +137,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
         }
         glScalef(1,20,2);
         glTranslatef(-0.5,-0.5,-0.5);
-        cube(0.0,0.0,1,1,1);
+        cube(1,1,0,0,1);
         glPopMatrix();
 
         glDisable(GL_TEXTURE_2D);
@@ -169,7 +169,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
         }
         glScalef(2,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
-        cube(0.0,0.0,1,1,1);
+        cube(1,1,0,0,1);
         glPopMatrix();
 
         glDisable(GL_TEXTURE_2D);
@@ -199,7 +199,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
         }
         glScalef(1,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
-        cube(0.0,0.0,1,1,1);
+        cube(1,1,0,0,1);
         glPopMatrix();
 
         glDisable(GL_TEXTURE_2D);
@@ -230,7 +230,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
         }
         glScalef(1,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
-        cube(0.0,0.0,1,1,1);
+        cube(1,1,0,0,1);
         glPopMatrix();
 
         glDisable(GL_TEXTURE_2D);
@@ -259,7 +259,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
         }
         glScalef(1,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
-        cube(0.0,0.0,1,1,1);
+        cube(1,1,0,0,1);
         glPopMatrix();
 
         glDisable(GL_TEXTURE_2D);
@@ -288,7 +288,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
         }
         glScalef(1,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
-        cube(0.0,0.0,1,1,1);
+        cube(1,1,0,0,1);
         glPopMatrix();
 
         glDisable(GL_TEXTURE_2D);
@@ -318,7 +318,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
         }
         glScalef(1,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
-        cube(0.0,0.0,1,1,1);
+        cube(1,1,0,0,1);
         glPopMatrix();
 
         glDisable(GL_TEXTURE_2D);
@@ -348,7 +348,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
         }
         glScalef(1,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
-        cube(0.0,0.0,1,1,1);
+        cube(1,1,0,0,1);
         glPopMatrix();
 
         glDisable(GL_TEXTURE_2D);

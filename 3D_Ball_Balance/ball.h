@@ -37,12 +37,12 @@ void ball_material_property()
     GLfloat mat_diffuse[] = { 0.5, 0.5, 0.5, 1.0 };
     GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
     //GLfloat mat_emission[] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat mat_shininess[] = {30};
+    //GLfloat mat_shininess[] = {30};
 
     glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient);
     glMaterialfv( GL_FRONT, GL_DIFFUSE, mat_diffuse);
     glMaterialfv( GL_FRONT, GL_SPECULAR, mat_specular);
-    glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
+    //glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
     //glMaterialfv( GL_FRONT, GL_EMISSION, mat_emission);
 }
 

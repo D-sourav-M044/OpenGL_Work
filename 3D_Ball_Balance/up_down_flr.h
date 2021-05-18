@@ -1,4 +1,4 @@
-float u_d = 0, u_d_i = 0.5;
+float u_d = 0, u_d_i = 1;
 bool side_cube = true;
 bool on = true;
 void make_on(int val)
@@ -11,9 +11,9 @@ void up_down()
     {
         u_d += u_d_i;
         if(u_d>=150)
-            u_d_i = -0.5;
+            u_d_i = -1;
         else if(u_d<0)
-            u_d_i = 0.5;
+            u_d_i = 1;
 
         if(u_d == 0 || u_d == 150)
         {

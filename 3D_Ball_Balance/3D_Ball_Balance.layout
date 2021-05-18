@@ -2,49 +2,19 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="load_texture.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="end_scene.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1406" topLine="8" />
+			<Cursor1 position="1080" topLine="12" />
 		</Cursor>
 	</File>
-	<File name="header.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="359" topLine="7" />
+			<Cursor1 position="987" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="score_board.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="BmpLoader.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1344" topLine="12" />
-		</Cursor>
-	</File>
-	<File name="normal_flr.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="190" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="display.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1283" topLine="39" />
-		</Cursor>
-	</File>
-	<File name="moving_flr.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1747" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="rain_fall.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="277" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="search_light_house.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2042" topLine="69" />
-		</Cursor>
-	</File>
-	<File name="short_way.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="969" topLine="36" />
+			<Cursor1 position="979" topLine="7" />
 		</Cursor>
 	</File>
 	<File name="water_flr.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -57,9 +27,29 @@
 			<Cursor1 position="288" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="axes.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="finishing_flr.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="205" topLine="0" />
+			<Cursor1 position="262" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="ball_position.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="88" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="score_board.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1344" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="floor.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5666" topLine="207" />
+		</Cursor>
+	</File>
+	<File name="display.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1144" topLine="45" />
 		</Cursor>
 	</File>
 	<File name="front_side.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -67,34 +57,9 @@
 			<Cursor1 position="178" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="ball.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="header.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="352" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="key.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="232" topLine="144" />
-		</Cursor>
-	</File>
-	<File name="floor.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3095" topLine="111" />
-		</Cursor>
-	</File>
-	<File name="lighting_effect.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2322" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="road.h" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4350" topLine="116" />
-		</Cursor>
-	</File>
-	<File name="starting_view.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="197" topLine="0" />
+			<Cursor1 position="185" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="curve.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -102,22 +67,93 @@
 			<Cursor1 position="609" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="solidball.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="load_texture.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5763" topLine="21" />
+			<Cursor1 position="2661" topLine="19" />
+		</Cursor>
+	</File>
+	<File name="ice_hill.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1211" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="axes.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="205" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lighting_effect.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2322" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="short_way.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="969" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="rain_fall.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="374" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="search_light_house.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2042" topLine="69" />
+		</Cursor>
+	</File>
+	<File name="starting_view.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="165" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="key.h" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="420" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="road.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4391" topLine="147" />
+		</Cursor>
+	</File>
+	<File name="moving_flr.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2016" topLine="90" />
+		</Cursor>
+	</File>
+	<File name="up_down_flr.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="634" topLine="24" />
+		</Cursor>
+	</File>
+	<File name="back_side.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="420" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="solidball.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5319" topLine="1" />
 		</Cursor>
 		<Folding>
 			<Collapse line="7" />
+			<Collapse line="61" />
+			<Collapse line="111" />
+			<Collapse line="127" />
+			<Collapse line="205" />
+			<Collapse line="232" />
+			<Collapse line="263" />
 		</Folding>
+	</File>
+	<File name="ball.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4203" topLine="153" />
+		</Cursor>
 	</File>
 	<File name="thunder_effect.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3378" topLine="210" />
-		</Cursor>
-	</File>
-	<File name="up_down_flr.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="860" topLine="21" />
 		</Cursor>
 	</File>
 	<File name="BmpLoader.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -125,38 +161,22 @@
 			<Cursor1 position="330" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="ball_position.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="normal_flr.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="273" topLine="0" />
+			<Cursor1 position="190" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="torch.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="cube.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1006" topLine="30" />
-		</Cursor>
-	</File>
-	<File name="BmpLoader.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="979" topLine="7" />
-		</Cursor>
-	</File>
-	<File name="cube.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="317" topLine="18" />
+			<Cursor1 position="1436" topLine="24" />
 		</Cursor>
 		<Folding>
 			<Collapse line="30" />
-			<Collapse line="49" />
 		</Folding>
 	</File>
-	<File name="back_side.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="torch.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="420" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="686" topLine="20" />
+			<Cursor1 position="741" topLine="47" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

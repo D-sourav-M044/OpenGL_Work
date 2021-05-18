@@ -30,6 +30,44 @@ void fire_y_cal()
         fire_y = 0;
     glutPostRedisplay();
 }
+
+void fire()
+{
+     bool fire_rot_flag = true;
+    for(int pos = 12; pos<=20; pos+=10)
+    {
+        for(float i=1; i<19; i+=1)
+        {
+            for(float j=0; j<15; j+=1)
+            {
+
+                glEnable(GL_TEXTURE_2D);
+                glBindTexture(GL_TEXTURE_2D,15);
+
+                glPushMatrix();
+                glTranslatef(fire_rot_angle/100,0,0);
+                glRotatef(fire_rot_angle/10,0,1,0);
+
+                glPushMatrix();
+                glTranslatef(0,-pos,0);
+                glTranslatef(i,fire_y,j);
+                glTranslatef(-10,60.5,-5);
+                glScaled(0.5,10,0.5);
+                glTranslatef(-0.5,-0.5,-0.5);
+                cube(0,0,1,1,1);
+                fire_y_cal();
+                glPopMatrix();
+
+                fire_animation();
+                glPopMatrix();
+
+                glDisable(GL_TEXTURE_2D);
+            }
+
+        }
+
+    }
+}
 void torch()
 {
     //handle
@@ -153,40 +191,9 @@ void torch()
     glPopMatrix();
 
     //fire
-    bool fire_rot_flag = true;
-    for(int pos = 12; pos<=20; pos+=10)
-    {
-        for(float i=1; i<19; i+=1)
-        {
-            for(float j=0; j<15; j+=1)
-            {
-
-                glEnable(GL_TEXTURE_2D);
-                glBindTexture(GL_TEXTURE_2D,15);
-
-                glPushMatrix();
-                glTranslatef(fire_rot_angle/100,0,0);
-                glRotatef(fire_rot_angle/10,0,1,0);
-
-                glPushMatrix();
-                glTranslatef(0,-pos,0);
-                glTranslatef(i,fire_y,j);
-                glTranslatef(-10,60.5,-5);
-                glScaled(0.5,10,0.5);
-                glTranslatef(-0.5,-0.5,-0.5);
-                cube(0,0,1,1,1);
-                fire_y_cal();
-                glPopMatrix();
-
-                fire_animation();
-                glPopMatrix();
-
-                glDisable(GL_TEXTURE_2D);
-            }
-
-        }
-
-    }
+    glPushMatrix();
+   fire();
+   glPopMatrix();
 
     glPopMatrix();
 

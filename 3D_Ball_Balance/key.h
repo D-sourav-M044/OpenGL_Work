@@ -1,14 +1,14 @@
 int up=0,down=0,r=0,l=0,f=0,b=0;
 int m_rot = 0;
 
-//GLfloat eye[] = {0,20,30};
-//GLfloat look[] = {0,20,-100};
+GLfloat eye[] = {0,50,180};
+GLfloat look[] = {0,50,-1000};
 
-//GLfloat eye[] = {250,50,80};
-//GLfloat look[] = {250,50,-100};
+//GLfloat eye[] = {350,50,-150};
+//GLfloat look[] = {350,50,-1000};
 
-GLfloat eye[] = {ball_pos_x,50,ball_pos_z+50};
-GLfloat look[] = {ball_pos_x,50,-200};
+//GLfloat eye[] = {ball_pos_x,50,ball_pos_z+50};
+//GLfloat look[] = {ball_pos_x,50,-200};
 
 //GLfloat eye[] = {0,200,30};
 //GLfloat look[] = {0,10,-100};
@@ -60,10 +60,10 @@ static void key(unsigned char key, int x, int y)
 
         if(ball_speed_in)
         {
-            cout<<" ball_speed "<< ball_speed<<endl;
+            //cout<<" ball_speed "<< ball_speed<<endl;
             ball_speed +=2;
         }
-
+        cout<<ball_pos_z<<endl;
         break;
     case 's':
         eye[2] = ball_pos_z+50;

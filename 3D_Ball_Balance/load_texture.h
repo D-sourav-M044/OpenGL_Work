@@ -43,5 +43,7 @@ void load_images()
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\front.bmp",16);
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\sky.bmp",17);
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\kuet_logo.bmp",18);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\ice_hill.bmp",19);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\finish_flr.bmp",20);
 
 }

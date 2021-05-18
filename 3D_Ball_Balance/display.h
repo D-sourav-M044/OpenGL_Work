@@ -5,40 +5,52 @@ static void display(void)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     int lim = 8;
-    glFrustum(-lim, lim, -6, 6, 4, 1000);
+    cout<<end_scen_enable<<endl;
+    if(end_scen_enable)
+    {
+        time(&end_time);
+        glutDisplayFunc(end_scene);
+    }
+    if(!end_scen_enable)
+    {
+        glFrustum(-lim, lim, -6, 6, 4, 1000);
+        //cout<<end_scen_enable<<endl;
+    }
+//
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity() ;
-//    if(!starting_view_animation_x && !starting_view_animation_z)
-//    {
+    if(!starting_view_animation_x && !starting_view_animation_z && !end_scen_enable)
+    {
         gluLookAt(eye[0],eye[1],eye[2], look[0],look[1],look[2], 0,1,0);
+        //cout<<"eye_check"<<endl;
         //rain_fall();
-//    }
+    }
 
 //    else
 //     gluLookAt(eye_ani[0],eye_ani[1],eye_ani[2], look_ani[0],look_ani[1],look_ani[2], 0,1,0);
 
 
 
-    glRotatef(m_rot,0,1,0);
+    //glRotatef(m_rot,0,1,0);
 
 //score_board();
-    glPushMatrix();
-    glTranslatef(0,8+6/2,130);
-    axes();
-    glPopMatrix();
-//
+//    glPushMatrix();
+//    glTranslatef(400,0,-200);
+//    axes();
+//    glPopMatrix();
+////
     // ball
     glPushMatrix();
     glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
     ball();
     glPopMatrix();
-
-
+//
+//
 ////up_down_flr
-//    //up_down_flr();
+    up_down_flr();
 //
 //moving
-   floor();
+    floor();
 ////
 //////starting
     normal_flr();
@@ -63,14 +75,21 @@ static void display(void)
     moving_flr();
 //
     search_light_house();
+    ice_hill();
 //
     //starting_view();
 
-    //glDisable(GL_TEXTURE_2D);
+    finishing_flr();
+//end_scene();
 
-//drawball(8);
+    //drawball(8);
+
     glFlush();
-    glutSwapBuffers();
+    if(!end_scen_enable)
+    {
+        glutSwapBuffers();
+    }
+
 }
 
 void welcomedisplay()

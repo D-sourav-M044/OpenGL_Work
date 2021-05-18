@@ -43,6 +43,7 @@ void ball_ind_point_load(float r)
                 //circle_radius -= slice;
                 cir--;
                 y =(r+(r-cir));
+                //y +=1;
                 //cout<<y<<endl;
             }
 
@@ -51,6 +52,7 @@ void ball_ind_point_load(float r)
                 //circle_radius += slice;
                 cir++;
                 y = cir;
+                //y += 1;
             }
 
         }
@@ -124,17 +126,16 @@ void obj_mat(float R, float G, float B)
 
 void drawball(float r)
 {
-//    float R = 0.1,G=0.8,B =0.2;
 
-//
+ball_ind_point_load(r);
+
     glPushMatrix();
-    //glRotatef(90,0,1,0);
     glTranslatef(0,-r,0);
 
-    ball_ind_point_load(r);
+
 
 //    glEnable(GL_TEXTURE_2D);
-//    glBindTexture(GL_TEXTURE_2D,3);
+//    glBindTexture(GL_TEXTURE_2D,6);
 
     bool ball_col_flag = 1;
     glBegin(GL_QUADS);

@@ -6,13 +6,19 @@
 #include <windows.h>
 #include <MMSystem.h>
 #include<math.h>
+#include <iostream>
 #include<bits/stdc++.h>
+#include <string.h>
 using namespace std;
 
+time_t st_time,end_time;
 int ok_ball = false;
 float area[100][6];
 int port[20]= {0,0,0,0,0,0,0,0,0,0};
+bool end_scen_enable = false;
+
 float lig_4_pos = 0;
+
 #include "cube.h"
 #include "solidball.h"
 #include "ball.h"
@@ -27,8 +33,9 @@ float lig_4_pos = 0;
 
 #include "normal_flr.h"
 #include "floor.h"
-#include "up_down_flr.h"
 #include "key.h"
+#include "up_down_flr.h"
+
 #include "BmpLoader.h"
 #include "load_texture.h"
 #include "water_flr.h"
@@ -45,6 +52,9 @@ float lig_4_pos = 0;
 #include "score_board.h"
 #include "search_light_house.h"
 #include "starting_view.h"
+#include "ice_hill.h"
+#include "end_scene.h"
+#include "finishing_flr.h"
 #include "display.h"
 
 

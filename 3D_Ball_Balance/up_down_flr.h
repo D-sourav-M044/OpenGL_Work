@@ -10,15 +10,15 @@ void up_down()
     if(on)
     {
         u_d += u_d_i;
-        if(u_d>50)
+        if(u_d>=150)
             u_d_i = -0.5;
-        else if(u_d<-50)
+        else if(u_d<0)
             u_d_i = 0.5;
 
-        if(u_d == 0)
+        if(u_d == 0 || u_d == 150)
         {
             on = false;
-            glutTimerFunc(3000,make_on,1);
+            glutTimerFunc(2000,make_on,1);
         }
     }
 
@@ -29,17 +29,18 @@ void up_down_flr()
 {
     //port -2
     float len = 100, height = 6, width = 40;
-    bool here = position_check(len/2, u_d+height/2, width/2, -30);
-    glPushMatrix();
-    glTranslatef(0,u_d,0);
-    glTranslatef(0,0,-30);
-
-
-    if(here && on)
+    bool here = position_check(len/2, u_d+height/2, width/2, -220,1,400);
+    if(here)
     {
         //cout<<"here"<<endl;
         port[2] = 1;
-        ball_pos_y += u_d_i;
+        if(on)
+        {
+            ball_pos_y += u_d_i;
+            eye[1] += u_d_i;
+            look[1] += u_d_i;
+        }
+        store_ball_pos(1);
         //cout<<"ball "<<ball_pos_y<<endl;
         //cout<<"plt "<<u_d+height/2<<endl;
 
@@ -48,8 +49,20 @@ void up_down_flr()
     {
         port[2] = 0;
         //cout<<"nah"<<endl;
-        //fall_detection();
+        fall_detection();
     }
+
+    //glPushMatrix();
+    //glTranslatef(400,0,-220);
+
+    glPushMatrix();
+    glTranslatef(0,u_d,0);
+    //glTranslatef(0,0,-30);
+    glTranslatef(400,0,-220);
+
+
+
+
 
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,4);
@@ -92,5 +105,7 @@ void up_down_flr()
 
     up_down();
     glPopMatrix();
+
+    // glPopMatrix();
 
 }

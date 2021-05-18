@@ -221,10 +221,10 @@
 	<_mingw.h>
 	<stddef.h>
 
-1621063850 source:c:\users\admin\desktop\3d_ball_balance\main.cpp
+1621271980 source:c:\users\admin\desktop\3d_ball_balance\main.cpp
 	"header.h"
 
-1621071763 c:\users\admin\desktop\3d_ball_balance\header.h
+1621272324 c:\users\admin\desktop\3d_ball_balance\header.h
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
@@ -233,7 +233,9 @@
 	<windows.h>
 	<MMSystem.h>
 	<math.h>
+	<iostream>
 	<bits/stdc++.h>
+	<string.h>
 	"cube.h"
 	"solidball.h"
 	"ball.h"
@@ -243,8 +245,8 @@
 	"torch.h"
 	"normal_flr.h"
 	"floor.h"
-	"up_down_flr.h"
 	"key.h"
+	"up_down_flr.h"
 	"BmpLoader.h"
 	"load_texture.h"
 	"water_flr.h"
@@ -260,6 +262,9 @@
 	"score_board.h"
 	"search_light_house.h"
 	"starting_view.h"
+	"ice_hill.h"
+	"end_scene.h"
+	"finishing_flr.h"
 	"display.h"
 
 1301111164 c:\program files (x86)\codeblocks\mingw\include\gl\gl.h
@@ -282,27 +287,27 @@
 
 1620915102 c:\users\admin\desktop\3d_ball_balance\lighting_effect.h
 
-1620931189 c:\users\admin\desktop\3d_ball_balance\floor.h
+1621274305 c:\users\admin\desktop\3d_ball_balance\floor.h
 
-1621102378 c:\users\admin\desktop\3d_ball_balance\key.h
+1621323537 c:\users\admin\desktop\3d_ball_balance\key.h
 
-1621103173 c:\users\admin\desktop\3d_ball_balance\ball.h
+1621323404 c:\users\admin\desktop\3d_ball_balance\ball.h
 
 1621009045 c:\users\admin\desktop\3d_ball_balance\ball_position.h
 
 1619799057 c:\users\admin\desktop\3d_ball_balance\draw_text.h
 
-1621102939 c:\users\admin\desktop\3d_ball_balance\display.h
+1621323404 c:\users\admin\desktop\3d_ball_balance\display.h
 
-1620918299 c:\users\admin\desktop\3d_ball_balance\load_texture.h
+1621184828 c:\users\admin\desktop\3d_ball_balance\load_texture.h
 
 1620922984 c:\users\admin\desktop\3d_ball_balance\normal_flr.h
 
-1620415082 c:\users\admin\desktop\3d_ball_balance\up_down_flr.h
+1621191345 c:\users\admin\desktop\3d_ball_balance\up_down_flr.h
 
 1619974241 c:\users\admin\desktop\3d_ball_balance\testball.h
 
-1621101127 c:\users\admin\desktop\3d_ball_balance\solidball.h
+1621318227 c:\users\admin\desktop\3d_ball_balance\solidball.h
 
 1620837254 c:\users\admin\desktop\3d_ball_balance\water_flr.h
 
@@ -310,9 +315,9 @@
 
 1620458842 c:\users\admin\desktop\3d_ball_balance\side_wall.h
 
-1621101825 c:\users\admin\desktop\3d_ball_balance\rain_fall.h
+1621153925 c:\users\admin\desktop\3d_ball_balance\rain_fall.h
 
-1621103054 c:\users\admin\desktop\3d_ball_balance\road.h
+1621323450 c:\users\admin\desktop\3d_ball_balance\road.h
 
 1620665620 c:\users\admin\desktop\3d_ball_balance\thunder_effect.h
 
@@ -322,7 +327,7 @@
 
 1621103029 c:\users\admin\desktop\3d_ball_balance\short_way.h
 
-1621101355 c:\users\admin\desktop\3d_ball_balance\torch.h
+1621246998 c:\users\admin\desktop\3d_ball_balance\torch.h
 
 1620835091 c:\users\admin\desktop\3d_ball_balance\front_side.h
 
@@ -332,5 +337,11 @@
 
 1621100059 c:\users\admin\desktop\3d_ball_balance\moving_flr.h
 
-1621064093 c:\users\admin\desktop\3d_ball_balance\starting_view.h
+1621251079 c:\users\admin\desktop\3d_ball_balance\starting_view.h
+
+1621153882 c:\users\admin\desktop\3d_ball_balance\ice_hill.h
+
+1621266177 c:\users\admin\desktop\3d_ball_balance\finishing_flr.h
+
+1621273206 c:\users\admin\desktop\3d_ball_balance\end_scene.h
 

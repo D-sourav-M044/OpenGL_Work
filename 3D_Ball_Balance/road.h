@@ -16,11 +16,11 @@ void bar_pos_x_cal()
 
 void road()
 {
-    //port -4
-    float road_len = 100, road_height = 6, road_width = 150;
+    //port -5
+    float road_len = 100, road_height = 6, road_width = 200;
 
     //position check
-    bool here = position_check(road_len/2, road_height/2, road_width/2, -75,1,400);
+    bool here = position_check(road_len/2, road_height/2, road_width/2, -100,1,400);
     if(here)
     {
         port[5]=1;
@@ -35,7 +35,7 @@ void road()
 
 
     glPushMatrix();
-    glTranslatef(400,0,-75);
+    glTranslatef(400,0,-100);
 
     //road && roof
     for(int i=0; i<=1; i++)
@@ -150,13 +150,13 @@ void road()
 
         bool ball_collition_x = ((ball_pos_x-400 <= (bar_x*bar_pos_x+bar_len/2-radius)) && (ball_pos_x-400 >= (bar_x*bar_pos_x-bar_len/2-radius)) );
 
-        bool ball_collition_z_1 = ((pos+bar_width/2)-75 <= ball_pos_z+radius) && ((pos+bar_width/2)-85 >= ball_pos_z-radius) ;
-        bool ball_collition_z_2 = ((pos-bar_width/2)-75 <= ball_pos_z+radius) && ((pos-bar_width/2)-85 >= ball_pos_z-radius) ;
+        bool ball_collition_z_1 = ((pos+bar_width/2)-100 <= ball_pos_z+radius) && ((pos+bar_width/2)-100 >= ball_pos_z-radius) ;
+        bool ball_collition_z_2 = ((pos-bar_width/2)-100 <= ball_pos_z+radius) && ((pos-bar_width/2)-100 >= ball_pos_z-radius) ;
         bool ball_collition_z = ( ball_collition_z_1 || ball_collition_z_2 );
         if( ball_collition_x  && ball_collition_z )
         {
             //cout<<"milche"<<endl;
-            ball_pos_x += bar_x*bar_pos_x;
+             ball_pos_x += bar_x*bar_pos_x;
 
         }
 

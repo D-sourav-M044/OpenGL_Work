@@ -48,12 +48,14 @@
 		<Unit filename="back_side.h" />
 		<Unit filename="ball.h" />
 		<Unit filename="ball_position.h" />
+		<Unit filename="control.h" />
 		<Unit filename="cube.h" />
 		<Unit filename="curve.h" />
 		<Unit filename="display.h" />
 		<Unit filename="end_scene.h" />
 		<Unit filename="finishing_flr.h" />
 		<Unit filename="floor.h" />
+		<Unit filename="fog.h" />
 		<Unit filename="front_side.h" />
 		<Unit filename="header.h" />
 		<Unit filename="ice_hill.h" />

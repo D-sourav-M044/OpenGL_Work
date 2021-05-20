@@ -24,24 +24,9 @@ void water_flr(float water_flr_len = 2500, float water_flr_height = 30, float wa
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 8);
 
-//    for(float i=-water_flr_width/2; i<=water_flr_width/2; i+=plot_width)
-//    {
-//        for(float j = -water_flr_len/2; j<= water_flr_len/2; j+= plot_len)
-//        {
-//            glPushMatrix();
-//            glTranslatef(w_flow,0,-water_flr_width/2);
-//            glTranslatef(j,-200,i);
-//            glScalef(plot_len,water_flr_height,plot_width);
-//            glTranslatef(-0.5,-0.5,-0.5);
-//            cube(0,0,0.5,0,1);
-//            water_flow();
-//            glPopMatrix();
-//        }
-//    }
-
     glPushMatrix();
     glTranslatef(w_flow,0,0);
-    glTranslatef(0,-200,0);
+    glTranslatef(0,-200,-500);
     glScalef(water_flr_len,water_flr_height,water_flr_width);
     glTranslatef(-0.5,-0.5,-0.5);
     cube(0,0,1,0,1);
@@ -52,7 +37,7 @@ void water_flr(float water_flr_len = 2500, float water_flr_height = 30, float wa
     glDisable(GL_TEXTURE_2D);
 
     glPushMatrix();
-    glTranslatef(-400,-100,-400);
+    glTranslatef(-400,-150,-200);
     water_terbine();
     glPopMatrix();
 

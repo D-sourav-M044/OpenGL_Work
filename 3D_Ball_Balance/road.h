@@ -23,6 +23,7 @@ void road()
     bool here = position_check(road_len/2, road_height/2, road_width/2, -100,1,400);
     if(here)
     {
+        //fog();
         port[5]=1;
         //cout<<"in road"<<endl;
         store_ball_pos(1);

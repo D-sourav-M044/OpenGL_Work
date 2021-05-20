@@ -45,5 +45,11 @@ void load_images()
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\kuet_logo.bmp",18);
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\ice_hill.bmp",19);
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\finish_flr.bmp",20);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\side2.bmp",21);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\w.bmp",22);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\s.bmp",23);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\d.bmp",24);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\a.bmp",25);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\dir_arrow.bmp",26);
 
 }

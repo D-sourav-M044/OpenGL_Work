@@ -10,12 +10,16 @@ int m_rot = 0;
 GLfloat eye[] = {ball_pos_x,50,ball_pos_z+50};
 GLfloat look[] = {ball_pos_x,50,-200};
 
+
 //GLfloat eye[] = {0,200,30};
 //GLfloat look[] = {0,10,-100};
 
 
 GLfloat eye_ani[] = {600,80,-250};
 GLfloat look_ani[] = {0,80,-100};
+
+
+bool end_scene_status = true;
 
 static void key(unsigned char key, int x, int y)
 {
@@ -33,6 +37,9 @@ static void key(unsigned char key, int x, int y)
         break;
     case '4':
         light_4 = !light_4;
+        break;
+    case '5':
+        fog_on = !fog_on;
         break;
 
     //fan
@@ -63,7 +70,7 @@ static void key(unsigned char key, int x, int y)
             //cout<<" ball_speed "<< ball_speed<<endl;
             ball_speed +=2;
         }
-        cout<<ball_pos_z<<endl;
+        //cout<<ball_pos_z<<endl;
         break;
     case 's':
         eye[2] = ball_pos_z+50;
@@ -163,14 +170,9 @@ static void key(unsigned char key, int x, int y)
     case 'p':
         lig_4_pos +=5;
         break;
+
     case ' ':
-    ball_jump_cond = true;
-        break;
-    case 'm':
-        sphere_up +=1;
-        break;
-     case 'M':
-        sphere_up -=1;
+        end_scene_status = false;
         break;
 
     }

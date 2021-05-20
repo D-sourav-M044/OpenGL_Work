@@ -33,8 +33,10 @@ float lig_4_pos = 0;
 
 #include "normal_flr.h"
 #include "floor.h"
+#include "fog.h"
 #include "key.h"
 #include "up_down_flr.h"
+
 
 #include "BmpLoader.h"
 #include "load_texture.h"
@@ -55,6 +57,7 @@ float lig_4_pos = 0;
 #include "ice_hill.h"
 #include "end_scene.h"
 #include "finishing_flr.h"
+#include "control.h"
 #include "display.h"
 
 

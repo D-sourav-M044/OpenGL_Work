@@ -57,7 +57,7 @@ GLfloat light_ambient[]  = {0.1,0.1,0.1, 1.0};
 void extra_light()
 {
     //GLfloat no_light[] = { 0.0, 0.0, 0.0, 1.0 };
-    GLfloat light_ambient[]  = {0.1,0.1,0.1, 1.0};
+    GLfloat light_ambient[]  = {0.5,0.5,0.5, 1.0};
     GLfloat light_diffuse[]  = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
 //    GLfloat light_diffuse[]  = { 0.1, 0.1, 0.1, 1.0 };

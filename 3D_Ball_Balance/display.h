@@ -1,40 +1,54 @@
 
+
+
 static void display(void)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     int lim = 8;
-    cout<<end_scen_enable<<endl;
     if(end_scen_enable)
     {
         time(&end_time);
-        //glDisable(GL_LIGHTING);
-        //cout<<"finishi_"<<endl;
         glutDisplayFunc(end_scene);
     }
     if(!end_scen_enable)
     {
         glFrustum(-lim, lim, -6, 6, 4, 1000);
-        //cout<<end_scen_enable<<endl;
     }
 //
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity() ;
-    if(!starting_view_animation_x && !starting_view_animation_z && !end_scen_enable)
+    if((!starting_view_animation_x && !starting_view_animation_z) ||(!end_scene_status))
     {
-        gluLookAt(eye[0],eye[1],eye[2], look[0],look[1],look[2], 0,1,0);
-        //cout<<"eye_check"<<endl;
-        rain_fall();
-        thunder_effect();
+        if(!end_scen_enable)
+        {
+            gluLookAt(eye[0],eye[1],eye[2], look[0],look[1],look[2], 0,1,0);
+            rain_fall();
+            control_cube();
+            if(fog_on)
+            {
+                fog();
+
+            }
+
+            thunder_effect();
+        }
+
+
     }
 
-    else if(!end_scen_enable)
-     gluLookAt(eye_ani[0],eye_ani[1],eye_ani[2], look_ani[0],look_ani[1],look_ani[2], 0,1,0);
+    else if(!end_scen_enable && end_scene_status)
+    {
+        rain_fall();
+        //fog();
+        gluLookAt(eye_ani[0],eye_ani[1],eye_ani[2], look_ani[0],look_ani[1],look_ani[2], 0,1,0);
+    }
 
 
 
-    //glRotatef(m_rot,0,1,0);
+
+    glRotatef(m_rot,0,1,0);
 
 //score_board();
 //    glPushMatrix();
@@ -47,45 +61,39 @@ static void display(void)
     glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
     ball();
     glPopMatrix();
-//
-//
-////up_down_flr
+
+
     up_down_flr();
-//
-//moving
     floor();
-////
-//////starting
     normal_flr();
-//////
-////////
     short_way();
     road();
+    moving_flr();
+    finishing_flr();
 
+    //extra scene
     water_flr();
     back_side();
     front_side();
     left_side_wall();
-//rain_fall();
+    ice_hill();
 
-//
     glPushMatrix();
     glTranslatef(0,-50,-100);
     glScalef(2,2,2);
     torch();
     glPopMatrix();
 
-    moving_flr();
+
 //
     search_light_house();
-    ice_hill();
-//
+
+
     starting_view();
 
-    finishing_flr();
 
 
-    //drawball(8);
+
 
     glFlush();
     if(!end_scen_enable)

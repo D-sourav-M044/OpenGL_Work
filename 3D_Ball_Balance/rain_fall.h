@@ -11,7 +11,7 @@ void rain_fall_cal()
 void rain_fall()
 {
     float area_len = 1500, area_width = 500;
-    float rain_len = 0.1, rain_height = 5, rain_width = 0.1;
+    float rain_len = 0.3, rain_height = 1, rain_width = 0.1;
     for(int f = 500; f>=0; f -= 50)
     {
         for(int i= -(area_width/2-200); i<=area_width/2-100; i+=20)

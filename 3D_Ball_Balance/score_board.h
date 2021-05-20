@@ -61,10 +61,7 @@ void score_board()
     char msg[] = "3D_Ball_Balance";
     for(int i=0; i<strlen(msg); i++)
         glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,msg[i]);
-//for (int i = 0; i < strlen(msg); i++)
-//    {
-//        glutStrokeCharacter(GLUT_STROKE_ROMAN, msg[i]);
-//    }
+
     glPopMatrix();
 
 

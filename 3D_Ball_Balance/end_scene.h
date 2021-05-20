@@ -22,7 +22,7 @@ void end_scene()
         glutBitmapCharacter(GLUT_BITMAP_9_BY_15,msg2[i]);
 
     //text-3
-    glColor3f(1,1,1);
+    glColor3f(1,1,0);
     glRasterPos3f(-0.1,0.1,0);
     double sp_time = double(end_time-st_time);
     ostringstream ss_min, ss_sec;

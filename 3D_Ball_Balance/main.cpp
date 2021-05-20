@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     //glutDisplayFunc(starting_view);
     glutKeyboardFunc(key);
 
-    glutTimerFunc(4000,myTimer,0);
+    glutTimerFunc(1000,myTimer,0);
 
     cout<<double(end_time-st_time);
 

@@ -65,7 +65,7 @@ void up_down_flr()
 
 
     glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D,4);
+    glBindTexture(GL_TEXTURE_2D,27);
 
     glPushMatrix();
     glScalef(len, height, width);

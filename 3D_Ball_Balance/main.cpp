@@ -26,15 +26,15 @@ int main(int argc, char *argv[])
 
     load_images();
 
-    time(&st_time);
+
     //glutDisplayFunc(display);
     glutDisplayFunc(welcomedisplay);
     //glutDisplayFunc(end_scene);
     //glutDisplayFunc(starting_view);
     glutKeyboardFunc(key);
 
-    glutTimerFunc(3000,myTimer,0);
-
+    glutTimerFunc(4000,myTimer,0);
+    time(&st_time);
     cout<<double(end_time-st_time);
 
     extra_light();

@@ -1,5 +1,5 @@
 
-float bar_pos_x = 0, bar_pos_x_var = 0.1;
+float bar_pos_x = 0, bar_pos_x_var = 0.15;
 float pipe_angle = 0;
 void bar_pos_x_cal()
 {
@@ -7,9 +7,9 @@ void bar_pos_x_cal()
     pipe_angle = (asin(bar_pos_x/100) * 180)/3.14;
     //cout<<pipe_angle<<endl;
     if( bar_pos_x >= 40)
-        bar_pos_x_var = -0.1;
+        bar_pos_x_var = -0.15;
     if( bar_pos_x <= -40)
-        bar_pos_x_var = 0.1;
+        bar_pos_x_var = 0.15;
 
     glutPostRedisplay();
 }

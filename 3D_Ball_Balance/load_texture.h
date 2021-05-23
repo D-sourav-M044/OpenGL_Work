@@ -51,5 +51,6 @@ void load_images()
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\d.bmp",24);
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\a.bmp",25);
      LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\dir_arrow.bmp",26);
+     LoadTexture("C:\\Users\\Admin\\Desktop\\3D_Ball_Balance\\images\\maze.bmp",27);
 
 }

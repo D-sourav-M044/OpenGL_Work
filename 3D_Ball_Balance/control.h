@@ -2,7 +2,17 @@
 void control_cube()
 {
     glPushMatrix();
-    glTranslatef(-40,40,130);
+    glTranslatef(-50,40,120);
+
+    //light
+//    glPushMatrix();
+//    glTranslatef(0,20,0);
+//    glScalef(100,10,1);
+//    glTranslatef(-0.5,-0.5,-0.5);
+//    cube(0.5,0.5,0.5,light_3);
+//    spot_light_effect(-40,80,130, 10);
+//    glPopMatrix();
+
 
     //arrow
     glEnable(GL_TEXTURE_2D);

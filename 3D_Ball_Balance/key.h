@@ -53,10 +53,10 @@ static void key(unsigned char key, int x, int y)
         look[1]--;
         break;
     case 'h':
-        look[0]++;
+        look[0]+=2;
         break;
     case 'f':
-        look[0]--;
+        look[0]-=2;
         break;
     case 'w':
         eye[2] = ball_pos_z+50;

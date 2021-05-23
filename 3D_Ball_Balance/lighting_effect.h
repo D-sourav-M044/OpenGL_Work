@@ -4,12 +4,9 @@ float ar = 0.1, ag = 0.1, ab = 0.1, dr = 1, dg = 1, db = 1, sr = 1, sg = 1, sb =
 void point_light_effect(int light_no = 1,float x = 0, float y = 20, float z = 0, float R = 1, float G = 1, float B = 1)
 {
     GLfloat no_light[] = { 0.0, 0.0, 0.0, 1.0 };
-//    GLfloat light_ambient[]  = {R, G, B, 0.0};
-//    GLfloat light_diffuse[]  = { R, G, B, 1.0 };
-//    GLfloat light_specular[] = { 1,1,1, 1.0 };
-GLfloat light_ambient[]  = {0.1,0.1,0.1, 1.0};
-    GLfloat light_diffuse[]  = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+GLfloat light_ambient[]  = {0.5,0.1,0, 1.0};
+    GLfloat light_diffuse[]  = { 0.5, 0.5, 0, 1.0 };
+    GLfloat light_specular[] = { 1.0, 1.0, 0, 1.0 };
     GLfloat light_position[] = { x,y,z, 1.0 };
 
     if(light_no == 1)

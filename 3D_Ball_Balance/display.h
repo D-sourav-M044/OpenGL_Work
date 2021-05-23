@@ -29,7 +29,6 @@ static void display(void)
             if(fog_on)
             {
                 fog();
-
             }
 
             thunder_effect();
@@ -40,7 +39,7 @@ static void display(void)
 
     else if(!end_scen_enable && end_scene_status)
     {
-        rain_fall();
+        //rain_fall();
         //fog();
         gluLookAt(eye_ani[0],eye_ani[1],eye_ani[2], look_ani[0],look_ani[1],look_ani[2], 0,1,0);
     }

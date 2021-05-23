@@ -77,6 +77,7 @@ void end_scene()
 
 
 
+
 //glFlush();
 
     glutSwapBuffers();

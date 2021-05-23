@@ -88,8 +88,8 @@ void finishing_flr()
 //
 //
             glPushMatrix();
-            glTranslatef(i*(f_len/2+6),0,j*(f_width/2-2));
-            glScalef(0.1,0.1,0.1);
+            glTranslatef(i*(f_len/2+6),-20,j*(f_width/2-2));
+            glScalef(0.1,0.5,0.1);
             fire();
             cube();
             glPopMatrix();

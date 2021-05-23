@@ -32,7 +32,7 @@ void rand_gen_z(int l, int u)
 {
     float n;
     n = (rand() % (u-l+1));
-    rand_z = -n;
+    rand_z = n;
 
 }
 
@@ -40,14 +40,22 @@ void rand_gen_z(int l, int u)
 void thunder_off(int val)
 {
     if(thunder)
+    {
         thunder = !thunder;
+        light_1 = !light_1;
+    }
+
     glutTimerFunc(3000,thunder_on,0);
 }
 
 void thunder_on(int val)
 {
     if(!thunder)
+    {
         thunder = !thunder;
+        light_1 = !light_1;
+    }
+
     glutTimerFunc(1000,thunder_off,0);
 }
 
@@ -55,17 +63,19 @@ void thunder_timer()
 {
     if(!thunder)
     {
-        rand_gen_x(-400,450);
+        //rand_gen_x(-400,550);
+        rand_gen_x(ball_pos_x-50,ball_pos_x+50);
         rand_gen_y(350,400);
-        rand_gen_z(-1500,-850);
+        rand_gen_z(-1000,-850);
         glutTimerFunc(3000,thunder_on,1);
     }
 
     else
     {
-        rand_gen_x(-400,450);
+        //rand_gen_x(-400,450);
+        rand_gen_x(ball_pos_x-200,ball_pos_x+200);
         rand_gen_y(350,400);
-        rand_gen_z(-1500,-850);
+        rand_gen_z(-1000,-850);
         glutTimerFunc(1000,thunder_off,0);
     }
 }
@@ -135,7 +145,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
             glRotatef(-10,0,0,1);
             t_flag = !t_flag;
         }
-        glScalef(1,20,2);
+        glScalef(4,20,2);
         glTranslatef(-0.5,-0.5,-0.5);
         cube(1,1,0,0,1);
         glPopMatrix();
@@ -167,7 +177,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
             glRotatef(-10,0,0,1);
             t_flag = !t_flag;
         }
-        glScalef(2,20,1);
+        glScalef(4,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
         cube(1,1,0,0,1);
         glPopMatrix();
@@ -197,7 +207,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
             glRotatef(-10,0,0,1);
             t_flag = !t_flag;
         }
-        glScalef(1,20,1);
+        glScalef(4,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
         cube(1,1,0,0,1);
         glPopMatrix();
@@ -228,7 +238,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
             glRotatef(-10,0,0,1);
             t_flag = !t_flag;
         }
-        glScalef(1,20,1);
+        glScalef(4,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
         cube(1,1,0,0,1);
         glPopMatrix();
@@ -257,7 +267,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
             glRotatef(-10,0,0,1);
             t_flag = !t_flag;
         }
-        glScalef(1,20,1);
+        glScalef(4,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
         cube(1,1,0,0,1);
         glPopMatrix();
@@ -286,7 +296,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
             glRotatef(-10,0,0,1);
             t_flag = !t_flag;
         }
-        glScalef(1,20,1);
+        glScalef(4,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
         cube(1,1,0,0,1);
         glPopMatrix();
@@ -316,7 +326,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
             glRotatef(-10,0,0,1);
             t_flag = !t_flag;
         }
-        glScalef(1,20,1);
+        glScalef(4,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
         cube(1,1,0,0,1);
         glPopMatrix();
@@ -346,7 +356,7 @@ void thund_object(float thun_len = 5, float thun_height = 200, float thun_width 
             glRotatef(-10,0,0,1);
             t_flag = !t_flag;
         }
-        glScalef(1,20,1);
+        glScalef(4,20,1);
         glTranslatef(-0.5,-0.5,-0.5);
         cube(1,1,0,0,1);
         glPopMatrix();

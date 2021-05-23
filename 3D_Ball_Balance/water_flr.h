@@ -1,12 +1,12 @@
 
-float w_flow = 0, w_flow_var = 0.8;
+float w_flow = 0, w_flow_var = 2;
 void water_flow()
 {
     w_flow += w_flow_var;
     if(w_flow<=-200)
-        w_flow_var = 0.8;
+        w_flow_var = 2;
     else if(w_flow>=200)
-        w_flow_var = -0.8;
+        w_flow_var = -2;
     glutPostRedisplay();
 }
 
@@ -26,7 +26,7 @@ void water_flr(float water_flr_len = 2500, float water_flr_height = 30, float wa
 
     glPushMatrix();
     glTranslatef(w_flow,0,0);
-    glTranslatef(0,-200,-500);
+    glTranslatef(0,-200,-200);
     glScalef(water_flr_len,water_flr_height,water_flr_width);
     glTranslatef(-0.5,-0.5,-0.5);
     cube(0,0,1,0,1);

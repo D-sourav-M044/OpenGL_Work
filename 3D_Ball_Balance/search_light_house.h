@@ -81,11 +81,10 @@ void search_light_house()
 
     //ball_light
     glPushMatrix();
-    //tower_sphere_atr(1,0,0);
     glTranslatef(0,tower_height-16,20);
-    glRotatef(90,1,0,0);
+    glRotatef(60,1,0,0);
     glutSolidSphere(16,16,16);
-    spot_light_effect(0,tower_height,20, 10);
+    spot_light_effect(0,tower_height,20, 30);
     glPopMatrix();
 
 

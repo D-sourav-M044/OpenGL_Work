@@ -14,7 +14,7 @@ void rain_fall()
     float rain_len = 0.3, rain_height = 1, rain_width = 0.1;
     for(int f = 500; f>=0; f -= 50)
     {
-        for(int i= -(area_width/2-200); i<=area_width/2-100; i+=20)
+        for(int i= -(area_width/2-300); i<=area_width/2-100; i+=20)
         {
             for(int j= -(area_len/2-200); j<= area_len/2-200; j+=20)
             {

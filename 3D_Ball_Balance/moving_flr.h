@@ -104,7 +104,7 @@ void moving_flr()
 //
     if(here)
     {
-        cout<<"here"<<endl;
+
         port[6] = 1;
         if(move_on)
         {

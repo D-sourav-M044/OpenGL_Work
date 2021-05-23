@@ -2,10 +2,13 @@ bool fog_on = true;
 float fog_den = 0.0001;
 void fog_den_inc()
 {
-    if(fog_den<0.002)
-    fog_den += 0.000005;
+    if(fog_den<0.001)
+    fog_den += 0.000004;
+    else if(fog_den<0.002)
+    fog_den += 0.000001;
     else if(fog_den<0.003)
         fog_den += 0.0000005;
+    glutPostRedisplay();
 }
 void fog()
 {

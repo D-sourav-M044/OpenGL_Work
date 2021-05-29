@@ -3,6 +3,7 @@ void control_cube()
 {
     glPushMatrix();
     glTranslatef(-50,40,120);
+    //glTranslatef(ball_pos_x-50,ball_pos_y+40,ball_pos_z);
 
     //light
 //    glPushMatrix();

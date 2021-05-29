@@ -27,7 +27,7 @@ float lig_4_pos = 0;
 
 #include "axes.h"
 
-
+#include "curve_object.h"
 #include "torch.h"
 
 
@@ -49,8 +49,8 @@ float lig_4_pos = 0;
 #include "rain_fall.h"
 #include "road.h"
 #include "thunder_effect.h"
-#include "curve.h"
-#include "short_way.h"
+
+
 #include "score_board.h"
 #include "search_light_house.h"
 #include "starting_view.h"
@@ -58,6 +58,8 @@ float lig_4_pos = 0;
 #include "end_scene.h"
 #include "finishing_flr.h"
 #include "control.h"
+#include "short_way.h"
+
 #include "display.h"
 
 

@@ -25,6 +25,7 @@ static void display(void)
         {
             gluLookAt(eye[0],eye[1],eye[2], look[0],look[1],look[2], 0,1,0);
             rain_fall();
+             ball_life();
             control_cube();
             if(fog_on)
             {
@@ -49,17 +50,17 @@ static void display(void)
 
     glRotatef(m_rot,0,1,0);
 
-//score_board();
 //    glPushMatrix();
 //    glTranslatef(400,0,-200);
 //    axes();
 //    glPopMatrix();
-////
-    // ball
-    glPushMatrix();
-    glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
-    ball();
-    glPopMatrix();
+            // ball
+            glPushMatrix();
+            glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
+            ball();
+            glPopMatrix();
+
+
 
 
     up_down_flr();
@@ -101,10 +102,28 @@ static void display(void)
     }
 
 }
-
+float load_bar_x = 0.1;
+void load_bar_animation()
+{
+    if(load_bar_x<=1.8)
+        load_bar_x +=0.01;
+    glutPostRedisplay();
+}
 void welcomedisplay()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    //kuet
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D,18);
+    glPushMatrix();
+    glTranslatef(-0.0,-0.1,0);
+    glScalef(0.1,0.1,0.1);
+    glTranslatef(-0.5,-0.5,-0.5);
+    cube();
+    glPopMatrix();
+    glDisable(GL_TEXTURE_2D);
+
 
     //text -1
     glColor3f(1,0,0);
@@ -143,7 +162,14 @@ void welcomedisplay()
         glutBitmapCharacter(GLUT_BITMAP_9_BY_15,msg5[i]);
 
 
-
+    //loading bar
+    glPushMatrix();
+    glTranslatef(0,-0.8,0);
+    glScalef(load_bar_x,0.005,0.1);
+    glTranslatef(-0.5,-0.5,-0.5);
+    cube(1,1,1);
+    load_bar_animation();
+    glPopMatrix();
 
     glutSwapBuffers();
 }

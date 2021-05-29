@@ -4,6 +4,8 @@ static GLfloat v_top[1600][3];
 static bool v_ball_load = false;
 static bool v_top_load = false;
 
+bool ball_2 = false;
+
 void ball_ind_point_load(float r)
 {
     if(!v_ball_load)
@@ -133,9 +135,12 @@ ball_ind_point_load(r);
     glTranslatef(0,-r,0);
 
 
+    if(ball_2)
+    {
+        glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D,6);
+    }
 
-//    glEnable(GL_TEXTURE_2D);
-//    glBindTexture(GL_TEXTURE_2D,6);
 
     bool ball_col_flag = 1;
     glBegin(GL_QUADS);
@@ -195,8 +200,8 @@ ball_ind_point_load(r);
 
     }
     glEnd();
-
-    //glDisable(GL_TEXTURE_2D);
+ if(ball_2)
+    glDisable(GL_TEXTURE_2D);
 
 
 

@@ -84,7 +84,7 @@ void up_down_flr()
 
         glPushMatrix();
 
-        glTranslatef(i*(len/2-bar_len/2),(bar_height/2-height/2),i*(width/2-bar_width/2-0.5));
+        glTranslatef(i*(len/2-bar_len/2),(bar_height/2-height/2),-(width/2-bar_width/2-0.5));
         glScalef(bar_len, bar_height, bar_width);
         glTranslatef(-0.5,-0.5,-0.5);
         cube(0.5,0.5,0.5,side_cube);

@@ -42,7 +42,13 @@ static void key(unsigned char key, int x, int y)
         fog_on = !fog_on;
         break;
 
-    //fan
+    case '7':
+        ball_2 =!ball_2;
+        break;
+    case '8':
+        ball_3 =!ball_3;
+        break;
+
 
     case 't':
         eye[1]++;
@@ -63,7 +69,16 @@ static void key(unsigned char key, int x, int y)
 
         ball_int_rot -= 10;
         ball_int_rot_x = 1;
-        ball_pos_z -=1;
+        if(ball_pos_z<=78 && ball_pos_z>=55)
+        {
+           ball_pos_z -=0;
+        }
+        else
+        {
+            ball_pos_z -=1;
+        }
+
+
 
         if(ball_speed_in)
         {
@@ -77,6 +92,9 @@ static void key(unsigned char key, int x, int y)
 
         ball_int_rot += 10;
         ball_int_rot_x = 1;
+        if(ball_pos_z<=78 && ball_pos_z>=55)
+            ball_pos_z +=0;
+        else
         ball_pos_z +=1;
         break;
     case 'a':
@@ -157,6 +175,8 @@ static void key(unsigned char key, int x, int y)
         look[2]++;
         break;
     case 'n':
+        ball_left -=1;
+        //ball_init
         ball_fall = 0;
         ball_fall_rot = 0;
         ball_fall_y = 0;
@@ -173,6 +193,24 @@ static void key(unsigned char key, int x, int y)
 
     case ' ':
         end_scene_status = false;
+        break;
+    case 'x':
+        //jump
+        if(jump_key_enable)
+        {
+            ball_jump_cond = !ball_jump_cond;
+            jump_forward = !jump_forward;
+        }
+        break;
+    case 'z':
+        //jump
+        if(jump_key_enable)
+        {
+            ball_jump_cond = !ball_jump_cond;
+            jump_back = !jump_back;
+        }
+
+
         break;
 
     }

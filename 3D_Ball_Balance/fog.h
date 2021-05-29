@@ -3,7 +3,7 @@ float fog_den = 0.0001;
 void fog_den_inc()
 {
     if(fog_den<0.001)
-    fog_den += 0.000004;
+    fog_den += 0.000009;
     else if(fog_den<0.002)
     fog_den += 0.000001;
     else if(fog_den<0.003)

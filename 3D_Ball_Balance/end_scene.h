@@ -32,17 +32,6 @@ void end_scene()
 
     if(sp_time>60)
     {
-//        double sp_min = sp_time/60;
-//        double sp_sec = sp_time - 60*sp_min;
-//        ss_min<<sp_time;
-//        ss_sec<<sp_sec;
-//        str_min = ss_min.str();
-//        str_sec = ss_sec.str();
-//
-//        s += str_min;
-//        s += " min ";
-//        s += str_sec;
-//        s += " sec";
 
         int sp_min = int(sp_time/60);
         int sp_sec = int(sp_time - 60*sp_min);

@@ -1,8 +1,8 @@
 #include "header.h"
 
 
-const int window_width = 1200;
-const int window_height = 700;
+const int window_width = 1400;
+const int window_height = 800;
 static int g_counter = 0;
 
 void sound()
@@ -17,11 +17,11 @@ int main(int argc, char *argv[])
 {
     glutInit(&argc, argv);
     glutInitWindowSize(window_width,window_height);
-    glutInitWindowPosition(300,10);
+    glutInitWindowPosition(100,10);
 
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 
-    //
+
     glutCreateWindow("3D Ball Balance");
 
     load_images();
@@ -33,9 +33,8 @@ int main(int argc, char *argv[])
     //glutDisplayFunc(starting_view);
     glutKeyboardFunc(key);
 
-    glutTimerFunc(4000,myTimer,0);
+    glutTimerFunc(000,myTimer,0);
     time(&st_time);
-    cout<<double(end_time-st_time);
 
     extra_light();
     glEnable(GL_DEPTH_TEST);

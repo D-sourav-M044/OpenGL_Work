@@ -33,7 +33,7 @@ void fire_y_cal()
 
 void fire()
 {
-     bool fire_rot_flag = true;
+    bool fire_rot_flag = true;
     for(int pos = 12; pos<=20; pos+=10)
     {
         for(float i=1; i<19; i+=1)
@@ -87,7 +87,7 @@ void torch()
         glScalef(10,200,10);
         glTranslatef(-0.5,-0.5,-0.5);
         if(i%2)
-        cube(0.5,0,0,0,1);
+            cube(0.5,0,0,0,1);
         else
             cube(0,0.5,0,0,1);
         glPopMatrix();
@@ -101,6 +101,15 @@ void torch()
     glTranslatef(0,30,0);
     torch_top(20);
     //spot_light_effect(1,0,30,0,1,1,0);
+    glPopMatrix();
+
+    glPushMatrix();
+    material_property(0.5,0.4,0.3);
+    glRotatef( 90, 0.0, 0.0, 1.0);
+    //glRotatef( 180, 1.0, 0.0, 1.0);
+    glTranslated(70,0,10);
+    glScalef(5,5,5);
+    bottleBezier();
     glPopMatrix();
 
     //kuet logo
@@ -190,10 +199,18 @@ void torch()
     glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
+    //back pilar
+    glPushMatrix();
+    glTranslatef(0,0,-40);
+    glScalef(5,150,2);
+        glTranslatef(-0.5,-0.5,-0.5);
+        cube();
+        glPopMatrix();
+
     //fire
     glPushMatrix();
-   fire();
-   glPopMatrix();
+    fire();
+    glPopMatrix();
 
     glPopMatrix();
 

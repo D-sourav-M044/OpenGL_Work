@@ -50,7 +50,7 @@
 		<Unit filename="ball_position.h" />
 		<Unit filename="control.h" />
 		<Unit filename="cube.h" />
-		<Unit filename="curve.h" />
+		<Unit filename="curve_object.h" />
 		<Unit filename="display.h" />
 		<Unit filename="end_scene.h" />
 		<Unit filename="finishing_flr.h" />

@@ -11,11 +11,11 @@ GLfloat eye[] = {ball_pos_x,50,ball_pos_z+50};
 GLfloat look[] = {ball_pos_x,50,-200};
 
 
-//GLfloat eye[] = {0,200,30};
-//GLfloat look[] = {0,10,-100};
+GLfloat lasteye[] = {0,50,180};
+GLfloat lastlook[] = {0,50,-200};
 
 
-GLfloat eye_ani[] = {600,80,-250};
+GLfloat eye_ani[] = {600,150,-100};
 GLfloat look_ani[] = {0,80,-100};
 
 
@@ -26,6 +26,9 @@ static void key(unsigned char key, int x, int y)
     switch (key)
     {
     //for light
+    case '0':
+        ex_light = !ex_light;
+        break;
     case '1':
         light_1 = !light_1;
         break;
@@ -38,6 +41,41 @@ static void key(unsigned char key, int x, int y)
     case '4':
         light_4 = !light_4;
         break;
+    //light property
+    //ambient
+    case ',':
+        ar+=0.05;
+        ag+=0.05;
+        ab+=0.05;
+        break;
+    case '<':
+        ar-=0.05;
+        ag-=0.05;
+        ab-=0.05;
+        break;
+    //diffuse
+    case '.':
+        dr+=0.05;
+        dg+=0.05;
+        db+=0.05;
+        break;
+    case '>':
+        dr-=0.05;
+        dg-=0.05;
+        db-=0.05;
+        break;
+    //specular
+    case '/':
+        sr+=0.05;
+        sg+=0.05;
+        sb+=0.05;
+        break;
+    case '?':
+        sr-=0.05;
+        sg-=0.05;
+        sb-=0.05;
+        break;
+
     case '5':
         fog_on = !fog_on;
         break;
@@ -71,7 +109,7 @@ static void key(unsigned char key, int x, int y)
         ball_int_rot_x = 1;
         if(ball_pos_z<=78 && ball_pos_z>=55)
         {
-           ball_pos_z -=0;
+            ball_pos_z -=0;
         }
         else
         {
@@ -95,7 +133,7 @@ static void key(unsigned char key, int x, int y)
         if(ball_pos_z<=78 && ball_pos_z>=55)
             ball_pos_z +=0;
         else
-        ball_pos_z +=1;
+            ball_pos_z +=1;
         break;
     case 'a':
         eye[0] = ball_pos_x;
@@ -187,9 +225,7 @@ static void key(unsigned char key, int x, int y)
         ball_pos_y = ball_st_pos_y;
         ball_pos_z = ball_st_pos_z;
         break;
-    case 'p':
-        lig_4_pos +=5;
-        break;
+
 
     case ' ':
         end_scene_status = false;
@@ -211,6 +247,18 @@ static void key(unsigned char key, int x, int y)
         }
 
 
+        break;
+    case 'p':
+        game_over = 0;
+        ball_left = 3;
+        ball_pos_x = 0, ball_pos_y = radius+(6/2), ball_pos_z = 130;
+        eye[0] = 0;
+        eye[1] = 50;
+        eye[2] = 180;
+
+        look[0] = 0;
+        look[1] = 50;
+        look[2] = -200;
         break;
 
     }

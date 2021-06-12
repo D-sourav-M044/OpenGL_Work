@@ -1,4 +1,4 @@
-int ball_left = 10 ;//life
+int ball_left = 3 ;//life
 bool ball_3 = false;
 float surface_len = 0, surface_height = 0, surface_width = 0;
 
@@ -110,7 +110,7 @@ void ball_life()
     glLineWidth(5.0);
 
     glPushMatrix();
-    glRasterPos3f(ball_pos_x-7,ball_pos_y,ball_pos_z+20);
+    glRasterPos3f(ball_pos_x-7,9,ball_pos_z+20);
 
 
     string msg = "ball_left : [";

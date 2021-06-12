@@ -103,14 +103,16 @@ void torch()
     //spot_light_effect(1,0,30,0,1,1,0);
     glPopMatrix();
 
-    glPushMatrix();
-    material_property(0.5,0.4,0.3);
-    glRotatef( 90, 0.0, 0.0, 1.0);
-    //glRotatef( 180, 1.0, 0.0, 1.0);
-    glTranslated(70,0,10);
-    glScalef(5,5,5);
-    bottleBezier();
-    glPopMatrix();
+    //curve
+//    glPushMatrix();
+//    material_property(0.5,0.4,0.3);
+//    glRotatef( 90, 0.0, 0.0, 1.0);
+//    glRotatef( 180, 1.0, 0.0, 1.0);
+//    glTranslated(70,0,10);
+//    glScalef(5,5,5);
+//    curve_object();
+//    glPopMatrix();
+show_curve();
 
     //kuet logo
     glEnable(GL_TEXTURE_2D);
@@ -153,6 +155,7 @@ void torch()
     glPopMatrix();
 
     //top left curve
+
     glPushMatrix();
     glTranslatef(-8,50,0);
     glRotatef(-60,0,0,1);

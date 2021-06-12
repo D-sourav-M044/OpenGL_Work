@@ -110,7 +110,7 @@ void short_way()
             glLineWidth(4.0);
             glPushMatrix();
             //glRasterPos3f(ball_pos_x,ball_pos_y+40,ball_pos_z+20);
-            glTranslatef(ball_pos_x-20,ball_pos_y+40,ball_pos_z+20);
+            glTranslatef(ball_pos_x-20,48,ball_pos_z+20);
 
             glScalef(0.02,0.05,0.01);
             string msg;

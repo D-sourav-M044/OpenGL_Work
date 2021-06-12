@@ -7,92 +7,106 @@ static void display(void)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     int lim = 8;
-    if(end_scen_enable)
-    {
-        time(&end_time);
-        glutDisplayFunc(end_scene);
-    }
-    if(!end_scen_enable)
+    if(game_over)
     {
         glFrustum(-lim, lim, -6, 6, 4, 1000);
+        gluLookAt(lasteye[0],lasteye[1],lasteye[2], lastlook[0],lastlook[1],lastlook[2], 0,1,0);
+        game_over_scene();
     }
-//
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity() ;
-    if((!starting_view_animation_x && !starting_view_animation_z) ||(!end_scene_status))
+    else
     {
+        extra_light();
+
+        if(end_scen_enable)
+        {
+            time(&end_time);
+            glutDisplayFunc(end_scene);
+        }
         if(!end_scen_enable)
         {
-            gluLookAt(eye[0],eye[1],eye[2], look[0],look[1],look[2], 0,1,0);
-            rain_fall();
-             ball_life();
-            control_cube();
-            if(fog_on)
+
+            glFrustum(-lim, lim, -6, 6, 4, 1000);
+        }
+//
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity() ;
+        if((!starting_view_animation_x && !starting_view_animation_z) ||(!end_scene_status))
+        {
+            if(!end_scen_enable)
             {
-                fog();
+                gluLookAt(eye[0],eye[1],eye[2], look[0],look[1],look[2], 0,1,0);
+                rain_fall();
+                ball_life();
+                control_cube();
+                timer();
+                if(fog_on)
+                {
+                    //fog();
+                }
+
+                //thunder_effect();
             }
 
-            thunder_effect();
+
+        }
+
+        else if(!end_scen_enable && end_scene_status)
+        {
+            //rain_fall();
+            //fog();
+            gluLookAt(eye_ani[0],eye_ani[1],eye_ani[2], look_ani[0],look_ani[1],look_ani[2], 0,1,0);
         }
 
 
-    }
-
-    else if(!end_scen_enable && end_scene_status)
-    {
-        //rain_fall();
-        //fog();
-        gluLookAt(eye_ani[0],eye_ani[1],eye_ani[2], look_ani[0],look_ani[1],look_ani[2], 0,1,0);
-    }
 
 
-
-
-    glRotatef(m_rot,0,1,0);
+        glRotatef(m_rot,0,1,0);
 
 //    glPushMatrix();
 //    glTranslatef(400,0,-200);
 //    axes();
 //    glPopMatrix();
-            // ball
-            glPushMatrix();
-            glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
-            ball();
-            glPopMatrix();
+        // ball
+
+        glPushMatrix();
+        glRotatef(ball_rot,ball_rot_x,ball_rot_y,ball_rot_z);
+        ball();
+        glPopMatrix();
 
 
 
 
-    up_down_flr();
-    floor();
-    normal_flr();
-    short_way();
-    road();
-    moving_flr();
-    finishing_flr();
+        up_down_flr();
+        floor();
+        normal_flr();
+        short_way();
+        road();
+        moving_flr();
+        finishing_flr();
 
-    //extra scene
-    water_flr();
-    back_side();
-    front_side();
-    left_side_wall();
-    ice_hill();
+        //extra scene
+        water_flr();
+        back_side();
+        front_side();
+        left_side_wall();
+        ice_hill();
 
-    glPushMatrix();
-    glTranslatef(0,-50,-100);
-    glScalef(2,2,2);
-    torch();
-    glPopMatrix();
+        glPushMatrix();
+        glTranslatef(0,-50,-100);
+        glScalef(2,2,2);
+        torch();
+        glPopMatrix();
+
 
 
 //
-    search_light_house();
+        search_light_house();
 
 
-    starting_view();
+        starting_view();
 
 
-
+    }
 
 
     glFlush();
@@ -106,7 +120,7 @@ float load_bar_x = 0.1;
 void load_bar_animation()
 {
     if(load_bar_x<=1.8)
-        load_bar_x +=0.01;
+        load_bar_x +=0.0075;
     glutPostRedisplay();
 }
 void welcomedisplay()
@@ -178,7 +192,7 @@ void myTimer (int val)
 {
 
     glutDisplayFunc(display);
-    extra_light();
+    //extra_light();
     glEnable(GL_LIGHTING);
     glutPostRedisplay();
 }

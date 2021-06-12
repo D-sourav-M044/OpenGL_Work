@@ -38,24 +38,31 @@ void view_animation()
 }
 
 void starting_view()
-{ glPushMatrix();
+{
+    glPushMatrix();
     if(end_scene_status)
-    { obj_mat(1,0,0);
+    {
+        obj_mat(1,1,1);
 
 
         glEnable(GL_LINE_SMOOTH);
-        glLineWidth(10.0);
+        glLineWidth(4.0);
+
         glPushMatrix();
-        glRasterPos3f(450,30,-80);
-        //glTranslatef(-150,800,0);
 
+        glTranslatef(eye_ani[0]-10,eye_ani[1],eye_ani[2]+8);
+        glRotatef(270,0,-1,0);
+        //glRasterPos3f(450,30,-80);
 
-        char msg[] = "Press [space_bar] to start the game";
-        for(int i=0; i<strlen(msg); i++)
-            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,msg[i]);
+        glScalef(0.005,0.02,0.01);
+        //glScalef(20,20,0.01);
+        string msg = "Press [space_bar] to start the game";
+
+        for(int i=0; i<msg.size(); i++)
+            // glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,msg[i]);
+            glutStrokeCharacter(GLUT_STROKE_MONO_ROMAN,msg[i]);
 
         glPopMatrix();
-
     }
 
     view_animation();

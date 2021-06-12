@@ -31,27 +31,27 @@ GLfloat ctrlpoints[L+1][3] =
 //    {6.6, 0.5, 0.0},{7.2, 0.2, 0.0},
 //    {6.8, 0.52, 0.0}
 
-{6.325,5,0},
-{5.875,4.275,0},
-{5.55,3.8,0},
-{5.5,3,0},
-{5.95,1.725,0},
-{6.525,0.95,0},
-{6.475,-0.6,0},
-{6.05,-1.525,0},
-{5.525,-2.3,0},
-{5.625,-2.95,0},
-{6.125,-3.625,0},
-{5.675,-3.675,0},
-{4.575,-3.55,0},
-{3.425,-3.525,0},
-{2.55,-3.35,0},
-{2.825,-1.65,0},
-{2.9,-1.225,0},
-{2.4,-0.2,0},
-{2.05,1.45,0},
-{2.725,2.65,0},
-{3,3.55,0}
+    {6.325,5,0},
+    {5.875,4.275,0},
+    {5.55,3.8,0},
+    {5.5,3,0},
+    {5.95,1.725,0},
+    {6.525,0.95,0},
+    {6.475,-0.6,0},
+    {6.05,-1.525,0},
+    {5.525,-2.3,0},
+    {5.625,-2.95,0},
+    {6.125,-3.625,0},
+    {5.675,-3.675,0},
+    {4.575,-3.55,0},
+    {3.425,-3.525,0},
+    {2.55,-3.35,0},
+    {2.825,-1.65,0},
+    {2.9,-1.225,0},
+    {2.4,-0.2,0},
+    {2.05,1.45,0},
+    {2.725,2.65,0},
+    {3,3.55,0}
 
 
 
@@ -198,7 +198,7 @@ void setNormal(GLfloat x1, GLfloat y1,GLfloat z1, GLfloat x2, GLfloat y2,GLfloat
     glNormal3f(-Nx,-Ny,-Nz);
 }
 
-void bottleBezier()
+void curve_object()
 {
     int i, j;
     float x, y, z, r;				//current coordinates
@@ -259,6 +259,7 @@ void bottleBezier()
 
             //forms quad with next pair of points with incremented theta value
         }
+
         glEnd();
         x = x1;
         r = r1;
@@ -266,11 +267,26 @@ void bottleBezier()
 
 }
 
-
+void show_curve()
+{
+    glPolygonMode( GL_FRONT, GL_LINE ) ;
+    glPolygonMode( GL_BACK, GL_LINE ) ;
+    glPushMatrix();
+    //material_property(0.5,0.4,0.3);
+    material_property(0.2,0.5,0);
+    glRotatef( 90, 0.0, 0.0, 1.0);
+    glTranslated(70,0,10);
+    glScalef(5,5,5);
+    curve_object();
+    glPopMatrix();
+    glPolygonMode( GL_FRONT,GL_FILL ) ;
+    glPolygonMode( GL_BACK, GL_FILL ) ;
+}
 
 
 void showControlPoints()
 {
+
     glPointSize(5.0);
     glColor3f(1.0, 0.0, 1.0);
     glBegin(GL_POINTS);

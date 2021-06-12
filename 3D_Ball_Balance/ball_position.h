@@ -1,4 +1,4 @@
-int game_over;
+int game_over = 0;
 bool position_check(float x = 0,float y = 0,float z = 0,  float center =0,  bool origin_change = 0, float center_x = 0, bool jump = 0, float rot = 0)
 {
     if(origin_change)
@@ -46,8 +46,9 @@ bool fall_detection(float angle=0)
 
         if(game_over)
         {
-            cout<<"sesh"<<endl;
-            glutDestroyWindow(300);
+            //cout<<"sesh"<<endl;
+            //glutDestroyWindow(300);
+
         }
 
 

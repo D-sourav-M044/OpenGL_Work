@@ -22,6 +22,7 @@ float lig_4_pos = 0;
 #include "cube.h"
 #include "solidball.h"
 #include "ball.h"
+#include "game_over_scene.h"
 #include "ball_position.h"
 #include "lighting_effect.h"
 
@@ -59,6 +60,8 @@ float lig_4_pos = 0;
 #include "finishing_flr.h"
 #include "control.h"
 #include "short_way.h"
+#include "timer.h"
+
 
 #include "display.h"
 

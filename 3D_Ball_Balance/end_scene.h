@@ -25,7 +25,7 @@ void end_scene()
     glColor3f(1,1,0);
     glRasterPos3f(-0.1,0.1,0);
     double sp_time = double(end_time-st_time);
-    sp_time -=4.0;
+    sp_time -=5.0;
     ostringstream ss_min, ss_sec;
     string str_min, str_sec;
     string s = "total time : ";

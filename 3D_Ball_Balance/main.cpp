@@ -33,10 +33,10 @@ int main(int argc, char *argv[])
     //glutDisplayFunc(starting_view);
     glutKeyboardFunc(key);
 
-    glutTimerFunc(000,myTimer,0);
+    glutTimerFunc(4000,myTimer,0);
     time(&st_time);
 
-    extra_light();
+    //extra_light();
     glEnable(GL_DEPTH_TEST);
     glShadeModel( GL_SMOOTH );
     glEnable(GL_NORMALIZE);
